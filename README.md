@@ -151,6 +151,38 @@ A **themed playing environment**. Expand the range of characters and allow users
 ##### back to [top](#table-of-contents)
 ---
 
+### 5 Surface Plane
+
+#### Design
+
+
+#### Colour Scheme
+<img src="documentation/readme-images/lotr-movie-poster.jpg" height="auto%" width="100%" alt="The Lord of the Rings Memory Game colour palette" />
+
+<br>
+
+The colour scheme was chosen by uploading The Lord of the Rings film poster to 
+[coolors.co](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff).  Using the colour picker
+ the hexidecimal equivalent of the prevailing colours used within the poster were identified. 
+
+<br>
+
+<img src="documentation/readme-images/lord-of-the-rings-colour-palette.png" height="auto%" width="100%" alt="The Lord of the Rings Memory Game colour palette" />
+
+<sub>*Colour palette created at* [coolors.co](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff).</sub>
+
+
+#### Icons
+Icons were used alongside the text within the site in order to help the user to understand the content at a glance. 
+They were taken from [Font Awesome](https://fontawesome.com/) and chosen to be self explanatory.
+
+#### Typography
+*Uncial Antiqua* was chosen as the main heading font.  The complimentary font *Roboto Slab*, which was recommended by [Google Fonts](https://fonts.google.com/) 
+was chosen for the text used within the body of the site.  *Bilbo* was used for the quotes from the book that are displayed upon completion of the level.
+
+##### back to [top](#table-of-contents)
+---
+
 ## Technologies Used
 *In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. 
 For each, provide its name, a link to its official site and a short sentence of why it was used.*
