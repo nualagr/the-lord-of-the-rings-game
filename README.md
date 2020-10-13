@@ -34,26 +34,17 @@ Click <a href="https://nualagr.github.io/lotr/">here</a> to play the game online
     - [1) The Strategy Plane](#1-strategy-plane)
     - [2) The Scope Plane](#2-scope-plane)
     - [3) The Structure Plane](#3-structure-plane)
+         - [Features](#features)
     - [4) The Skeleton Plane](#4-skeleton-plane)
         - [Wireframes](#wireframes)
-        - [Features](#features)
     - [5) The Surface Plane](#5-surface-plane) 
         - [Design](#design)
         - [Colour Scheme](#colour-scheme)
         - [Icons](#icons)
         - [Typography](#typography)
 3. [**Development**](#development)
-    - [Existing Features](#existing-features)
-    - [Future Features](#future-features)
 4. [**Technologies Used**](#technologies-used)
 5. [**Testing**](#testing)
-    - [Performance](#performance)
-    - [HTML Validation](#html-validation)
-    - [CSS Validation](#css-validation)
-    - [Manual Testing](#manual-testing)
-    - [Responsiveness](#responsiveness)
-    - [Tested User Stories](#tested-user-stories)
-    - [Bugs](#bugs)
 6. [**Deployment**](#deployment)
 7. [**Credits**](#credits)
     - [Content](#content)
@@ -156,6 +147,9 @@ The site has been designed to provide minimal, but relevant, content that is eas
 
 <br>
 
+##### back to [top](#table-of-contents)
+---
+
 ### 2 Scope Plane
 The key features of the website were developed based on the user needs. 
 
@@ -169,9 +163,12 @@ Users should be able to do the following on the website:
 - See how much time is left in the current level
 - Advance to levels of increasing difficulty
 - Read interesting facts about *The Lord of the Rings* characters.
-- Visit dedicated *The Lord of the Rings* social media channels.
+- Easily access dedicated *The Lord of the Rings* social media channels.
 
 <br>
+
+##### back to [top](#table-of-contents)
+---
 
 ### 3 Structure Plane
 
@@ -182,6 +179,7 @@ For ease of navigation it was decided to opt for a single page with pop-up modal
 - to provide a failure to proceed message
 - to show a 'proceed to the next level' message
 - to congratulate winners and show them their score
+- to provide the user with the rules of the game
 - to provide winners with a visual prize modal which displays character information.
 
 <br>
@@ -196,6 +194,10 @@ The game is designed to be as intuitive as possible.
 
 *For some/all of your features, you may choose to reference the specific project files that implement them, 
 although this is entirely optional.*
+
+A ring **favicon**, displayed on the web brower's tab, allows the user to identify the website by sight.
+
+The **Title**, displayed on the web browser's tab at all times, clearly identifies the site as a *Lord of the Rings* themed memory game.
 
 **Opening Modal** - Outlines the rules of the game and explains what is needed in order to advance to the next level.
 
@@ -226,7 +228,7 @@ They provide the user with visually pleasing and easily differentiated images to
 
 **Failure Modal** - alerts the user to the fact that they did no complete the round in the given timeframe.  A **Restart** button allows them to start a new game immediately.
 
-**Completion Modal** - pop up window congratulates the user at the end of Round Three and provides them with their score time and provides them with a **Prize Button** which opens a visual prize modal.
+**Completion Modal** - pop up window congratulates the user at the end of Round Three and provides them with their **Score** (calculated by adding the seconds unused to the number of clicks left out of 100) and provides them with a **Prize Button** which opens a visual prize modal.
 
 **Character Information Modal** - Modal which contains a random character image and information (name, species, place of birth, etc.) and a quote from the character.
 
@@ -271,6 +273,11 @@ A Count Down Timer is visible above the left-hand corner of the card-deck area d
 A footer, which contains links to Lord of the Rings social media sites was included at the bottom of every page.
 
 
+<img src="documentation/wireframes/desktop-round-three-with-modal.png" height="auto%" width="100%" alt="Desktop Round Three with Modal congratulating the winner." />
+
+
+<br>
+
 #### Wireframes
 
 ##### Desktop
@@ -300,10 +307,12 @@ A footer, which contains links to Lord of the Rings social media sites was inclu
 
 <br>
 
+##### back to [top](#table-of-contents)
+---
+
 ### 5 Surface Plane
 
 #### Design
-
 
 #### Colour Scheme
 <img src="documentation/readme-images/lotr-movie-poster.jpg" height="auto%" width="100%" alt="The Lord of the Rings Memory Game colour palette" />
@@ -320,14 +329,33 @@ The colour scheme was chosen by uploading The Lord of the Rings film poster to
 
 <sub>*Colour palette created at* [coolors.co](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff).</sub>
 
+#### Cards
+[SP-Studio](https://www.sp-studio.de/) was used to create the Lord of the Rings themed character images.
+
+<img src="assets/images/sam.jpg" height="auto%" width="100%" alt="Samwise Gamgee" />
+
 
 #### Icons
 Icons were used alongside the text within the site in order to help the user to understand the content at a glance. 
-They were taken from [Font Awesome](https://fontawesome.com/) and chosen to be self explanatory.
+They were taken from [Font Awesome](https://fontawesome.com/) and chosen to be self explanatory, for example the image of 
+a house was chosen for the Home button.
 
 #### Typography
-*Uncial Antiqua* was chosen as the main heading font.  The complimentary font *Roboto Slab*, which was recommended by [Google Fonts](https://fonts.google.com/) 
-was chosen for the text used within the body of the site.  *Bilbo* was used for the quotes from the book that are displayed upon completion of the level.
+*Uncial Antiqua* was chosen as the main heading font.  
+<br>
+
+<img src="documentation/readme-images/uncial-antiqua-title.png" height="auto%" width="100%" alt="Uncial Antiqua font example" />
+
+The complimentary font *Roboto Slab*, which was recommended by [Google Fonts](https://fonts.google.com/), 
+was chosen for the text used within the body of the site.  
+
+<img src="documentation/readme-images/roboto-slab-example.png" height="auto%" width="100%" alt="Roboto Slab font example" />
+
+*Bilbo*, a legible calligraphic style, was chosen for the quotes from the book that are displayed upon completion of the level.
+
+<img src="documentation/readme-images/bilbo-quote.png" height="auto%" width="100%" alt="Bilbo font example" />
+
+<br>
 
 ##### back to [top](#table-of-contents)
 ---
@@ -457,35 +485,55 @@ In addition, if it is not obvious, you should also describe how to run your code
 ##### back to [top](#table-of-contents)
 ---
 
-
-
 ## Credits
 ### Content
 *The text for section Y was copied from the Wikipedia article Z*
 ### Media
 *The photos used in this site were obtained from ...*
+
 Font Awesome icons used: 
 <i class="fas fa-ring"></i>
+
 <i class="fas fa-volume-mute"></i>
+
 <i class="fas fa-volume-up"></i>
+
 <i class="fab fa-facebook-f"></i>
+
 <i class="fab fa-instagram"></i>
+
 <i class="fab fa-twitter"></i>
+
 <i class="fas fa-home"></i>
+
 <i class="far fa-times-circle"></i>
+
 <i class="far fa-check-circle"></i>
+
 <i class="far fa-thumbs-up"></i>
 
 ### Images
-Forest background from [https://www.vecteezy.com/](https://www.vecteezy.com/vector-art/224401-vector-cartoon-landscape-illustration).
-Mountain and river background from [https://www.vecteezy.com/](https://www.vecteezy.com/vector-art/171288-free-hand-drawn-vector-landscape-illustration).
-Grey foret and mountian [Vecteezy](https://www.vecteezy.com/vector-art/229817-vector-beautiful-landscape-illustration)
-A flat natural landscape [Vecteezy](https://www.vecteezy.com/vector-art/296664-a-flat-nature-landscape)
-Nature scene with dark sky over volcano [Vecteezy](https://www.vecteezy.com/vector-art/669093-nature-scene-with-dark-sky-over-volcano)
-Path through fields[Vecteezy](https://www.vecteezy.com/vector-art/303633-nature-hill-landscape-vector)
-Hot desert landscape[Vecteezy](https://www.vecteezy.com/vector-art/300455-a-hot-desert-landscape)
-Unique Martian landscape[Vecteezy](https://www.vecteezy.com/vector-art/187145-unique-martian-landscape-vectors)
-Stones, river, trees, mountains[Vecteezy](https://www.vecteezy.com/vector-art/297137-a-nature-green-landscape)
+- Forest background from [https://www.vecteezy.com/](https://www.vecteezy.com/vector-art/224401-vector-cartoon-landscape-illustration).
+
+- Mountain and river background from [https://www.vecteezy.com/](https://www.vecteezy.com/vector-art/171288-free-hand-drawn-vector-landscape-illustration).
+
+- Grey foret and mountian [Vecteezy](https://www.vecteezy.com/vector-art/229817-vector-beautiful-landscape-illustration)
+
+- A flat natural landscape [Vecteezy](https://www.vecteezy.com/vector-art/296664-a-flat-nature-landscape)
+
+- Nature scene with dark sky over volcano [Vecteezy](https://www.vecteezy.com/vector-art/669093-nature-scene-with-dark-sky-over-volcano)
+
+- Path through fields[Vecteezy](https://www.vecteezy.com/vector-art/303633-nature-hill-landscape-vector)
+
+- Hot desert landscape[Vecteezy](https://www.vecteezy.com/vector-art/300455-a-hot-desert-landscape)
+
+- Unique Martian landscape[Vecteezy](https://www.vecteezy.com/vector-art/187145-unique-martian-landscape-vectors)
+
+- Stones, river, trees, mountains[Vecteezy](https://www.vecteezy.com/vector-art/297137-a-nature-green-landscape)
+<br>
+
+##### back to [top](#table-of-contents)
+---
 
 ### Acknowledgements
 - [Code Institue](https://codeinstitute.net/) and the very helpful tutors.
@@ -495,7 +543,6 @@ Stones, river, trees, mountains[Vecteezy](https://www.vecteezy.com/vector-art/29
   - https://zahur76.github.io/MilestoneProject2/
   - https://nickbell123.github.io/Marvel-Memory-Game/
   - [8-bitEarth](https://www.deviantart.com/8-bitearth/art/The-Lord-of-the-Rings-South-Park-version-363629107)'s Lord of the Rings character images created using [SP-Studio](https://www.sp-studio.de/).
-
 
 <br>
 
