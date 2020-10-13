@@ -4,13 +4,14 @@
 <sub>*Created using* [Am I Responsive](http://ami.responsivedesign.is/)</sub>
 <br>
 The Lord of the Rings Memory Game is a themed card-matching game. The game objective is to find the matching pairs of cards 
-with a minimum number of mouse clicks. The game, while being fun to play, can also be used as a brain training tool to improve recall.
+within a minimum number of mouse clicks in a set timeframe. The game, while being fun to play, can also be used as a brain training tool to improve recall as well
+as to improve hand-eye coordination and reaction times.
 
 The game is geared towards fans of *The Lord of the Rings Trilogy* by J. R. R. Tolkien.  It incorportes 
 The Lord of the Rings themed images, audio and facts with the intention of making the playing 
 experience more enjoyable for the user.
 
-The Lord of the Rings Memory Game website consists of two pages created using [HTML5](http://en.wikipedia.org/wiki/HTML5), 
+The Lord of the Rings Memory Game website consists of one webpage and six modals created using [HTML5](http://en.wikipedia.org/wiki/HTML5), 
 [CSS3](http://en.wikipedia.org/wiki/CSS), [JavaScript](https://en.wikipedia.org/wiki/JavaScript), 
 the JavaScript library [jQuery](https://jquery.com/) and [The One API](https://the-one-api.dev/).  It was
 created in order to fulfil the requirements of the Interactive Frontend Development Milestone Project 2, 
@@ -22,13 +23,56 @@ displays the information in order achieve their goals.
 Click <a href="https://nualagr.github.io/lotr/">here</a> to play the game online.
 <br>
 
+## **Table of Contents**
+1. [**User Experience (UX)**](#ux)
+    - [User Stories](#user-stories)
+        - [New User](#new-user)
+        - [General User](#general-user)
+        - [The Lord of the Rings Fan](#the-lord-of-the-rings-fan)
+        - [Site Owner](#site-owner)
+2. [**User Centered Design**](#user-centered-design)
+    - [1) The Strategy Plane](#1-strategy-plane)
+    - [2) The Scope Plane](#2-scope-plane)
+    - [3) The Structure Plane](#3-structure-plane)
+    - [4) The Skeleton Plane](#4-skeleton-plane)
+        - [Wireframes](#wireframes)
+        - [Features](#features)
+    - [5) The Surface Plane](#5-surface-plane) 
+        - [Design](#design)
+        - [Colour Scheme](#colour-scheme)
+        - [Icons](#icons)
+        - [Typography](#typography)
+3. [**Development**](#development)
+    - [Existing Features](#existing-features)
+    - [Future Features](#future-features)
+4. [**Technologies Used**](#technologies-used)
+5. [**Testing**](#testing)
+    - [Performance](#performance)
+    - [HTML Validation](#html-validation)
+    - [CSS Validation](#css-validation)
+    - [Manual Testing](#manual-testing)
+    - [Responsiveness](#responsiveness)
+    - [Tested User Stories](#tested-user-stories)
+    - [Bugs](#bugs)
+6. [**Deployment**](#deployment)
+7. [**Credits**](#credits)
+    - [Content](#content)
+    - [Media](#media)
+    - [Acknowledgements](#acknowledgements)
+    - [References](#references)
+
+<br>
+
+---
+
 ## UX
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
+*Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
 In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
 
 As a user type, I want to perform an action, so that I can achieve a goal.
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
+This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the 
+project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.*
 ### User Stories
 
 #### New User
@@ -36,10 +80,10 @@ This section is also where you would share links to any wireframes, mockups, dia
 As a new user I would like to be able to:
 
 - play a card-matching game presented in a visually appealing format.
+- play a game which increases in complexity/challenge.
 - read the rules of the game.
 - navigate through the site with ease.
 - modify settings to suit my game-play requirements with regard to 
-  - the level of challenge. 
   - whether to play in-game audio
 - receive regular, up-to-date feedback about how I am progressing in the game.
 - enjoy the experience of playing the game.
@@ -47,24 +91,26 @@ As a new user I would like to be able to:
 - learn some interesting facts about The Lord of the Rings characters.
 - read some interesting quotes by the different Lord of the Rings characters.
 - improve my congnitive function.
+- improve my reaction times.
 
 #### General User
 
 As a returning user I would like to be able to:
 
 - play a simple card-matching game presented in a visually appealing format.
+- play a game which increases in complexity/challenge.
+- be able to measure improving performance - feedback in the form of time taken and number of clicks displayed upon completion.
+- receive different visual rewards for completing the game on subsequent attempts.
 - view and match themed images of The Lord of the Rings characters.
 - navigate through the site with ease.
 - modify settings to suit my game-play requirements with regard to 
-  - the level of challenge. 
   - whether to play in-game audio.
 - receive regular, up-to-date feedback about how I am progressing in the game.
 - enjoy the experience of playing the game.
-- receive a visual reward for completing the game.
-- be able to measure improving performance - feedback in the form of time taken and number of clicks displayed upon completion.
 - be exposed to interesting facts about The Lord of the Rings characters.
 - read some interesting quotes by The Lord of the Rings characters.
 - improve my congnitive function.
+- improve my reaction times.
 
 #### The Lord of the Rings Fan
 
@@ -77,24 +123,70 @@ As a Lord of the Rings fan I would like to be able to:
 - be exposed to interesting facts about The Lord of the Rings characters.
 - read some interesting quotes by The Lord of the Rings characters.
 
-#### The owner of the site
+#### Site Owner
 As the owner of The Lord of the Rings Memory Game site I would like:
 
 - to be able to enjoy the experience of playing the game myself.
 - to provide site users with an enjoyable playing experience.
 - to provide site users with a visually appealing game. 
 - to provide site users with a game that is intuitive to play.
+- to provide site users with a game which increases in difficulty.
 - to provide new users with game rules that are concise and easy to read. 
-- to provide site users with feedback on their performance.
+- to provide site users with feedback on their performance in order to encourage them to play again.
 - to provide site users with a website that is easy to navigate.
-- to provide site users with the ability to tailor their game experience by choosing the level 
-of difficulty and by having the ability to turn off the audio component if desired. 
+- to provide site users with the ability to tailor their game experience by including the ability to turn the audio component off if desired. 
 - to expose site users to interesting facts and quotes from The Lord of the Rings 
 books with a view to sharing my love of the Trilogy and instilling a curiosity in those who 
 have not yet read the books. 
 
+<br>
 
-## Features
+##### back to [top](#table-of-contents)
+---
+
+## User Centered Design
+### 1 Strategy Plane
+The User Centered Design process started with the creation of the User Stories.  These influenced subsequent feature, layout and design decisions.
+
+The main  goal of the website is to provide users with an engaging game. 
+The perceived audience of this site are fans of The Lord of the Rings Trilogy, teenagers and younger children who want to play a fun game or compete against 
+each other or people who want to improve their memory and/or reaction times.
+
+The site has been designed to provide minimal, but relevant, content that is easy to comprehend and that satisfies the needs of both the users and the site owner. 
+
+<br>
+
+### 2 Scope Plane
+The key features of the website were developed based on the user needs. 
+
+Users should be able to do the following on the website:
+- Read the rules of the game
+- Start a game
+- Mute the sound effects
+- Turn over two cards at a time
+- Match cards
+- See their score at the end
+- See how much time is left in the current level
+- Advance to levels of increasing difficulty
+- Read interesting facts about *The Lord of the Rings* characters.
+- Visit dedicated *The Lord of the Rings* social media channels.
+
+<br>
+
+### 3 Structure Plane
+
+After identifying the needs of the site's users and after visiting pairs card matching websites the following website design and features were chosen
+
+For ease of navigation it was decided to opt for a single page with pop-up modals 
+- to start the game
+- to provide a failure to proceed message
+- to show a 'proceed to the next level' message
+- to congratulate winners and show them their score
+- to provide winners with a visual prize modal which displays character information.
+
+<br>
+
+### Features
 *In this section, you should go over the different parts of your project, and describe each in a sentence or so.*
 
 The game is designed to be as intuitive as possible.
@@ -105,10 +197,9 @@ The game is designed to be as intuitive as possible.
 *For some/all of your features, you may choose to reference the specific project files that implement them, 
 although this is entirely optional.*
 
-**Level Options** - On the entry page the user can choose their level of difficulty - easy, medium or hard, which 
-determines the number of cards displayed - 8, 12 or 16 respectively.
+**Opening Modal** - Outlines the rules of the game and explains what is needed in order to advance to the next level.
 
-**Playing Cards** - The chosen number of playing cards, 8, 12 or 16 are displayed face down in a grid formation.  A uniform
+**Playing Cards** - The playing cards, 8 (round one), 12 (round two) or 16 (round three) are displayed face down in a grid formation.  A uniform
 back-of-card image makes it obvious to the user that the cards are face down.
 
 The Lord of the Rings **themed character images** created in [SP-Studio](https://www.sp-studio.de/) are displayed once the card is clicked.
@@ -121,15 +212,23 @@ They provide the user with visually pleasing and easily differentiated images to
 - when a match is not successful and 
 - when the game is over.
 
-**Counter** - provides the user with a visual score of the number of pairs they have matched within a given round.
+**Pairs Counter** - provides the user with a visual score of the number of pairs they have matched within a given round.
 
-**Timer** - provides the user with a visual representation of the game-play time.
+**Clicks Counter** - provides the user with a visual score of the number of clicks they have used so far within a given round.
+
+**Count Down Timer** - provides the user with a visual representation of the game-play time left in the current round.
 
 **Mute sound effects button** - allows the user to turn off in-game sound effects.
 
 **Home button** - allows the user to navigate back to the home page and restart their game experience.
 
-**Completion Modal** - pop up window congratulates the user and provides them with their score time and with character information and a quote from the last character tile matched.
+**Help button** - brings up a modal of the game rules.
+
+**Failure Modal** - alerts the user to the fact that they did no complete the round in the given timeframe.  A **Restart** button allows them to start a new game immediately.
+
+**Completion Modal** - pop up window congratulates the user at the end of Round Three and provides them with their score time and provides them with a **Prize Button** which opens a visual prize modal.
+
+**Character Information Modal** - Modal which contains a random character image and information (name, species, place of birth, etc.) and a quote from the character.
 
 A **footer** contains **social media** links to:
 
@@ -150,6 +249,56 @@ A **themed playing environment**. Expand the range of characters and allow users
 
 ##### back to [top](#table-of-contents)
 ---
+
+### 4 Skeleton Plane
+
+The UI wireframing tool, [Balsamiq](https://balsamiq.com/), was used to create wireframes for each site page as it would appear on desktop, tablet and mobile devices.
+
+The main content area was expressed similarly on each of the three levels to create consistency across the game as a whole.  
+
+In Round One 8 of the 16 divs on the page display cards.
+
+In Round Two 12 of the 16 divs on the page display cards.
+
+In Round Three all 16 divs are displayed on the page.
+
+A Moves Counter is visible above the top right-hand corner of the card-deck area displaying the number of moves taken so far.
+
+A Pairs Counter is visible above the card-deck-area showing the number of pairs successfully matched so far.
+
+A Count Down Timer is visible above the left-hand corner of the card-deck area displaying the number of seconds left to complete the current round.
+
+A footer, which contains links to Lord of the Rings social media sites was included at the bottom of every page.
+
+
+#### Wireframes
+
+##### Desktop
+- [Desktop Opening Modal](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/desktop-opening-modal.png)
+
+- [Desktop Round One with Advance to Level 2 Modal](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/desktop-round-one-with-modal.png)
+
+- [Desktop Round Two with Failure Modal](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/desktop-round-two-with-modal.png)
+
+- [Desktop Round Three with Winning Modal](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/desktop-round-three-with-modal.png)
+
+- [Desktop Prize Modal](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/prize.png)
+
+##### Tablet
+- [Tablet Round One](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/ipad-round-one.png)
+
+- [Tablet Round Two](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/ipad-round-two.png)
+
+- [Tablet Round Three](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/ipad-round-three.png)
+
+##### Mobile
+- [Mobile Round One](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/phone-round-one.png)
+
+- [Mobile Round Two](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/phone-round-one.png)
+
+- [Mobile Round Three](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/phone-round-one.png)
+
+<br>
 
 ### 5 Surface Plane
 
@@ -219,6 +368,7 @@ For each, provide its name, a link to its official site and a short sentence of 
 
 - Apps:
   * [Balsamiq](https://balsamiq.com/). Used to create the project wireframes.
+  * [Inkscape](https://inkscape.org/). Used to edit the FontAwesome ring icons that was used as the Favicon.
 
 ##### back to [top](#table-of-contents)
 ---
