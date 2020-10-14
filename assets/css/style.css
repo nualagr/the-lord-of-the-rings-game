@@ -18,27 +18,51 @@ h1 {
     color: #A4770D;
     font-weight: bold;
     font-family: 'Uncial Antiqua', cursive;
-    text-transform: uppercase;
     padding-top: 2rem;
 }
 
 h2 {
     color: #A4770D;
     font-weight: bold;
-    text-transform: uppercase;
-    padding-top: 1.5rem;
+    padding: 1.5rem 0;
+}
+
+.row {
+    margin: 0;
+}
+/*----------------------------------Counters Section*/
+#countersSection p {
+    text-align: center;
+    font-weight: bold;
+}
+
+/*----------------------------------Card Board*/
+.game-card-column {
+    padding: 5px;
+}
+
+.game-card-column img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+}
+
+/*----------------------------------Buttons Section*/
+#buttonsSection .col-2 {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+#buttonsSection i {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+#buttonsSection i:hover {
+    color: #494021;
 }
 
 /*----------------------------------Footer*/
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1030;
-  display: block;
-}
-
 .footer-area {
     padding: 20px 0px 5px 0px;
     text-align: center;
@@ -71,3 +95,30 @@ footer {
 .footer-area-bottom {
     font-size: small;
 }
+
+/*----------------------------------Media Queries*/
+@media only screen and (min-width: 1600px) {
+    .card-row {
+        padding: 0 35rem 5px 35rem;
+   }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1599px) {
+    .card-row {
+        padding: 0 10rem 5px 10rem;
+   }
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+
+@media only screen and (max-width: 768px) {
+    /* For mobile and tablet: */
+    .game-card-column {
+        padding: 1px;
+   }
+   .card-row {
+       padding: 0;
+   }
+}
+

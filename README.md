@@ -375,6 +375,7 @@ For each, provide its name, a link to its official site and a short sentence of 
   * [Code Institute](https://codeinstitute.net/). Used to review concepts covered in preceding modules and walk-through projects. 
   * [Coolors](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff). Used to choose a colour scheme.
   * [Font Awesome](https://fontawesome.com/). Used to source the free icons that were used for the social media links in the footer and for the mute icon.
+  * [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator). Used to create the Web Font Kit for the Ringbearer font.
   * [Google Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools). Used extensively throughout the project to test the responsiveness of elements, to target and apply CSS styles during the design phase and to test the site's performance once built. 
   * [Google Fonts](https://fonts.google.com/). Used to choose and source the fonts used throughout the site.
   * [Github](https://github.com/). Used to host the deployed site and used as a respository for all previous versions of the build.
@@ -497,6 +498,8 @@ Font Awesome icons used:
 <i class="fas fa-volume-mute"></i>
 
 <i class="fas fa-volume-up"></i>
+
+<i class="fas fa-question"></i>
 
 <i class="fab fa-facebook-f"></i>
 
