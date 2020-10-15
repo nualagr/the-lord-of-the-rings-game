@@ -3,6 +3,7 @@
 document.getElementById("advanceButton").addEventListener("click", function() {
     $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
     assignCards();
+
 });
 
 // On receiving the Home Button clicked message.
@@ -15,8 +16,18 @@ class Card {
     constructor(name, image) {
         this.name = name;
         this.image = image;
-        this.direction = 0;
+        this.html = 
+            `<div class="game-card">
+                <div class="card-front">
+                    <img src="assets/images/${this.image}" class="card-image" alt="${this.name}" >
+                    <p>${this.name}</p>
+                </div>
+                <div class="card-back">
+                    <img src="assets/images/card-back-green.png" class="card-image" alt="Tree of Gondor Image">
+                </div>
+            </div>`;
     }
+
     is_equal_to(otherCard) {
         if (otherCard.name === this.name) {
             return true;
@@ -28,14 +39,14 @@ class Card {
 
 // Set up an array with eight Card instances
 var fellowshipCards = [
-    new Card("Frodo Baggins", "frodo-baggins.jpg"),
-    new Card("Samwise Gamgee", "samwise-gamgee.jpg"),
-    new Card("Gandalf the Grey", "gandalf-the-grey.jpg"),
-    new Card("Gimli son of Gloin", "gimli-son-of-gloin.jpg"),
-    new Card("Aragorn", "aragorn.jpg"),
-    new Card("Legolas", "legolas.jpg"),
-    new Card("Boromir", "boromir.jpg"),
-    new Card("Galadriel", "galadriel.jpg"),
+    new Card("Frodo Baggins", "frodo-baggins.jpg", "frodo"),
+    new Card("Samwise Gamgee", "samwise-gamgee.jpg", "sam"),
+    new Card("Gandalf the Grey", "gandalf-the-grey.jpg", "gandalf"),
+    new Card("Gimli son of Gloin", "gimli-son-of-gloin.jpg", "gimli"),
+    new Card("Aragorn", "aragorn.jpg", "aragorn"),
+    new Card("Legolas", "legolas.jpg", "legolas"),
+    new Card("Boromir", "boromir.jpg", "boromir"),
+    new Card("Galadriel", "galadriel.jpg", "galadriel"),
 ]
 
 
@@ -57,7 +68,7 @@ function assignCards(){
     for (var i = 0; i < cardSlots.length; i ++){
         //var gameCard = getRandomCard(levelDeck);
         var gameCard = levelDeck[i];
-        cardSlots[i].innerHTML = '<img src="assets/images/'+ gameCard.image + '">' + gameCard.name; 
+        cardSlots[i].innerHTML = gameCard.html;
     }
 };
 
