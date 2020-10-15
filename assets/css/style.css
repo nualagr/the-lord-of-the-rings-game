@@ -52,6 +52,15 @@ h2 {
     border-radius: 0.25rem;
 }
 
+.card-front {
+    position: absolute;
+    z-index: 1;
+}
+
+.game-card {
+    position: relative;
+}
+
 /*----------------------------------Buttons Section*/
 #buttonsSection .col-2 {
     text-align: center;
