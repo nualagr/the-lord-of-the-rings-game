@@ -39,6 +39,11 @@ h2 {
 /*----------------------------------Card Board*/
 .game-card-column {
     padding: 5px;
+    font-family: 'Uncial Antiqua', cursive;
+    background-color: #E5B670;
+    border: 2px solid #311C17;
+    color: #311C17;
+    text-align: center;
 }
 
 .game-card-column img {
