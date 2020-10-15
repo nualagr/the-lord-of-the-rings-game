@@ -11,36 +11,52 @@ $(".restart").click(function(){
     $(".extra-row").remove();
 });
 
-// Set up an array with four card objects.
-var fellowshipCardPack = [
-  { name: "Frodo Baggins", image: "frodo-baggins.jpg" }, 
-  { name: "Samwise Gamgee", image: "samwise-gamgee.jpg" }, 
-  { name: "Gandalf the Grey", image: "gandalf-the-grey.jpg" },
-  { name: "Gimli son of Gloin", image: "gimli-son-of-gloin.jpg"},
-  { name: "Aragron", image: "aragorn.jpg"},
-  { name: "Legolas", image: "legolas.jpg"},
-];
+class Card {
+    constructor(name, image) {
+        this.name = name;
+        this.image = image;
+        this.direction = 0;
+    }
+    is_equal_to(otherCard) {
+        if (otherCard.name === this.name) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
 
-function makeDeck(num) {
+// Set up an array with eight Card instances
+var fellowshipCards = [
+    new Card("Frodo Baggins", "frodo-baggins.jpg"),
+    new Card("Samwise Gamgee", "samwise-gamgee.jpg"),
+    new Card("Gandalf the Grey", "gandalf-the-grey.jpg"),
+    new Card("Gimli son of Gloin", "gimli-son-of-gloin.jpg"),
+    new Card("Aragorn", "aragorn.jpg"),
+    new Card("Legolas", "legolas.jpg"),
+    new Card("Boromir", "boromir.jpg"),
+    new Card("Galadriel", "galadriel.jpg"),
+]
+
+
+// Make a new deck for each level dependent on the number of divs to be filled
+function makeDeck(num, cardDeck) {
     var newDeck = [];
     for (let i = 0; i < num ; i ++) {
-        newDeck.push(fellowshipCardPack[i]);
+        newDeck.push(cardDeck[i]);
+        newDeck.push(cardDeck[i]);
     }
     return newDeck;
-}
+};
 
-myDeck = makeDeck(4)
-
-// Choose a random Card
-function getRandomCard(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 // Assign randomised cards to the divs and print the names of the characters underneath.
 function assignCards(){
-    var cardSlots = document.getElementsByClassName('game-card-column'); 
+    var cardSlots = document.getElementsByClassName('game-card-column');
+    levelDeck = makeDeck(cardSlots.length / 2, fellowshipCards);
     for (var i = 0; i < cardSlots.length; i ++){
-        var gameCard = getRandomCard(myDeck);
+        //var gameCard = getRandomCard(levelDeck);
+        var gameCard = levelDeck[i];
         cardSlots[i].innerHTML = '<img src="assets/images/'+ gameCard.image + '">' + gameCard.name; 
     }
 };
