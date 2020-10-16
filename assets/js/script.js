@@ -23,7 +23,7 @@ class Card {
         this.image = image;
         this.display = 1;
         this.html = 
-            `<div class="game-card">
+            `<div class="game-card ${this.card_number}" >
                 <div class="card-front">
                     <img src="assets/images/${this.image}" class="card-image" alt="${this.name}" >
                     <p>${this.name}</p>
@@ -59,6 +59,7 @@ var fellowshipCards = [
 // Make a new deck for each level dependent on the number of divs to be filled
 function makeDeck(num, cardDeck) {
     var newDeck = [];
+    card_counter = 0;
     for (let i = 0; i < num ; i ++) {
         newDeck.push(cardDeck[i]);
         newDeck.push(cardDeck[i]);
@@ -74,13 +75,16 @@ function assignCards(){
     for (var i = 0; i < cardSlots.length; i ++){
         //var gameCard = getRandomCard(levelDeck);
         var gameCard = levelDeck[i];
+        gameCard.id = i;
         cardSlots[i].innerHTML = gameCard.html;
     }
     //When card is clicked reveal front-of-card.
     $(".game-card").click(function (){
-        $(".card-back").toggleClass("show");
-        console.log("I was clicked");
+        $(this).addClass("card-selected");
+        $(this).children(".card-back").toggleClass("face-up");
+        $(this).children(".card-front").toggleClass("face-up");
     });
+
 };
 
 assignCards();

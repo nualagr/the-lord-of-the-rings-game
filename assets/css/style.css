@@ -52,7 +52,6 @@ h2 {
     text-align: center;
 }
 
-
 .game-card-column img {
     width: 100%;
     height: auto;
@@ -67,7 +66,7 @@ h2 {
 .card-back {
 }
 
-.show {
+.face-up {
     z-index: 200;
 }
 
