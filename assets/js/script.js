@@ -6,9 +6,6 @@ document.getElementById("advanceButton").addEventListener("click", function() {
 
 });
 
-// Reset all the cards to back-of-card images visible.
-
-
 // On receiving the Home Button clicked message.
 // Delete the level 2 and/or level 3 card rows with the class "extra-row".
 // Assign cards to the first eight divs.
@@ -21,9 +18,8 @@ class Card {
     constructor(name, image) {
         this.name = name;
         this.image = image;
-        this.display = 1;
         this.html = 
-            `<div class="game-card ${this.card_number}" >
+            `<div class="game-card" >
                 <div class="card-front">
                     <img src="assets/images/${this.image}" class="card-image" alt="${this.name}" >
                     <p>${this.name}</p>
@@ -43,39 +39,41 @@ class Card {
     }
 }
 
-// Set up an array with the fellowshipCards Card instances
-var fellowshipCards = [
-    new Card("Frodo", "frodo-baggins.jpg", "frodo"),
-    new Card("Samwise", "samwise-gamgee.jpg", "sam"),
-    new Card("Gandalf", "gandalf-the-grey.jpg", "gandalf"),
-    new Card("Gimli", "gimli-son-of-gloin.jpg", "gimli"),
-    new Card("Aragorn", "aragorn.jpg", "aragorn"),
-    new Card("Legolas", "legolas.jpg", "legolas"),
-    new Card("Boromir", "boromir.jpg", "boromir"),
-    new Card("Galadriel", "galadriel.jpg", "galadriel"),
+// Card List Information
+var fellowshipCardList = [
+    {name:"Frodo", image:"frodo-baggins.jpg"},
+    {name:"Samwise", image:"samwise-gamgee.jpg"},
+    {name:"Gandalf", image:"gandalf-the-grey.jpg"},
+    {name:"Gimli", image:"gimli-son-of-gloin.jpg"},
+    {name: "Aragorn", image:"aragorn.jpg"},
+    {name: "Legolas", image:"legolas.jpg"},
+    {name: "Boromir", image:"boromir.jpg"},
+    {name: "Elrond", image:"elrond.jpg"},
 ]
 
 
-// Make a new deck for each level dependent on the number of divs to be filled
-function makeDeck(num, cardDeck) {
+
+// Make a new deck of new cards for each level dependent on the number of divs to be filled
+function makeDeck(num, array) {
     var newDeck = [];
-    card_counter = 0;
     for (let i = 0; i < num ; i ++) {
-        newDeck.push(cardDeck[i]);
-        newDeck.push(cardDeck[i]);
+        var newCardA = new Card(array[i].name, array[i].image);
+        var newCardB = new Card(array[i].name, array[i].image);
+        newDeck.push(newCardA);
+        newDeck.push(newCardB);
     }
+    console.log(newDeck.length);
     return newDeck;
 };
 
 
-// Assign randomised cards to the divs and print the names of the characters underneath.
+// Assign cards to the divs and print the names of the characters underneath.
 function assignCards(){
     var cardSlots = document.getElementsByClassName('game-card-column');
-    levelDeck = makeDeck(cardSlots.length / 2, fellowshipCards);
+    levelDeck = makeDeck(cardSlots.length / 2, fellowshipCardList);
     for (var i = 0; i < cardSlots.length; i ++){
         //var gameCard = getRandomCard(levelDeck);
         var gameCard = levelDeck[i];
-        gameCard.id = i;
         cardSlots[i].innerHTML = gameCard.html;
     }
     //When card is clicked reveal front-of-card.
