@@ -39,10 +39,10 @@ class Card {
 
 // Set up an array with eight Card instances
 var fellowshipCards = [
-    new Card("Frodo Baggins", "frodo-baggins.jpg", "frodo"),
-    new Card("Samwise Gamgee", "samwise-gamgee.jpg", "sam"),
-    new Card("Gandalf the Grey", "gandalf-the-grey.jpg", "gandalf"),
-    new Card("Gimli son of Gloin", "gimli-son-of-gloin.jpg", "gimli"),
+    new Card("Frodo", "frodo-baggins.jpg", "frodo"),
+    new Card("Samwise", "samwise-gamgee.jpg", "sam"),
+    new Card("Gandalf", "gandalf-the-grey.jpg", "gandalf"),
+    new Card("Gimli", "gimli-son-of-gloin.jpg", "gimli"),
     new Card("Aragorn", "aragorn.jpg", "aragorn"),
     new Card("Legolas", "legolas.jpg", "legolas"),
     new Card("Boromir", "boromir.jpg", "boromir"),

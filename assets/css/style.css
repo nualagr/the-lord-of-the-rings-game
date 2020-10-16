@@ -37,6 +37,9 @@ h2 {
 }
 
 /*----------------------------------Card Board*/
+#gameBoard {
+    position: relative;
+}
 .game-card-column {
     padding: 5px;
     font-family: 'Uncial Antiqua', cursive;
@@ -54,11 +57,15 @@ h2 {
 
 .card-front {
     position: absolute;
+    z-index: 200;
+}
+
+.card-back {
     z-index: 1;
 }
 
-.game-card {
-    position: relative;
+.card-front p {
+    background-color: #E5B670;
 }
 
 /*----------------------------------Buttons Section*/
