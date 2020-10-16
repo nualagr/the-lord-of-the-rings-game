@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bilbo&family=Roboto+Slab&family=Uncial+Antiqua&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 body {
     font-family: 'Roboto Slab', serif;
@@ -42,12 +47,11 @@ h2 {
 }
 .game-card-column {
     padding: 5px;
-    font-family: 'Uncial Antiqua', cursive;
-    background-color: #E5B670;
-    border: 2px solid #311C17;
+    font-family: 'Uncial Antiqua', cursive;    
     color: #311C17;
     text-align: center;
 }
+
 
 .game-card-column img {
     width: 100%;
@@ -57,15 +61,44 @@ h2 {
 
 .card-front {
     position: absolute;
-    z-index: 200;
+    z-index: -1;
 }
 
 .card-back {
-    z-index: 1;
 }
 
+.show {
+    z-index: 200;
+}
+
+
 .card-front p {
-    background-color: #E5B670;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+}
+
+.game-card {
+  margin: 5px;
+  position: relative;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+  transform: scale(1);
+  /*transform-style: preserve-3d, to position them in the 3D space created in the parent
+  , instead of flattening it to the z = 0 plane (transform-style).*/
+  transform-style: preserve-3d;
+  /*Now, a transition has to be applied to the transform property to produce the movement effect:*/
+  transition: transform .5s;
+  
+}
+
+/*The :active pseudo class will be triggered every time the element gets clicked. It will apply a .2s transition to its size:*/
+.game-card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+}
+
+.game-card.turn {
+  transform: rotateY(180deg);
 }
 
 /*----------------------------------Buttons Section*/
