@@ -1,7 +1,6 @@
 // Global variables
 // (we'll get rid of these as a luxury)
 movesMade = 0;
-timeLeft = 30;
 
 // Card List Information
 var fellowshipCardList = [
@@ -15,16 +14,34 @@ var fellowshipCardList = [
     {name: "Elrond", image:"elrond.jpg"},
 ]
 
-// Count Down Timer
-function startCountDownTimer(){
-    var levelTimer = setInterval(function(){
-    timeLeft--;
-    document.getElementById("timeRemaining").textContent = timeLeft;
-    if (timeLeft <= 0) 
-        clearInterval(levelTimer);
-    }, 1000);
-};
+//Count Down Timer Constructor
+class Timer {
+    constructor(time) {
+        this.time = time;
+        this.levelTimer = null;
+        this.startTimer();
+    }
 
+    startTimer() {
+        timeLeft = this.time;
+        this.levelTimer = setInterval(function(){
+            if (timeLeft > 0) {
+                document.getElementById("timeRemaining").textContent = timeLeft;
+                timeLeft--;               
+            }
+        }, 1000);
+        console.log(this.levelTimer);
+    }
+
+    stopTimer() {
+        clearInterval(this.levelTimer);
+    }
+
+    resetTimer() {
+        this.stopTimer();
+        this.startTimer();
+    }
+};
 
 // Moves Counter
 function startMovesCounter(){
@@ -39,7 +56,6 @@ function startMovesCounter(){
 function resetCounters(){
     movesMade = 0;
     document.getElementById("movesCounter").textContent = movesMade;
-    timeLeft = 31;
 }
 
 //Card Constructor
@@ -106,18 +122,17 @@ function assignCards(){
 };
 
 
+timer = new Timer(30);
 
 // On receiving the Advance Level message.
 // Clone card-row-2 and reclassify clone as extra-row.
 document.getElementById("advanceButton").addEventListener("click", function() {
     $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
     assignCards();
+    timer.resetTimer();
 });
 
 assignCards();
-
-// Start Countdown Timer
-startCountDownTimer();
 
 //Start Moves Counter
 startMovesCounter();
@@ -128,5 +143,6 @@ startMovesCounter();
 $(".restart").click(function(){
     $(".extra-row").remove();
     assignCards();
+    timer.resetTimer();
     resetCounters();
 });
