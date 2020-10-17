@@ -1,6 +1,7 @@
 // Global variables
 // (we'll get rid of these as a luxury)
 movesMade = 0;
+timeLeft = 30;
 
 // Card List Information
 var fellowshipCardList = [
@@ -43,20 +44,26 @@ class Timer {
     }
 };
 
-// Moves Counter
-function startMovesCounter(){
-    $(".game-card").on("click", function (){
-        movesMade += 1;
+// Moves Counter Constructor
+class movesCounter {
+    constructor(){
+
+    }
+
+     startMovesCounter() {
+        $(".game-card").on("click", function(){
+            movesMade ++;
+            document.getElementById("movesCounter").textContent = movesMade;
+        })
+    }
+
+    resetMovesCounter() {
+        movesMade = 0;
         document.getElementById("movesCounter").textContent = movesMade;
-    })
+        this.startMovesCounter();
+    }
 };
 
-
-// Reset Global Variables
-function resetCounters(){
-    movesMade = 0;
-    document.getElementById("movesCounter").textContent = movesMade;
-}
 
 //Card Constructor
 class Card {
@@ -118,11 +125,16 @@ function assignCards(){
         $(this).children(".card-back").toggleClass("face-up");
         $(this).children(".card-front").toggleClass("face-up");
     });
-
 };
 
 
-timer = new Timer(30);
+$(document).ready(function(){
+    timer = new Timer(30);
+    moves = new movesCounter();
+    timer.startTimer();
+    moves.startMovesCounter();
+});
+
 
 // On receiving the Advance Level message.
 // Clone card-row-2 and reclassify clone as extra-row.
@@ -130,12 +142,12 @@ document.getElementById("advanceButton").addEventListener("click", function() {
     $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
     assignCards();
     timer.resetTimer();
+    moves.resetMovesCounter();
 });
+
 
 assignCards();
 
-//Start Moves Counter
-startMovesCounter();
 
 // On receiving the Home Button clicked message.
 // Delete the level 2 and/or level 3 card rows with the class "extra-row".
@@ -144,5 +156,5 @@ $(".restart").click(function(){
     $(".extra-row").remove();
     assignCards();
     timer.resetTimer();
-    resetCounters();
+    moves.resetMovesCounter();
 });
