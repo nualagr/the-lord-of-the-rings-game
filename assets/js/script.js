@@ -1,38 +1,55 @@
-// Countdown Timer
-startCountDownTimer();
+// Global variables
+// (we'll get rid of these as a luxury)
+movesMade = 0;
+timeLeft = 30;
 
+// Card List Information
+var fellowshipCardList = [
+    {name:"Frodo", image:"frodo-baggins.jpg"},
+    {name:"Samwise", image:"samwise-gamgee.jpg"},
+    {name:"Gandalf", image:"gandalf-the-grey.jpg"},
+    {name:"Gimli", image:"gimli-son-of-gloin.jpg"},
+    {name: "Aragorn", image:"aragorn.jpg"},
+    {name: "Legolas", image:"legolas.jpg"},
+    {name: "Boromir", image:"boromir.jpg"},
+    {name: "Elrond", image:"elrond.jpg"},
+]
+
+// Count Down Timer
 function startCountDownTimer(){
-    var timeleft = 30;
     var levelTimer = setInterval(function(){
-    timeleft--;
-    document.getElementById("timeRemaining").textContent = timeleft;
-    if (timeleft <= 0) 
+    timeLeft--;
+    document.getElementById("timeRemaining").textContent = timeLeft;
+    if (timeLeft <= 0) 
         clearInterval(levelTimer);
     }, 1000);
+};
+
+
+// Moves Counter
+function startMovesCounter(){
+    $(".game-card").on("click", function (){
+        movesMade += 1;
+        document.getElementById("movesCounter").textContent = movesMade;
+    })
+};
+
+
+// Reset Global Variables
+function resetCounters(){
+    movesMade = 0;
+    document.getElementById("movesCounter").textContent = movesMade;
+    timeLeft = 31;
 }
 
-// On receiving the Advance Level message.
-// Clone card-row-2 and reclassify clone as extra-row.
-document.getElementById("advanceButton").addEventListener("click", function() {
-    $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
-    assignCards();
-
-});
-
-// On receiving the Home Button clicked message.
-// Delete the level 2 and/or level 3 card rows with the class "extra-row".
-// Assign cards to the first eight divs.
-$(".restart").click(function(){
-    $(".extra-row").remove();
-    assignCards();
-});
-
+//Card Constructor
 class Card {
-    constructor(name, image) {
+    constructor(name, image, cardId) {
         this.name = name;
         this.image = image;
+        this.cardId = cardId;
         this.html = 
-            `<div class="game-card" >
+            `<div class="game-card" id="${this.cardId}" >
                 <div class="card-front">
                     <img src="assets/images/${this.image}" class="card-image" alt="${this.name}" >
                     <p>${this.name}</p>
@@ -52,26 +69,16 @@ class Card {
     }
 }
 
-// Card List Information
-var fellowshipCardList = [
-    {name:"Frodo", image:"frodo-baggins.jpg"},
-    {name:"Samwise", image:"samwise-gamgee.jpg"},
-    {name:"Gandalf", image:"gandalf-the-grey.jpg"},
-    {name:"Gimli", image:"gimli-son-of-gloin.jpg"},
-    {name: "Aragorn", image:"aragorn.jpg"},
-    {name: "Legolas", image:"legolas.jpg"},
-    {name: "Boromir", image:"boromir.jpg"},
-    {name: "Elrond", image:"elrond.jpg"},
-]
-
-
 
 // Make a new deck of new cards for each level dependent on the number of divs to be filled
 function makeDeck(num, array) {
     var newDeck = [];
+    cardCounter = 0;
     for (let i = 0; i < num ; i ++) {
-        var newCardA = new Card(array[i].name, array[i].image);
-        var newCardB = new Card(array[i].name, array[i].image);
+        cardCounter++;
+        var newCardA = new Card(array[i].name, array[i].image, "card" + cardCounter.toString());
+        cardCounter++;
+        var newCardB = new Card(array[i].name, array[i].image, "card" + cardCounter.toString());
         newDeck.push(newCardA);
         newDeck.push(newCardB);
     }
@@ -98,4 +105,28 @@ function assignCards(){
 
 };
 
+
+
+// On receiving the Advance Level message.
+// Clone card-row-2 and reclassify clone as extra-row.
+document.getElementById("advanceButton").addEventListener("click", function() {
+    $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
+    assignCards();
+});
+
 assignCards();
+
+// Start Countdown Timer
+startCountDownTimer();
+
+//Start Moves Counter
+startMovesCounter();
+
+// On receiving the Home Button clicked message.
+// Delete the level 2 and/or level 3 card rows with the class "extra-row".
+// Assign cards to the first eight divs.
+$(".restart").click(function(){
+    $(".extra-row").remove();
+    assignCards();
+    resetCounters();
+});
