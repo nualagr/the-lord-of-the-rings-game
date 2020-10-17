@@ -1,3 +1,16 @@
+// Countdown Timer
+startCountDownTimer();
+
+function startCountDownTimer(){
+    var timeleft = 30;
+    var levelTimer = setInterval(function(){
+    timeleft--;
+    document.getElementById("timeRemaining").textContent = timeleft;
+    if (timeleft <= 0) 
+        clearInterval(levelTimer);
+    }, 1000);
+}
+
 // On receiving the Advance Level message.
 // Clone card-row-2 and reclassify clone as extra-row.
 document.getElementById("advanceButton").addEventListener("click", function() {
