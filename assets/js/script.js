@@ -30,7 +30,6 @@ class movesCounter {
     resetMovesCounter() {
         this.movesMade = 0;
         document.getElementById("movesCounter").textContent = this.movesMade;
-        this.startMovesCounter();
     }
 };
 
