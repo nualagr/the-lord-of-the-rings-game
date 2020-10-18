@@ -41,10 +41,17 @@ class movesCounter {
 //Pairs Counter Constructor
 class pairsCounter {
     constructor() {
-
+    this.pairsMatched = null;
     }
+    
     incrementPairsCounter() {
+        this.pairsMatched ++;
+        document.getElementById("pairs").textContent = this.pairsMatched;
+    }
 
+    resetPairsCounter(){
+        this.pairsMatched = 0;
+        document.getElementById("pairs").textContent = this.pairsMatched;
     }
 }
 
@@ -134,31 +141,27 @@ function assignCards(){
     }
     //When card is clicked reveal front-of-card.
     $(".game-card").click(function (){
-        $(this).addClass("face-up");
-        $(this).children(".card-back").toggleClass("face-up");
         $(this).children(".card-front").toggleClass("face-up");
+        var cardName = $(this).children().children("p").text();
         
-        // If checkArray length < 2
-        if (checkArray.length < 2){
-            // Add card name  and ID to checkArray
-            var cardName = $(this).children().children("p").text();
-            console.log(cardName);
-            var cardID = $(this).attr("id");
-            console.log(cardID);
-            checkArray.push([cardName, cardID]);
-            console.log(checkArray);
-        
-            //Check whether names in checkArray match
-            if (checkArray.length === 2 && checkArray[0][0] === checkArray[1][0]) {
-                console.log("We match");
-                checkArray.splice(0, 2);
+        // if checkArray length is equal to 0 add the first card name and id to the array
+        if (checkArray.length === 0) {    
+            var cardId = $(this).attr("id");
+            checkArray.push([cardName, cardId]);
+        }
+        // check and see whether the cards match
+        else {
+            if (checkArray[0][0] == cardName) {
+                console.log("we match even though I am not also in the array");
+                pairs.incrementPairsCounter();
+                checkArray.splice(0, 1);
             }
-            else if (checkArray.length === 2) {
-                console.log("We do not match");
-                checkArray.splice(0, 2);
+            else if (checkArray[0][0] !== cardName) {
+                console.log("we do not match");
+                //$(this).children().removeClass("face-up");
+                checkArray.splice(0, 1);
             }
         }
-
     });
 };
 
@@ -168,6 +171,7 @@ $(document).ready(function(){
     timer = new Timer(30);
     moves = new movesCounter();
     moves.startMovesCounter();
+    pairs = new pairsCounter();
 });
 
 
@@ -178,6 +182,7 @@ document.getElementById("advanceButton").addEventListener("click", function() {
     assignCards();
     timer.resetTimer();
     moves.resetMovesCounter();
+    pairs.resetPairsCounter();
 });
 
 
