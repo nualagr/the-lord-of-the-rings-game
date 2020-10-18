@@ -1,6 +1,5 @@
 // Global variables
 // (we'll get rid of these as a luxury)
-let movesMade = 0;
 let timeLeft = 30;
 let checkArray = [];
 
@@ -20,19 +19,17 @@ var fellowshipCardList = [
 // Moves Counter Constructor
 class movesCounter {
     constructor(){
-
+        this.movesMade = 0;
     }
 
-    startMovesCounter() {
-        $(".game-card").on("click", function(){
-            movesMade ++;
-            document.getElementById("movesCounter").textContent = movesMade;
-        })
+    incrementMovesCounter() {
+        this.movesMade ++;
+        document.getElementById("movesCounter").textContent = this.movesMade;
     }
 
     resetMovesCounter() {
-        movesMade = 0;
-        document.getElementById("movesCounter").textContent = movesMade;
+        this.movesMade = 0;
+        document.getElementById("movesCounter").textContent = this.movesMade;
         this.startMovesCounter();
     }
 };
@@ -51,7 +48,7 @@ class pairsCounter {
 
     resetPairsCounter(){
         this.pairsMatched = 0;
-        document.getElementById("pairs").textContent = this.pairsMatched;
+        document.getElementById("pairs").textContent = this.pairsMatched.toString();
     }
 }
 
@@ -142,6 +139,7 @@ function assignCards(){
     //When card is clicked reveal front-of-card.
     $(".game-card").click(function (){
         $(this).children(".card-front").toggleClass("face-up");
+        moves.incrementMovesCounter();
         var cardName = $(this).children().children("p").text();
         
         // if checkArray length is equal to 0 add the first card name and id to the array
@@ -170,7 +168,6 @@ $(document).ready(function(){
     //creates new timer and starts it
     timer = new Timer(30);
     moves = new movesCounter();
-    moves.startMovesCounter();
     pairs = new pairsCounter();
 });
 
@@ -197,4 +194,5 @@ $(".restart").click(function(){
     assignCards();
     timer.resetTimer();
     moves.resetMovesCounter();
+    pairs.resetPairsCounter();
 });
