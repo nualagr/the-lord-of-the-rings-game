@@ -140,10 +140,11 @@ function assignCards(){
         $(this).children(".card-front").toggleClass("face-up");
         moves.incrementMovesCounter();
         var cardName = $(this).children().children("p").text();
+        var cardId = $(this).attr("id");
+
         
         // if checkArray length is equal to 0 add the first card name and id to the array
         if (checkArray.length === 0) {    
-            var cardId = $(this).attr("id");
             checkArray.push([cardName, cardId]);
         }
         // check and see whether the cards match
@@ -154,9 +155,14 @@ function assignCards(){
                 checkArray.splice(0, 1);
             }
             else if (checkArray[0][0] !== cardName) {
-                console.log("we do not match");
-                //$(this).children().removeClass("face-up");
+                $this = $(this)
+                setTimeout(function(){
+                var otherCardId = checkArray[0][1];
                 checkArray.splice(0, 1);
+                $("#" + otherCardId).children(".card-front").removeClass("face-up");
+                 $this.children(".card-front").removeClass("face-up");  
+                }, 1000);  
+                                            
             }
         }
     });
