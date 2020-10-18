@@ -1,7 +1,8 @@
 // Global variables
 // (we'll get rid of these as a luxury)
-movesMade = 0;
-timeLeft = 30;
+let movesMade = 0;
+let timeLeft = 30;
+let checkArray = [];
 
 // Card List Information
 var fellowshipCardList = [
@@ -15,6 +16,38 @@ var fellowshipCardList = [
     {name: "Elrond", image:"elrond.jpg"},
 ]
 
+
+// Moves Counter Constructor
+class movesCounter {
+    constructor(){
+
+    }
+
+    startMovesCounter() {
+        $(".game-card").on("click", function(){
+            movesMade ++;
+            document.getElementById("movesCounter").textContent = movesMade;
+        })
+    }
+
+    resetMovesCounter() {
+        movesMade = 0;
+        document.getElementById("movesCounter").textContent = movesMade;
+        this.startMovesCounter();
+    }
+};
+
+
+//Pairs Counter Constructor
+class pairsCounter {
+    constructor() {
+
+    }
+    incrementPairsCounter() {
+
+    }
+}
+
 //Count Down Timer Constructor
 class Timer {
     constructor(time) {
@@ -26,7 +59,7 @@ class Timer {
     startTimer() {
         timeLeft = this.time;
         this.levelTimer = setInterval(function(){
-            if (timeLeft > 0) {
+            if (timeLeft >= 0) {
                 document.getElementById("timeRemaining").textContent = timeLeft;
                 timeLeft--;               
             }
@@ -41,26 +74,6 @@ class Timer {
     resetTimer() {
         this.stopTimer();
         this.startTimer();
-    }
-};
-
-// Moves Counter Constructor
-class movesCounter {
-    constructor(){
-
-    }
-
-     startMovesCounter() {
-        $(".game-card").on("click", function(){
-            movesMade ++;
-            document.getElementById("movesCounter").textContent = movesMade;
-        })
-    }
-
-    resetMovesCounter() {
-        movesMade = 0;
-        document.getElementById("movesCounter").textContent = movesMade;
-        this.startMovesCounter();
     }
 };
 
@@ -83,14 +96,14 @@ class Card {
             </div>`;
     }
 
-    is_equal_to(otherCard) {
-        if (otherCard.name === this.name) {
-            return true;
-        } else {
-            return false;
+        is_equal_to(otherCard) {
+            if (otherCard.name === this.name) {
+                return true;
+            } else {
+                return false;
+            }
         }
-    }
-}
+};
 
 
 // Make a new deck of new cards for each level dependent on the number of divs to be filled
@@ -121,17 +134,39 @@ function assignCards(){
     }
     //When card is clicked reveal front-of-card.
     $(".game-card").click(function (){
-        $(this).addClass("card-selected");
+        $(this).addClass("face-up");
         $(this).children(".card-back").toggleClass("face-up");
         $(this).children(".card-front").toggleClass("face-up");
+        
+        // If checkArray length < 2
+        if (checkArray.length < 2){
+            // Add card name  and ID to checkArray
+            var cardName = $(this).children().children("p").text();
+            console.log(cardName);
+            var cardID = $(this).attr("id");
+            console.log(cardID);
+            checkArray.push([cardName, cardID]);
+            console.log(checkArray);
+        
+            //Check whether names in checkArray match
+            if (checkArray.length === 2 && checkArray[0][0] === checkArray[1][0]) {
+                console.log("We match");
+                checkArray.splice(0, 2);
+            }
+            else if (checkArray.length === 2) {
+                console.log("We do not match");
+                checkArray.splice(0, 2);
+            }
+        }
+
     });
 };
 
 
 $(document).ready(function(){
+    //creates new timer and starts it
     timer = new Timer(30);
     moves = new movesCounter();
-    timer.startTimer();
     moves.startMovesCounter();
 });
 
