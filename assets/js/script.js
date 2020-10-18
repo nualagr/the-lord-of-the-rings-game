@@ -2,6 +2,7 @@
 // (we'll get rid of these as a luxury)
 let timeLeft = 30;
 let checkArray = [];
+let pairsMatched = 0;
 
 // Card List Information
 var fellowshipCardList = [
@@ -37,17 +38,16 @@ class movesCounter {
 //Pairs Counter Constructor
 class pairsCounter {
     constructor() {
-    this.pairsMatched = null;
     }
     
     incrementPairsCounter() {
-        this.pairsMatched ++;
-        document.getElementById("pairs").textContent = this.pairsMatched;
+        pairsMatched ++;
+        document.getElementById("pairs").textContent = pairsMatched;
     }
 
     resetPairsCounter(){
-        this.pairsMatched = 0;
-        document.getElementById("pairs").textContent = this.pairsMatched.toString();
+        pairsMatched = 0;
+        document.getElementById("pairs").textContent = pairsMatched;
     }
 }
 
@@ -135,12 +135,14 @@ function assignCards(){
         var gameCard = levelDeck[i];
         cardSlots[i].innerHTML = gameCard.html;
     }
+
     //When card is clicked reveal front-of-card.
-    $(".game-card").click(function (){
+    $(".game-card").on("click", function (){
         $(this).children(".card-front").toggleClass("face-up");
         moves.incrementMovesCounter();
         var cardName = $(this).children().children("p").text();
         var cardId = $(this).attr("id");
+        var cardSlots = document.getElementsByClassName('game-card-column');
 
         
         // if checkArray length is equal to 0 add the first card name and id to the array
@@ -149,11 +151,28 @@ function assignCards(){
         }
         // check and see whether the cards match
         else {
+            // If the cards match add one to the Pairs counter, clear checkArray, add class 'matched'.
             if (checkArray[0][0] == cardName) {
-                console.log("we match even though I am not also in the array");
+                var otherCardId = checkArray[0][1];
+
                 pairs.incrementPairsCounter();
                 checkArray.splice(0, 1);
+                $("#" + otherCardId).addClass("matched");
+                $(this).addClass("matched");  
+
+                
+                if(pairsMatched === cardSlots.length / 2){
+                    // All cards have been matched and the level ends              
+                    console.log("Level Over")                                             
+                    }            
+                else{
+                    // Not all cards have been matched  
+                    // Take away the ability to turn the matched cards
+                    $(".game-card.matched").off("click");                                            
+            } 
+
             }
+            // If the cards do not match, wait one second, clear checkArray, remove class 'face-up' so that the cards flip face down again.
             else if (checkArray[0][0] !== cardName) {
                 $this = $(this)
                 setTimeout(function(){
@@ -161,8 +180,7 @@ function assignCards(){
                 checkArray.splice(0, 1);
                 $("#" + otherCardId).children(".card-front").removeClass("face-up");
                  $this.children(".card-front").removeClass("face-up");  
-                }, 1000);  
-                                            
+                }, 1000);                                              
             }
         }
     });
