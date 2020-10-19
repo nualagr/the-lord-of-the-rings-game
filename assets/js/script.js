@@ -88,7 +88,7 @@ class Card {
         this.image = image;
         this.cardId = cardId;
         this.html = 
-            `<div class="game-card" id="${this.cardId}" >
+            `<div class="game-card unmatched" id="${this.cardId}" >
                 <div class="card-front">
                     <img src="assets/images/${this.image}" class="card-image" alt="${this.name}" >
                     <p>${this.name}</p>
@@ -137,29 +137,30 @@ function assignCards(){
     }
 
     //When card is clicked reveal front-of-card.
-    $(".game-card").on("click", function (){
+    $(".game-card.unmatched").on("click", function (){
+        if (isProcessing) { return; }
         $(this).children(".card-front").toggleClass("face-up");
         moves.incrementMovesCounter();
         var cardName = $(this).children().children("p").text();
         var cardId = $(this).attr("id");
         var cardSlots = document.getElementsByClassName('game-card-column');
 
-        
         // if checkArray length is equal to 0 add the first card name and id to the array
         if (checkArray.length === 0) {    
             checkArray.push([cardName, cardId]);
         }
-        // check and see whether the cards match
+        // Two cards have been selected. So lock the ability to click any other card
         else {
-            // If the cards match add one to the Pairs counter, add class 'matched', remove the ability to turn the matched cards.
+            // check and see whether the cards match
             if (checkArray[0][0] == cardName) {
                 var otherCardId = checkArray[0][1];
-
+                // If the cards match add one to the Pairs counter, remove the class 'unmatched', add the class 'matched', remove the ability to turn the matched cards.
                 pairs.incrementPairsCounter();
-                $("#" + otherCardId).addClass("matched");
-                $(this).addClass("matched");  
+                $("#" + otherCardId).removeClass("unmatched").addClass("matched");
+                $(this).removeClass("unmatched").addClass("matched");  
                 $(".game-card.matched").off("click"); 
    
+                // Check and see whether the game is over
                 if(pairsMatched === cardSlots.length / 2){
                     // All cards have been matched and the level ends   
                     timer.stopTimer();           
@@ -167,31 +168,35 @@ function assignCards(){
                     }            
                 else{
                     // Not all cards have been matched  
-                    // Take away the ability to turn the matched cards
-                    checkArray.splice(0, 1);                                           
-            } 
-
+                    // Clear the checkArray so that more comparisons can be made
+                    checkArray.splice(0, 1); 
+                } 
             }
+
             // If the cards do not match, wait one second, clear checkArray, remove class 'face-up' so that the cards flip face down again.
             else if (checkArray[0][0] !== cardName) {
                 $this = $(this)
+                otherCardId = checkArray[0][1];
+                // Fix to stop the user clicking other cards while the setTimeout function is waiting was found on Stack Overflow
+                // https://stackoverflow.com/questions/56283681/js-memory-card-game-how-to-prevent-user-flipping-more-then-2-cards-at-the-same
+                isProcessing = true;
                 setTimeout(function(){
-                var otherCardId = checkArray[0][1];
                 checkArray.splice(0, 1);
                 $("#" + otherCardId).children(".card-front").removeClass("face-up");
-                 $this.children(".card-front").removeClass("face-up");  
-                }, 1000);                                              
+                $this.children(".card-front").removeClass("face-up");  
+                isProcessing = false; 
+                }, 1000);                                          
             }
         }
     });
 };
-
 
 $(document).ready(function(){
     //creates new timer and starts it
     timer = new Timer(30);
     moves = new movesCounter();
     pairs = new pairsCounter();
+    isProcessing = false;
 });
 
 
