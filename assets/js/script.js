@@ -3,19 +3,30 @@
 let timeLeft = 30;
 let checkArray = [];
 let pairsMatched = 0;
+let chosenCardList = [];
 
 // Card List Information
 var fellowshipCardList = [
-    {name:"Frodo", image:"frodo-baggins.jpg"},
-    {name:"Samwise", image:"samwise-gamgee.jpg"},
-    {name:"Gandalf", image:"gandalf-the-grey.jpg"},
-    {name:"Gimli", image:"gimli-son-of-gloin.jpg"},
-    {name: "Aragorn", image:"aragorn.jpg"},
-    {name: "Legolas", image:"legolas.jpg"},
-    {name: "Boromir", image:"boromir.jpg"},
-    {name: "Elrond", image:"elrond.jpg"},
+    {name:"Frodo", image:"frodo-baggins.jpg", cardBackImage:"green"},
+    {name:"Samwise", image:"samwise-gamgee.jpg", cardBackImage:"green"},
+    {name:"Gandalf", image:"gandalf-the-grey.jpg", cardBackImage:"green"},
+    {name:"Gimli", image:"gimli-son-of-gloin.jpg", cardBackImage:"green"},
+    {name:"Aragorn", image:"aragorn.jpg", cardBackImage:"green"},
+    {name:"Legolas", image:"legolas.jpg", cardBackImage:"green"},
+    {name:"Boromir", image:"boromir.jpg", cardBackImage:"green"},
+    {name:"Elrond", image:"elrond.jpg", cardBackImage:"green"},
 ]
 
+var mordorCardList = [
+    {name:"Gollum", image:"gollum.png", cardBackImage:"black"},
+    {name:"Denethor", image:"saruman.jpg", cardBackImage:"black"},
+    {name:"Isildur", image:"saruman.jpg", cardBackImage:"black"},
+    {name:"Wormtongue", image:"wormtongue.jpg", cardBackImage:"black"},
+    {name:"Saruman", image:"saruman.jpg", cardBackImage:"black"},
+    {name:"Nazgul", image:"nazgul.jpg", cardBackImage:"black"},
+    {name:"Shagrat", image:"wormtongue.jpg", cardBackImage:"black"},
+    {name:"Gorbag", image:"gorbag.jpg", cardBackImage:"black"},
+]
 
 // Moves Counter Constructor
 class movesCounter {
@@ -67,7 +78,6 @@ class Timer {
                 timeLeft--;               
             }
         }, 1000);
-        console.log(this.levelTimer);
     }
 
     stopTimer() {
@@ -83,9 +93,10 @@ class Timer {
 
 //Card Constructor
 class Card {
-    constructor(name, image, cardId) {
+    constructor(name, image, cardBackImage, cardId) {
         this.name = name;
         this.image = image;
+        this.cardBackImage = cardBackImage
         this.cardId = cardId;
         this.html = 
             `<div class="game-card unmatched" id="${this.cardId}" >
@@ -94,34 +105,40 @@ class Card {
                     <p>${this.name}</p>
                 </div>
                 <div class="card-back">
-                    <img src="assets/images/card-back-green.png" class="card-image show" alt="Tree of Gondor Image">
+                    <img src="assets/images/card-back-${this.cardBackImage}.png" class="card-image show" alt="Tree of Gondor Image">
                 </div>
             </div>`;
     }
-
-        is_equal_to(otherCard) {
-            if (otherCard.name === this.name) {
-                return true;
-            } else {
-                return false;
-            }
-        }
 };
 
+    $("#fellowshipBtn").on("click", function (){
+    chosenCardList = fellowshipCardList;
+    assignCards();
+    $("#startOverlay").removeClass('visible');
+    timer = new Timer(30);
+    });
 
+
+    $("#mordorBtn").on("click", function (){
+    chosenCardList = mordorCardList;
+    assignCards();
+    $("#startOverlay").removeClass('visible');
+    timer = new Timer(30);
+    });
+    
+    
 // Make a new deck of new cards for each level dependent on the number of divs to be filled
 function makeDeck(num, array) {
     var newDeck = [];
     cardCounter = 0;
     for (let i = 0; i < num ; i ++) {
         cardCounter++;
-        var newCardA = new Card(array[i].name, array[i].image, "card" + cardCounter.toString());
+        var newCardA = new Card(array[i].name, array[i].image, array[i].cardBackImage, "card" + cardCounter.toString());
         cardCounter++;
-        var newCardB = new Card(array[i].name, array[i].image, "card" + cardCounter.toString());
+        var newCardB = new Card(array[i].name, array[i].image, array[i].cardBackImage, "card" + cardCounter.toString());
         newDeck.push(newCardA);
         newDeck.push(newCardB);
     }
-    console.log(newDeck.length);
     shuffle(newDeck);
     return newDeck;
 };
@@ -134,16 +151,18 @@ function shuffle(newDeck) {
   }
 }
 
+
+
 // Assign cards to the divs and print the names of the characters underneath.
 function assignCards(){
+   
     var cardSlots = document.getElementsByClassName('game-card-column');
-    levelDeck = makeDeck(cardSlots.length / 2, fellowshipCardList);
+    levelDeck = makeDeck(cardSlots.length / 2, chosenCardList);
     for (var i = 0; i < cardSlots.length; i ++){
         //var gameCard = getRandomCard(levelDeck);
         var gameCard = levelDeck[i];
         cardSlots[i].innerHTML = gameCard.html;
     }
-
 
 
     //When card is clicked reveal front-of-card.
@@ -203,10 +222,10 @@ function assignCards(){
 
 $(document).ready(function(){
     //creates new timer and starts it
-    timer = new Timer(30);
     moves = new movesCounter();
     pairs = new pairsCounter();
     isProcessing = false;
+    document.getElementById("startOverlay").style.display = "block";
 });
 
 
@@ -221,12 +240,12 @@ document.getElementById("advanceButton").addEventListener("click", function() {
 });
 
 
-assignCards();
 
-// Turn on overlay
-function on() {
-    document.getElementById("startOverlay").style.display = "block";
-    }
+
+// // Turn on overlay
+// function on() {
+//     document.getElementById("startOverlay").style.display = "block";
+//     }
 
 // Turn off overlay
 function off() {
