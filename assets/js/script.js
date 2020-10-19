@@ -122,9 +122,17 @@ function makeDeck(num, array) {
         newDeck.push(newCardB);
     }
     console.log(newDeck.length);
+    shuffle(newDeck);
     return newDeck;
 };
 
+//  Fisher-Yates Shuffle found at https://javascript.info/task/shuffle#:~:text=Write%20the%20function%20shuffle(array,%2C%202%5D%20%2F%2F%20...
+function shuffle(newDeck) {
+  for (let i = newDeck.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+    [newDeck[i], newDeck[j]] = [newDeck[j], newDeck[i]];
+  }
+}
 
 // Assign cards to the divs and print the names of the characters underneath.
 function assignCards(){
@@ -135,6 +143,8 @@ function assignCards(){
         var gameCard = levelDeck[i];
         cardSlots[i].innerHTML = gameCard.html;
     }
+
+
 
     //When card is clicked reveal front-of-card.
     $(".game-card.unmatched").on("click", function (){
@@ -213,6 +223,15 @@ document.getElementById("advanceButton").addEventListener("click", function() {
 
 assignCards();
 
+// Turn on overlay
+function on() {
+    document.getElementById("startOverlay").style.display = "block";
+    }
+
+// Turn off overlay
+function off() {
+    document.getElementById("startOverlay").style.display = "none";
+    }
 
 // On receiving the Home Button clicked message.
 // Delete the level 2 and/or level 3 card rows with the class "extra-row".
