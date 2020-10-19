@@ -193,9 +193,17 @@ function assignCards(){
                 if(pairsMatched === cardSlots.length / 2){
                     // All cards have been matched and the level ends   
                     timer.stopTimer(); 
-                    // Display the Advance to Level Two Overlay           
-                    on ("advanceToLevelTwoOverlay");                             
-                    }            
+                    // Display the Advance LevelOverlay  
+                    let level2 = "advanceToLevelTwoOverlay";
+                    let level3 = "advanceToLevelThreeOverlay";
+                    if (cardSlots.length === 8) {
+                        on (level2);                             
+                    }  
+                    else if (cardSlots.length === 12) {
+                        on (level3);
+                    } 
+                    }         
+         
                 else{
                     // Not all cards have been matched  
                     // Clear the checkArray so that more comparisons can be made
@@ -241,6 +249,14 @@ document.getElementById("advance2").addEventListener("click", function() {
     off("advanceToLevelTwoOverlay");
 });
 
+document.getElementById("advance3").addEventListener("click", function() {
+    $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
+    assignCards();
+    timer.resetTimer();
+    moves.resetMovesCounter();
+    pairs.resetPairsCounter();
+    off("advanceToLevelThreeOverlay");
+});
 
 // Turn on overlay
 function on(overlayId) {
