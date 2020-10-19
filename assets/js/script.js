@@ -75,19 +75,24 @@ class Timer {
         this.levelTimer = setInterval(function(){
             if (timeLeft >= 0) {
                 document.getElementById("timeRemaining").textContent = timeLeft;
-                timeLeft--;               
+                timeLeft--;  
             }
+            else {
+                on("gameOverOverlay");
+            }             
         }, 1000);
     }
 
     stopTimer() {
         clearInterval(this.levelTimer);
+        document.getElementById("timeRemaining").textContent = 0;
     }
 
     resetTimer() {
         this.stopTimer();
         this.startTimer();
     }
+
 };
 
 
@@ -111,6 +116,7 @@ class Card {
     }
 };
 
+// User Card Pack Choice
     $("#fellowshipBtn").on("click", function (){
     chosenCardList = fellowshipCardList;
     assignCards();
@@ -143,14 +149,15 @@ function makeDeck(num, array) {
     return newDeck;
 };
 
-//  Fisher-Yates Shuffle found at https://javascript.info/task/shuffle#:~:text=Write%20the%20function%20shuffle(array,%2C%202%5D%20%2F%2F%20...
+
+// Shuffle Deck
+// Fisher-Yates Shuffle found at https://javascript.info/task/shuffle#:~:text=Write%20the%20function%20shuffle(array,%2C%202%5D%20%2F%2F%20...
 function shuffle(newDeck) {
   for (let i = newDeck.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
     [newDeck[i], newDeck[j]] = [newDeck[j], newDeck[i]];
   }
 }
-
 
 
 // Assign cards to the divs and print the names of the characters underneath.
@@ -196,12 +203,16 @@ function assignCards(){
                     // Display the Advance LevelOverlay  
                     let level2 = "advanceToLevelTwoOverlay";
                     let level3 = "advanceToLevelThreeOverlay";
+                    let level4 = "congratulations"
                     if (cardSlots.length === 8) {
                         on (level2);                             
                     }  
                     else if (cardSlots.length === 12) {
                         on (level3);
                     } 
+                    else if (cardSlots.length === 16){
+                        on (level4);
+                    }
                     }         
          
                 else{
@@ -261,20 +272,23 @@ document.getElementById("advance3").addEventListener("click", function() {
 // Turn on overlay
 function on(overlayId) {
     document.getElementById(overlayId).style.display = "block";
-    }
+};
 
 // Turn off overlay
 function off(overlayId) {
     document.getElementById(overlayId).style.display = "none";
-    }
+};
 
-// On receiving the Home Button clicked message.
+// On receiving the Home Button or the Begin Again Button message.
 // Delete the level 2 and/or level 3 card rows with the class "extra-row".
 // Assign cards to the first eight divs.
 $(".restart").click(function(){
     $(".extra-row").remove();
     assignCards();
-    timer.resetTimer();
+    timer.stopTimer();
     moves.resetMovesCounter();
     pairs.resetPairsCounter();
+    off("gameOverOverlay");
+    on("startOverlay");
 });
+
