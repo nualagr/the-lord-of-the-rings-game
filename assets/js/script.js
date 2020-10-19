@@ -162,7 +162,8 @@ function assignCards(){
 
                 
                 if(pairsMatched === cardSlots.length / 2){
-                    // All cards have been matched and the level ends              
+                    // All cards have been matched and the level ends   
+                    timer.stopTimer();           
                     console.log("Level Over")                                             
                     }            
                 else{
