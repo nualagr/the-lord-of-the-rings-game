@@ -22,15 +22,71 @@
     <header>
         <h1 class="text-center">The Lord of the Rings</h1>
         <h2 class="text-center">Memory Game</h2>
-        <center><a href="testing.html">Click here to go to the testing site</a></center>
     </header>
-    <main>
+    <!-- Overlays Section -->
+    <!-- Start Overlay -->
+    <section id="overlaysSection">
+        <div id="startOverlay" class="overlay-appearance">
+            <div class="overlay-text">
+                Choose your path!
+                <br>
+                <button class="btn btn-lg btn-success" id="fellowshipBtn">The Shire</button>
+                <button class="btn btn-lg btn-danger" id="mordorBtn">Mordor</button>
+            </div>
+        </div>
+    <!-- Game Over Overlay -->
+        <div id="gameOverOverlay" class="overlay-appearance">
+            <div class="overlay-text">
+                You shall not pass...this time.
+                <br>
+                Middle Earth still needs your help.
+                <br>
+                Be brave and 
+                <br>
+                <button class="btn btn-lg btn-success restart" id="restart">Begin Again</button>
+            </div>
+        </div>        
+        <!-- Level 2 Overlay -->
+        <div id="advanceToLevelTwoOverlay" class="overlay-appearance">
+            <div class="overlay-text">
+                <p><em>End? No, the journey doesn't end here...</em></p>
+                <br>
+                <p>Middle Earth still needs your help!</p>
+                <br>
+                <p>Courage is the best defence that you have now!</p>
+                <br>
+                <button class="btn btn-lg btn-danger" id="advance2">Advance to Level Two</button>
+            </div>
+        </div>
+        <!-- Level 3 Overlay -->
+        <div id="advanceToLevelThreeOverlay" class="overlay-appearance">
+            <div class="overlay-text">
+                <p><em>‘The world is indeed full of peril, and in it there are many dark places; but still there is much that is fair, and though in all lands love is now mingled with grief, it grows perhaps the greater.’ – Haldir</em></p>
+                <br>
+                <p>Continue on your journey and spread more love.</p>
+                <br>
+                <button class="btn btn-lg btn-danger" id="advance3">Advance to Level Three</button>
+            </div>
+        </div>
+        <!-- Congratulations Overlay -->
+        <div id="congratulations" class="overlay-appearance">
+            <div class="overlay-text">
+                <h1>Congratulations!</h1>
+                <br>
+                <p>You have defeated Sauron and restored order to Middle Earth!</p>
+                <br>
+                <p>Click <button class="btn btn-lg btn-warning" id="prize">Here</button> to receive your prize </p>
+            </div>
+        </div>
+    </section>
+    <!-- /Overlays Section -->
+       <main>
         <section id="countersSection">
             <div class="counters-container">
                 <div class="row counters-row justify-content-center">
                     <div class="col-2">
                         <p>MOVES:
-                            <span id="moves">0
+                            <span id="movesCounter">0
                             </span>
                         </p>
                     </div>
@@ -42,7 +98,7 @@
                     </div>
                     <div class="col-2">
                         <p>TIME:
-                            <span id="time-remaining">0:60
+                            <span id="timeRemaining">0
                             </span>
                         </p>
                     </div>
@@ -53,58 +109,30 @@
             <div class="container-fluid" id="gameBoard">
                 <div class="row card-row">
                     <div class="col-3 level-1 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
+                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
                     </div>
                     <div class="col-3 level-1 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
+                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
                     </div>
                     <div class="col-3 level-1 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
+                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
                     </div>
                     <div class="col-3 level-1 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
+                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
                     </div>
                 </div>
-                <div class="row card-row">
+                <div class="row card-row card-row-2">
                     <div class="col-3 level-1 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
-                    </div>
-                    <div class="col-3 level-1 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
+                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
                     </div>
                     <div class="col-3 level-1 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
+                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
                     </div>
                     <div class="col-3 level-1 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
+                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
                     </div>
-                </div>
-                <div class="row card-row">
-                    <div class="col-3 level-2 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
-                    </div>
-                    <div class="col-3 level-2 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
-                    </div>
-                    <div class="col-3 level-2 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
-                    </div>
-                    <div class="col-3 level-2 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
-                    </div>
-                </div>
-                <div class="row card-row">
-                    <div class="col-3 level-3 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
-                    </div>
-                    <div class="col-3 level-3 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
-                    </div>
-                    <div class="col-3 level-3 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
-                    </div>
-                    <div class="col-3 level-3 game-card-column">
-                        <img class="front" src="assets/images/card-back-green.png" alt="Tree of Gondor Image">
+                    <div class="col-3 level-1 game-card-column">
+                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
                     </div>
                 </div>
             </div>
@@ -119,7 +147,7 @@
                         </button>
                     </div>
                     <div class="col-2">
-                        <button type="button" class="btn home" data-toggle="modal" data-target="#">
+                        <button type="button" class="btn home restart" data-toggle="modal" data-target="#">
                             <i class="fas fa-home"></i>
                         </button>
                     </div>
