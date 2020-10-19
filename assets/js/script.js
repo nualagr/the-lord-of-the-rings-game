@@ -114,16 +114,16 @@ class Card {
     $("#fellowshipBtn").on("click", function (){
     chosenCardList = fellowshipCardList;
     assignCards();
-    $("#startOverlay").removeClass('visible');
     timer = new Timer(30);
+    off("startOverlay");
     });
 
 
     $("#mordorBtn").on("click", function (){
     chosenCardList = mordorCardList;
     assignCards();
-    $("#startOverlay").removeClass('visible');
     timer = new Timer(30);
+    off("startOverlay");
     });
     
     
@@ -192,8 +192,9 @@ function assignCards(){
                 // Check and see whether the game is over
                 if(pairsMatched === cardSlots.length / 2){
                     // All cards have been matched and the level ends   
-                    timer.stopTimer();           
-                    console.log("Level Over")                                             
+                    timer.stopTimer(); 
+                    // Display the Advance to Level Two Overlay           
+                    on ("advanceToLevelTwoOverlay");                             
                     }            
                 else{
                     // Not all cards have been matched  
@@ -231,25 +232,24 @@ $(document).ready(function(){
 
 // On receiving the Advance Level message.
 // Clone card-row-2 and reclassify clone as extra-row.
-document.getElementById("advanceButton").addEventListener("click", function() {
+document.getElementById("advance2").addEventListener("click", function() {
     $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
     assignCards();
     timer.resetTimer();
     moves.resetMovesCounter();
     pairs.resetPairsCounter();
+    off("advanceToLevelTwoOverlay");
 });
 
 
-
-
-// // Turn on overlay
-// function on() {
-//     document.getElementById("startOverlay").style.display = "block";
-//     }
+// Turn on overlay
+function on(overlayId) {
+    document.getElementById(overlayId).style.display = "block";
+    }
 
 // Turn off overlay
-function off() {
-    document.getElementById("startOverlay").style.display = "none";
+function off(overlayId) {
+    document.getElementById(overlayId).style.display = "none";
     }
 
 // On receiving the Home Button clicked message.

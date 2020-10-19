@@ -151,8 +151,15 @@ h2 {
 }
 /*----------------------------------Overlays*/
 #startOverlay {
+
+}
+
+#advanceToLevelTwoOverlay{
+display: none;
+}
+
+.overlay-appearance{
   position: fixed;
-  display: none;
   width: 100%;
   height: auto;
   top: 0;
@@ -162,21 +169,28 @@ h2 {
   background-color: rgba(0,0,0,0.5);
   z-index: 2;
   cursor: pointer;
+  display: none;
 }
 
-#overlayText{
+.overlay-text{
+    font-family: 'Roboto Slab', serif;
+    color: #FFFFFF;
     position: absolute;
     text-align: center;
-    color: #FFFFFF;
     font-weight: bold;
-    font-family: 'Uncial Antiqua', cursive;
     top: 50%;
     left: 50%;
-    font-size: 50px;
+    font-size: 2rem;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
 }
 
+#startOverlay .overlay-text{
+    font-family: 'Uncial Antiqua', cursive;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+}
 /*----------------------------------Media Queries*/
 @media only screen and (min-width: 1600px) {
     .card-row {
