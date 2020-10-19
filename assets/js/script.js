@@ -151,16 +151,15 @@ function assignCards(){
         }
         // check and see whether the cards match
         else {
-            // If the cards match add one to the Pairs counter, clear checkArray, add class 'matched'.
+            // If the cards match add one to the Pairs counter, add class 'matched', remove the ability to turn the matched cards.
             if (checkArray[0][0] == cardName) {
                 var otherCardId = checkArray[0][1];
 
                 pairs.incrementPairsCounter();
-                checkArray.splice(0, 1);
                 $("#" + otherCardId).addClass("matched");
                 $(this).addClass("matched");  
-
-                
+                $(".game-card.matched").off("click"); 
+   
                 if(pairsMatched === cardSlots.length / 2){
                     // All cards have been matched and the level ends   
                     timer.stopTimer();           
@@ -169,7 +168,7 @@ function assignCards(){
                 else{
                     // Not all cards have been matched  
                     // Take away the ability to turn the matched cards
-                    $(".game-card.matched").off("click");                                            
+                    checkArray.splice(0, 1);                                           
             } 
 
             }
