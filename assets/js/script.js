@@ -19,13 +19,13 @@ var fellowshipCardList = [
 
 var mordorCardList = [
     {name:"Gollum", image:"gollum.png", cardBackImage:"black"},
-    {name:"Denethor", image:"saruman.jpg", cardBackImage:"black"},
-    {name:"Isildur", image:"saruman.jpg", cardBackImage:"black"},
-    {name:"Wormtongue", image:"wormtongue.jpg", cardBackImage:"black"},
-    {name:"Saruman", image:"saruman.jpg", cardBackImage:"black"},
-    {name:"Nazgul", image:"nazgul.jpg", cardBackImage:"black"},
-    {name:"Shagrat", image:"wormtongue.jpg", cardBackImage:"black"},
-    {name:"Gorbag", image:"gorbag.jpg", cardBackImage:"black"},
+    {name:"Denethor", image:"denethor.png", cardBackImage:"black"},
+    {name:"Isildur", image:"isildur.png", cardBackImage:"black"},
+    {name:"Wormtongue", image:"wormtongue.png", cardBackImage:"black"},
+    {name:"Saruman", image:"saruman.png", cardBackImage:"black"},
+    {name:"Nazgul", image:"nazgul.png", cardBackImage:"black"},
+    {name:"Shagrat", image:"shagrat.png", cardBackImage:"black"},
+    {name:"Gorbag", image:"gorbag.png", cardBackImage:"black"},
 ]
 
 // Moves Counter Constructor

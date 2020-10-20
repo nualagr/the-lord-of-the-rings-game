@@ -29,9 +29,21 @@ body {
     background-color: #494021;
 } 
 
+.modal-header, 
+.modal-body,
+.modal-footer {
+    background-color: #EBE3D0;
+}
+
 /*----------------------------------Special paddings/margins/text*/
 .quote {
     font-style: italic;
+}
+
+.modal-header, 
+.modal-body,
+.modal-footer {
+    text-align: center;
 }
 
 h1 {
@@ -67,7 +79,7 @@ p {
     font-weight: bold;
 }
 
-/*----------------------------------Card Board*/
+/*----------------------------------Game Board*/
 #gameBoard {
     position: relative;
 }
@@ -180,6 +192,12 @@ p {
 .footer-area-bottom {
     font-size: small;
 }
+/*----------------------------------Modals */
+.modal-title {
+    width: 100%;
+    font-family: 'ringbearermedium', Fallback, sans-serif;
+}
+
 
 /*----------------------------------Media Queries*/
 @media only screen and (min-width: 1600px) {
