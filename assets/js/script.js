@@ -7,14 +7,14 @@ let chosenCardList = [];
 
 // Card List Information
 var fellowshipCardList = [
-    {name:"Frodo", image:"frodo-baggins.jpg", cardBackImage:"green"},
-    {name:"Samwise", image:"samwise-gamgee.jpg", cardBackImage:"green"},
-    {name:"Gandalf", image:"gandalf-the-grey.jpg", cardBackImage:"green"},
-    {name:"Gimli", image:"gimli-son-of-gloin.jpg", cardBackImage:"green"},
-    {name:"Aragorn", image:"aragorn.jpg", cardBackImage:"green"},
-    {name:"Legolas", image:"legolas.jpg", cardBackImage:"green"},
-    {name:"Boromir", image:"boromir.jpg", cardBackImage:"green"},
-    {name:"Elrond", image:"elrond.jpg", cardBackImage:"green"},
+    {name:"Frodo", image:"frodo.png", cardBackImage:"green"},
+    {name:"Samwise", image:"sam.png", cardBackImage:"green"},
+    {name:"Gandalf", image:"gandalf.png", cardBackImage:"green"},
+    {name:"Gimli", image:"gimli.png", cardBackImage:"green"},
+    {name:"Aragorn", image:"aragorn.png", cardBackImage:"green"},
+    {name:"Legolas", image:"legolas.png", cardBackImage:"green"},
+    {name:"Boromir", image:"boromir.png", cardBackImage:"green"},
+    {name:"Elrond", image:"elrond.png", cardBackImage:"green"},
 ]
 
 var mordorCardList = [
@@ -107,7 +107,6 @@ class Card {
             `<div class="game-card unmatched" id="${this.cardId}" >
                 <div class="card-front">
                     <img src="assets/images/${this.image}" class="card-image" alt="${this.name}" >
-                    <p>${this.name}</p>
                 </div>
                 <div class="card-back">
                     <img src="assets/images/card-back-${this.cardBackImage}.png" class="card-image show" alt="Tree of Gondor Image">
@@ -177,9 +176,11 @@ function assignCards(){
         if (isProcessing) { return; }
         $(this).children(".card-front").toggleClass("face-up");
         moves.incrementMovesCounter();
-        var cardName = $(this).children().children("p").text();
+        var cardName = $(this).children().children("img").attr("alt");
         var cardId = $(this).attr("id");
         var cardSlots = document.getElementsByClassName('game-card-column');
+
+
 
         // if checkArray length is equal to 0 add the first card name and id to the array
         if (checkArray.length === 0) {    

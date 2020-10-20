@@ -47,16 +47,17 @@ h2 {
     position: relative;
 }
 .game-card-column {
-    padding: 5px;
     font-family: 'Uncial Antiqua', cursive;    
     color: #311C17;
     text-align: center;
+    border-radius: 0.25rem;
+    padding: 5px;
 }
 
 .game-card-column img {
     width: 100%;
     height: auto;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
 }
 
 .card-front {
@@ -65,6 +66,7 @@ h2 {
 }
 
 .card-back {
+
 }
 
 .face-up {
@@ -166,7 +168,7 @@ display: none;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.8);
   z-index: 2;
   cursor: pointer;
   display: none;
