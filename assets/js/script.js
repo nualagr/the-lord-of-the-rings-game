@@ -73,12 +73,15 @@ class Timer {
     startTimer() {
         timeLeft = this.time;
         this.levelTimer = setInterval(function(){
-            if (timeLeft >= 0) {
+            if (timeLeft > 0) {
                 document.getElementById("timeRemaining").textContent = timeLeft;
                 timeLeft--;  
             }
-            else {
-                on("gameOverModal");
+            else if (timeLeft === 0) {
+                document.getElementById("timeRemaining").textContent = timeLeft;
+                freezeBoard();
+                on("#gameOverModal");
+                timeLeft--;
             }             
         }, 1000);
     }
@@ -94,6 +97,9 @@ class Timer {
         this.startTimer();
     }
 
+    pauseTimer(){
+
+    }
 };
 
 
@@ -250,7 +256,6 @@ $(document).ready(function(){
 });
 
 
-
 // On receiving the Advance Level message.
 // Clone card-row-2 and reclassify clone as extra-row.
 document.getElementById("advance2").addEventListener("click", function() {
@@ -281,6 +286,16 @@ function off(modalId) {
     $(modalId).modal('hide');
 };
 
+// Freeze Board
+function freezeBoard(){
+    $(".game-card").off("click");   
+};
+
+// Time's Up
+function timeUp(){
+    if (timeLeft === 0);
+    on("#gameOverModal");
+}
 // On receiving the Home Button or the Begin Again Button message.
 // Delete the level 2 and/or level 3 card rows with the class "extra-row".
 // Assign cards to the first eight divs.
@@ -294,3 +309,5 @@ $(".restart").click(function(){
     on("#homeModal");
 });
 
+
+                
