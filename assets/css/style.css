@@ -18,20 +18,35 @@ body {
 .bg-color-footer-area {
     background-color: #494021;
 } 
+
 /*----------------------------------Special paddings/margins/text*/
+.quote {
+    font-style: italic;
+}
+
 h1 {
     color: #A4770D;
     font-weight: bold;
     font-family: 'Uncial Antiqua', cursive;
-    padding-top: 2rem;
+    padding: 2rem 0 0 0;
+    text-align: center;
 }
 
 h2 {
     color: #A4770D;
     font-weight: bold;
-    padding: 1.5rem 0;
+    padding: 0;
+    text-align: center;
 }
 
+p {
+    font-family: 'Roboto Slab', serif;
+    padding: 1rem 0;
+    margin: 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1em;
+}
 .row {
     margin: 0;
 }
@@ -46,18 +61,18 @@ h2 {
 #gameBoard {
     position: relative;
 }
+
 .game-card-column {
     font-family: 'Uncial Antiqua', cursive;    
     color: #311C17;
     text-align: center;
-    border-radius: 0.25rem;
     padding: 5px;
 }
 
 .game-card-column img {
     width: 100%;
     height: auto;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
 }
 
 .card-front {
@@ -73,7 +88,6 @@ h2 {
     z-index: 200;
 }
 
-
 .card-front p {
     margin: 0;
     padding: 0;
@@ -82,6 +96,7 @@ h2 {
 
 .game-card {
   margin: 5px;
+  border-radius: 0.25rem;
   position: relative;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
   transform: scale(1);
@@ -107,6 +122,10 @@ h2 {
 #buttonsSection .col-2 {
     text-align: center;
     margin: 2rem 0;
+}
+
+#buttonsSection button {
+    background-color: transparent;
 }
 
 #buttonsSection i {
@@ -151,48 +170,7 @@ h2 {
 .footer-area-bottom {
     font-size: small;
 }
-/*----------------------------------Overlays*/
-#startOverlay {
 
-}
-
-#advanceToLevelTwoOverlay{
-display: none;
-}
-
-.overlay-appearance{
-  position: fixed;
-  width: 100%;
-  height: auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.8);
-  z-index: 2;
-  cursor: pointer;
-  display: none;
-}
-
-.overlay-text{
-    font-family: 'Roboto Slab', serif;
-    color: #FFFFFF;
-    position: absolute;
-    text-align: center;
-    font-weight: bold;
-    top: 50%;
-    left: 50%;
-    font-size: 2rem;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-}
-
-#startOverlay .overlay-text{
-    font-family: 'Uncial Antiqua', cursive;
-    top: 50%;
-    left: 50%;
-    font-size: 50px;
-}
 /*----------------------------------Media Queries*/
 @media only screen and (min-width: 1600px) {
     .card-row {

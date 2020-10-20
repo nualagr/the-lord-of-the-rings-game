@@ -78,18 +78,19 @@ class Timer {
                 timeLeft--;  
             }
             else {
-                on("gameOverOverlay");
+                on("gameOverModal");
             }             
         }, 1000);
     }
 
     stopTimer() {
         clearInterval(this.levelTimer);
-        document.getElementById("timeRemaining").textContent = 0;
+
     }
 
     resetTimer() {
         this.stopTimer();
+        document.getElementById("timeRemaining").textContent = 0;
         this.startTimer();
     }
 
@@ -120,7 +121,7 @@ class Card {
     chosenCardList = fellowshipCardList;
     assignCards();
     timer = new Timer(30);
-    off("startOverlay");
+    off("#homeModal");
     });
 
 
@@ -128,7 +129,7 @@ class Card {
     chosenCardList = mordorCardList;
     assignCards();
     timer = new Timer(30);
-    off("startOverlay");
+    off("#homeModal");
     });
     
     
@@ -202,17 +203,14 @@ function assignCards(){
                     // All cards have been matched and the level ends   
                     timer.stopTimer(); 
                     // Display the Advance LevelOverlay  
-                    let level2 = "advanceToLevelTwoOverlay";
-                    let level3 = "advanceToLevelThreeOverlay";
-                    let level4 = "congratulations"
                     if (cardSlots.length === 8) {
-                        on (level2);                             
+                        on("#advanceToLevelTwoModal");                             
                     }  
                     else if (cardSlots.length === 12) {
-                        on (level3);
+                        on("#advanceToLevelThreeModal");
                     } 
                     else if (cardSlots.length === 16){
-                        on (level4);
+                        on("#congratulationsModal");
                     }
                     }         
          
@@ -246,8 +244,9 @@ $(document).ready(function(){
     moves = new movesCounter();
     pairs = new pairsCounter();
     isProcessing = false;
-    document.getElementById("startOverlay").style.display = "block";
+    $("#homeModal").modal("show");
 });
+
 
 
 // On receiving the Advance Level message.
@@ -258,7 +257,7 @@ document.getElementById("advance2").addEventListener("click", function() {
     timer.resetTimer();
     moves.resetMovesCounter();
     pairs.resetPairsCounter();
-    off("advanceToLevelTwoOverlay");
+    off("#advanceToLevelTwoModal");
 });
 
 document.getElementById("advance3").addEventListener("click", function() {
@@ -267,17 +266,17 @@ document.getElementById("advance3").addEventListener("click", function() {
     timer.resetTimer();
     moves.resetMovesCounter();
     pairs.resetPairsCounter();
-    off("advanceToLevelThreeOverlay");
+    off("#advanceToLevelThreeModal");
 });
 
-// Turn on overlay
-function on(overlayId) {
-    document.getElementById(overlayId).style.display = "block";
+// Turn on modal
+function on(modalId) {
+    $(modalId).modal('show');
 };
 
-// Turn off overlay
-function off(overlayId) {
-    document.getElementById(overlayId).style.display = "none";
+// Turn off modal
+function off(modalId) {
+    $(modalId).modal('hide');
 };
 
 // On receiving the Home Button or the Begin Again Button message.
@@ -289,7 +288,7 @@ $(".restart").click(function(){
     timer.stopTimer();
     moves.resetMovesCounter();
     pairs.resetPairsCounter();
-    off("gameOverOverlay");
-    on("startOverlay");
+    off("#gameOverModal");
+    on("#homeModal");
 });
 
