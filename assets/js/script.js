@@ -160,7 +160,7 @@ function shuffle(newDeck) {
 }
 
 
-// Assign cards to the divs and print the names of the characters underneath.
+// Assign cards to the divs
 function assignCards(){
    
     var cardSlots = document.getElementsByClassName('game-card-column');
@@ -181,12 +181,11 @@ function assignCards(){
         var cardId = $(this).attr("id");
         var cardSlots = document.getElementsByClassName('game-card-column');
 
-
-
         // if checkArray length is equal to 0 add the first card name and id to the array
         if (checkArray.length === 0) {    
             checkArray.push([cardName, cardId]);
         }
+        
         // Two cards have been selected. So lock the ability to click any other card
         else {
             // check and see whether the cards match
@@ -204,12 +203,15 @@ function assignCards(){
                     timer.stopTimer(); 
                     // Display the Advance LevelOverlay  
                     if (cardSlots.length === 8) {
+                        checkArray.splice(0, 1); 
                         on("#advanceToLevelTwoModal");                             
                     }  
                     else if (cardSlots.length === 12) {
+                        checkArray.splice(0, 1); 
                         on("#advanceToLevelThreeModal");
                     } 
                     else if (cardSlots.length === 16){
+                        checkArray.splice(0, 1); 
                         on("#congratulationsModal");
                     }
                     }         
