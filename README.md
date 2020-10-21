@@ -517,27 +517,33 @@ Font Awesome icons used:
 <i class="far fa-thumbs-up"></i>
 
 ### Images
-- Forest background from [https://www.vecteezy.com/](https://www.vecteezy.com/vector-art/224401-vector-cartoon-landscape-illustration).
+- Forest background from [Vecteezy](https://www.vecteezy.com/vector-art/224401-vector-cartoon-landscape-illustration).
 
-- Mountain and river background from [https://www.vecteezy.com/](https://www.vecteezy.com/vector-art/171288-free-hand-drawn-vector-landscape-illustration).
+- Mountain and river background from [Vecteezy](https://www.vecteezy.com/vector-art/171288-free-hand-drawn-vector-landscape-illustration).
 
-- Grey foret and mountian [Vecteezy](https://www.vecteezy.com/vector-art/229817-vector-beautiful-landscape-illustration)
+- Grey foret and mountian from [Vecteezy]](https://www.vecteezy.com/vector-art/229817-vector-beautiful-landscape-illustration)
 
-- A flat natural landscape [Vecteezy](https://www.vecteezy.com/vector-art/296664-a-flat-nature-landscape)
+- A flat natural landscape from [Vecteezy](https://www.vecteezy.com/vector-art/296664-a-flat-nature-landscape)
 
-- Nature scene with dark sky over volcano [Vecteezy](https://www.vecteezy.com/vector-art/669093-nature-scene-with-dark-sky-over-volcano)
+- Nature scene with dark sky over volcano from [Vecteezy](https://www.vecteezy.com/vector-art/669093-nature-scene-with-dark-sky-over-volcano)
 
-- Path through fields[Vecteezy](https://www.vecteezy.com/vector-art/303633-nature-hill-landscape-vector)
+- Path through fields from [Vecteezy](https://www.vecteezy.com/vector-art/303633-nature-hill-landscape-vector)
 
-- Hot desert landscape[Vecteezy](https://www.vecteezy.com/vector-art/300455-a-hot-desert-landscape)
+- Hot desert landscape from [Vecteezy](https://www.vecteezy.com/vector-art/300455-a-hot-desert-landscape)
 
-- Unique Martian landscape[Vecteezy](https://www.vecteezy.com/vector-art/187145-unique-martian-landscape-vectors)
+- Unique Martian landscape from [Vecteezy](https://www.vecteezy.com/vector-art/187145-unique-martian-landscape-vectors)
 
-- Stones, river, trees, mountains[Vecteezy](https://www.vecteezy.com/vector-art/297137-a-nature-green-landscape)
+- Stones, river, trees, mountains from [Vecteezy](https://www.vecteezy.com/vector-art/297137-a-nature-green-landscape)
 
 - White Tree of Gondor [Vectorstock](https://www.vectorstock.com/royalty-free-vector/white-tree-gondor-isolated-black-and-white-eps-vector-27150646)
 <br>
 
+### Sounds
+- Card flipping sound from [ZapSplat](https://www.zapsplat.com/?s=playing+card&post_type=music&sound-effect-category-id=)
+- Game Monopoly game card pack place donw on playing board 2 used for unmatched cards turning from [ZapSplat](https://www.zapsplat.com/page/3/?s=playing+card&post_type=music&sound-effect-category-id)
+- Playing card on top of deck turn over used for card flipping sound [ZapSplat](https://www.zapsplat.com/page/4/?s=playing+card&post_type=music&sound-effect-category-id)
+- Cartoon success fanfare used for Congratulations Modal opening from [ZapSplat](https://www.zapsplat.com/?s=success&post_type=music&sound-effect-category-id=)
+- Cartoon musical accent clarinet oboe fail descending used for Game Over Modal [ZapSplat](https://www.zapsplat.com/?s=failure&post_type=music&sound-effect-category-id=)
 ##### back to [top](#table-of-contents)
 ---
 
