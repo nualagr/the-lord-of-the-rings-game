@@ -1,6 +1,6 @@
 // Global variables
 // (we'll get rid of these as a luxury)
-let timeLeft = 30;
+let timeLeft = null;
 let checkArray = [];
 let pairsMatched = 0;
 let chosenCardList = [];
@@ -88,7 +88,6 @@ class Timer {
 
     stopTimer() {
         clearInterval(this.levelTimer);
-
     }
 
     resetTimer() {
@@ -98,7 +97,14 @@ class Timer {
     }
 
     pauseTimer(){
+        this.stopTimer();
+    }
 
+    resumeTimer(){
+        var pausedTime = document.getElementById("timeRemaining").textContent;
+        var resumeTime = parseInt(pausedTime) - 1;
+        this.time = resumeTime;
+        this.startTimer();
     }
 };
 
@@ -311,5 +317,15 @@ $(".restart").click(function(){
 
 // Freeze board when modal is dismissed rather than one of the options taken
  $(".close").click(function(){
-     freezeBoard();
+    freezeBoard();
  });
+
+ // Pause countdown clock when Help modal is opened
+ $(".rules").click(function(){
+    timer.pauseTimer();
+ })
+
+ // Resume countdown clock when Help modal is closed
+ $(".resume").click(function(){
+    timer.resumeTimer();
+ })
