@@ -198,6 +198,9 @@ p {
     font-family: 'ringbearermedium', Fallback, sans-serif;
 }
 
+.modal-title button.close {
+    color: #311C17;
+}
 
 /*----------------------------------Media Queries*/
 @media only screen and (min-width: 1600px) {
