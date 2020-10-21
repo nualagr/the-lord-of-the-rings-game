@@ -309,5 +309,7 @@ $(".restart").click(function(){
     on("#homeModal");
 });
 
-
-                
+// Freeze board when modal is dismissed rather than one of the options taken
+ $(".close").click(function(){
+     freezeBoard();
+ });

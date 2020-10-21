@@ -193,15 +193,52 @@ p {
     font-size: small;
 }
 /*----------------------------------Modals */
+.modal-header {
+    border-bottom: 0;
+}
 .modal-title {
     width: 100%;
     font-family: 'ringbearermedium', Fallback, sans-serif;
 }
 
-.modal-title button.close {
+.modal-header button.close {
     color: #311C17;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+
 }
 
+.modal-header button.close:hover {
+    opacity: 1;
+}
+
+.modal-footer {
+    border-top: 0;
+}
+
+.modal-footer button.btn-success {
+    background-color: #494021;
+    border-color: #494021;
+}
+
+.modal-footer button.btn-danger {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.modal-footer button:hover {
+    color: #A4770D;
+}
+
+.modal-footer button.btn-continue {
+    background-color: #A4770D;
+    color: #FFFFFF;
+}
+
+.modal-footer button.btn-continue:hover {
+    background-color: #976D0C;
+}
 /*----------------------------------Media Queries*/
 @media only screen and (min-width: 1600px) {
     .card-row {
