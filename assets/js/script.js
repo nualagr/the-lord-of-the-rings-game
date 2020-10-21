@@ -28,6 +28,40 @@ var mordorCardList = [
     {name:"Gorbag", image:"gorbag.png", cardBackImage:"black"},
 ]
 
+// Audio Constructor
+class AudioController {
+    constructor() {
+        this.flipSound = new Audio("assets/audio/card-flip.mp3");
+        this.unflipSound = new Audio("assets/audio/unflip.mp3");
+        this.gameOverSound = new Audio("assets/audio/game-over.mp3");
+        this.congratsSound = new Audio("assets/audio/winner.mp3");
+    }
+
+    unMute() {
+
+    }
+
+    mute() {
+            
+    }
+
+    flip() {
+            this.flipSound.play();
+    }
+
+    unflip() {
+            this.unflipSound.play();
+    }
+
+    congratulationsSound() {
+            this.congratsSound.play();
+    }
+
+    gameOverSound() {
+            this.gameOverSound.play();
+    }
+}
+
 // Moves Counter Constructor
 class movesCounter {
     constructor(){
@@ -194,6 +228,8 @@ function assignCards(){
         var cardSlots = document.getElementsByClassName('game-card-column');
              
         $(this).children(".card-front").addClass("face-up");
+        //playSound("cardFlip");
+        audio.flip();
    
         // if checkArray length is equal to 0 add the first card name and id to the array
         if (checkArray.length === 0) { 
@@ -231,8 +267,9 @@ function assignCards(){
                     else if (cardSlots.length === 16){
                         checkArray.splice(0, 1); 
                         on("#congratulationsModal");
+                        audio.congratulationsSound();
                     }
-                    }         
+                }         
          
                 else{
                     // Not all cards have been matched  
@@ -255,6 +292,8 @@ function assignCards(){
                 checkArray.splice(0, 1);
                 $(otherCardNumber).children(".card-front").removeClass("face-up");
                 $this.children(".card-front").removeClass("face-up");  
+                //playSound("unflip");
+                audio.unflip();
                 isProcessing = false; 
                 }, 1000);                                          
             }
@@ -263,11 +302,12 @@ function assignCards(){
 };
 
 $(document).ready(function(){
-    //creates new timer and starts it
+    //creates new counters
     moves = new movesCounter();
     pairs = new pairsCounter();
     isProcessing = false;
     $("#homeModal").modal("show");
+    audio = new AudioController();
 });
 
 
@@ -291,26 +331,33 @@ document.getElementById("advance3").addEventListener("click", function() {
     off("#advanceToLevelThreeModal");
 });
 
+
 // Turn on modal
 function on(modalId) {
     $(modalId).modal('show');
 };
+
 
 // Turn off modal
 function off(modalId) {
     $(modalId).modal('hide');
 };
 
+
 // Freeze Board
 function freezeBoard(){
     $(".game-card").off("click");   
 };
 
+
 // Time's Up
 function timeUp(){
     if (timeLeft === 0);
     on("#gameOverModal");
+    audio.gameOverSound();
 }
+
+
 // On receiving the Home Button or the Begin Again Button message.
 // Delete the level 2 and/or level 3 card rows with the class "extra-row".
 // Assign cards to the first eight divs.
@@ -338,6 +385,7 @@ $(".restart").click(function(){
  $(".resume").click(function(){
     timer.resumeTimer();
  });
+
 
 
 
