@@ -129,20 +129,20 @@ class Card {
 };
 
 // User Card Pack Choice
-    $("#fellowshipBtn").on("click", function (){
+$("#fellowshipBtn").on("click", function (){
     chosenCardList = fellowshipCardList;
     assignCards();
     timer = new Timer(30);
     off("#homeModal");
-    });
+});
 
 
-    $("#mordorBtn").on("click", function (){
+$("#mordorBtn").on("click", function (){
     chosenCardList = mordorCardList;
     assignCards();
     timer = new Timer(30);
     off("#homeModal");
-    });
+});
     
     
 // Make a new deck of new cards for each level dependent on the number of divs to be filled
@@ -186,26 +186,32 @@ function assignCards(){
 
     //When card is clicked reveal front-of-card.
     $(".game-card.unmatched").on("click", function (){
-        if (isProcessing) { return; }
-        $(this).children(".card-front").toggleClass("face-up");
-        moves.incrementMovesCounter();
+        if (isProcessing) { 
+            return; 
+        }
         var cardName = $(this).children().children("img").attr("alt");
         var cardId = $(this).attr("id");
         var cardSlots = document.getElementsByClassName('game-card-column');
-
+             
+        $(this).children(".card-front").addClass("face-up");
+   
         // if checkArray length is equal to 0 add the first card name and id to the array
-        if (checkArray.length === 0) {    
+        if (checkArray.length === 0) { 
             checkArray.push([cardName, cardId]);
+            $(this).removeClass("unmatched");
+            moves.incrementMovesCounter();
         }
         
         // Two cards have been selected. So lock the ability to click any other card
         else {
             // check and see whether the cards match
-            if (checkArray[0][0] == cardName) {
+
+            // If the card the same name but a different id add one to the moves counter add one to the Pairs counter, remove the class 'unmatched', add the class 'matched', remove the ability to turn the matched cards.
+            if (checkArray[0][0] === cardName && checkArray[0][1] !== cardId) {
+                moves.incrementMovesCounter();
                 var otherCardId = checkArray[0][1];
-                // If the cards match add one to the Pairs counter, remove the class 'unmatched', add the class 'matched', remove the ability to turn the matched cards.
                 pairs.incrementPairsCounter();
-                $("#" + otherCardId).removeClass("unmatched").addClass("matched");
+                $("#" + otherCardId).addClass("matched");
                 $(this).removeClass("unmatched").addClass("matched");  
                 $(".game-card.matched").off("click"); 
    
@@ -235,16 +241,19 @@ function assignCards(){
                 } 
             }
 
-            // If the cards do not match, wait one second, clear checkArray, remove class 'face-up' so that the cards flip face down again.
+            // If the cards do not match, add one to the moves counter
+            // Wait one second, clear checkArray, remove class 'face-up' so that the cards flip face down again. Remove class 'matched' so that the first card can be selected again.
             else if (checkArray[0][0] !== cardName) {
+                moves.incrementMovesCounter();
                 $this = $(this)
                 otherCardId = checkArray[0][1];
+                let otherCardNumber = "#" + otherCardId
                 // Fix to stop the user clicking other cards while the setTimeout function is waiting was found on Stack Overflow
                 // https://stackoverflow.com/questions/56283681/js-memory-card-game-how-to-prevent-user-flipping-more-then-2-cards-at-the-same
                 isProcessing = true;
                 setTimeout(function(){
                 checkArray.splice(0, 1);
-                $("#" + otherCardId).children(".card-front").removeClass("face-up");
+                $(otherCardNumber).children(".card-front").removeClass("face-up");
                 $this.children(".card-front").removeClass("face-up");  
                 isProcessing = false; 
                 }, 1000);                                          
@@ -323,9 +332,12 @@ $(".restart").click(function(){
  // Pause countdown clock when Help modal is opened
  $(".rules").click(function(){
     timer.pauseTimer();
- })
+ });
 
  // Resume countdown clock when Help modal is closed
  $(".resume").click(function(){
     timer.resumeTimer();
- })
+ });
+
+
+
