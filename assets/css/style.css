@@ -146,19 +146,28 @@ p {
     margin: 2rem 0;
 }
 
-#buttonsSection button {
-    background-color: transparent;
+#buttonsSection .btn {
+    background-color: #EBE3D0;
+    padding: 0;
+}
+
+#buttonsSection .btn:active,
+#buttonsSection .btn:focus {
+    box-shadow: none;
 }
 
 #buttonsSection i {
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    border: 0;
 }
 
-#buttonsSection i:hover {
+#buttonsSection i:hover,
+#buttonsSection i:active {
     color: #494021;
+    outline-color: #311C17;
+    border: 0;
 }
-
 /*----------------------------------Footer*/
 .footer-area {
     padding: 20px 0px 5px 0px;
