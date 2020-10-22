@@ -28,11 +28,12 @@ var mordorCardList = [
     {name:"Gorbag", image:"gorbag.png", cardBackImage:"black"},
 ]
 
-// Audio Constructor
+// Audio Controller Constructor
 class AudioController {
     constructor() {
         this.flipSound = new Audio("assets/audio/card-flip.mp3");
         this.unflipSound = new Audio("assets/audio/unflip.mp3");
+        this.cardsMatchSound = new Audio("assets/audio/cards-match.mp3");
         this.gameOverSound = new Audio("assets/audio/game-over.mp3");
         this.congratsSound = new Audio("assets/audio/winner.mp3");
     }
@@ -46,19 +47,23 @@ class AudioController {
     }
 
     flip() {
-            this.flipSound.play();
+        this.flipSound.play();
     }
 
     unflip() {
-            this.unflipSound.play();
+        this.unflipSound.play();
     }
 
-    congratulationsSound() {
-            this.congratsSound.play();
+    cardsMatch() {
+        this.cardsMatchSound.play();
     }
 
-    gameOverSound() {
-            this.gameOverSound.play();
+    congrats() {
+        this.congratsSound.play();
+    }
+
+    gameOver() {
+        this.gameOverSound.play();
     }
 }
 
@@ -114,7 +119,8 @@ class Timer {
             else if (timeLeft === 0) {
                 document.getElementById("timeRemaining").textContent = timeLeft;
                 freezeBoard();
-                on("#gameOverModal");
+                turnOn("#gameOverModal");
+                audio.gameOver();
                 timeLeft--;
             }             
         }, 1000);
@@ -162,22 +168,32 @@ class Card {
     }
 };
 
-// User Card Pack Choice
-$("#fellowshipBtn").on("click", function (){
-    chosenCardList = fellowshipCardList;
-    assignCards();
-    timer = new Timer(30);
-    off("#homeModal");
-});
+
+// Turn on modal
+function turnOn(modalId) {
+    $(modalId).modal('show');
+};
 
 
-$("#mordorBtn").on("click", function (){
-    chosenCardList = mordorCardList;
-    assignCards();
-    timer = new Timer(30);
-    off("#homeModal");
-});
-    
+// Turn off modal
+function turnOff(modalId) {
+    $(modalId).modal('hide');
+};
+
+
+// Freeze Board
+function freezeBoard(){
+    $(".game-card").off("click");   
+};
+
+
+// Time's Up
+function timeUp(){
+    if (timeLeft === 0);
+    turnOn("#gameOverModal");
+    audio.gameOver();
+}
+  
     
 // Make a new deck of new cards for each level dependent on the number of divs to be filled
 function makeDeck(num, array) {
@@ -205,9 +221,8 @@ function shuffle(newDeck) {
   }
 }
 
-
 // Assign cards to the divs
-function assignCards(){
+function assignCards(audioPlayer){
    
     var cardSlots = document.getElementsByClassName('game-card-column');
     levelDeck = makeDeck(cardSlots.length / 2, chosenCardList);
@@ -228,8 +243,7 @@ function assignCards(){
         var cardSlots = document.getElementsByClassName('game-card-column');
              
         $(this).children(".card-front").addClass("face-up");
-        //playSound("cardFlip");
-        audio.flip();
+        audioPlayer.flip();
    
         // if checkArray length is equal to 0 add the first card name and id to the array
         if (checkArray.length === 0) { 
@@ -247,6 +261,7 @@ function assignCards(){
                 moves.incrementMovesCounter();
                 var otherCardId = checkArray[0][1];
                 pairs.incrementPairsCounter();
+                audioPlayer.cardsMatch();
                 $("#" + otherCardId).addClass("matched");
                 $(this).removeClass("unmatched").addClass("matched");  
                 $(".game-card.matched").off("click"); 
@@ -258,16 +273,16 @@ function assignCards(){
                     // Display the Advance LevelOverlay  
                     if (cardSlots.length === 8) {
                         checkArray.splice(0, 1); 
-                        on("#advanceToLevelTwoModal");                             
+                        turnOn("#advanceToLevelTwoModal");                             
                     }  
                     else if (cardSlots.length === 12) {
                         checkArray.splice(0, 1); 
-                        on("#advanceToLevelThreeModal");
+                        turnOn("#advanceToLevelThreeModal");
                     } 
                     else if (cardSlots.length === 16){
                         checkArray.splice(0, 1); 
-                        on("#congratulationsModal");
-                        audio.congratulationsSound();
+                        turnOn("#congratulationsModal");
+                        audioPlayer.congrats();
                     }
                 }         
          
@@ -292,8 +307,7 @@ function assignCards(){
                 checkArray.splice(0, 1);
                 $(otherCardNumber).children(".card-front").removeClass("face-up");
                 $this.children(".card-front").removeClass("face-up");  
-                //playSound("unflip");
-                audio.unflip();
+                audioPlayer.unflip();
                 isProcessing = false; 
                 }, 1000);                                          
             }
@@ -311,51 +325,43 @@ $(document).ready(function(){
 });
 
 
+// User Card Pack Choice
+$("#fellowshipBtn").on("click", function (){
+    chosenCardList = fellowshipCardList;
+    assignCards(audio);
+    timer = new Timer(30);
+    turnOff("#homeModal");
+});
+
+
+$("#mordorBtn").on("click", function (){
+    chosenCardList = mordorCardList;
+    assignCards(audio);
+    timer = new Timer(30);
+    turnOff("#homeModal");
+});
+
+
 // On receiving the Advance Level message.
 // Clone card-row-2 and reclassify clone as extra-row.
 document.getElementById("advance2").addEventListener("click", function() {
     $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
-    assignCards();
+    assignCards(audio);
     timer.resetTimer();
     moves.resetMovesCounter();
     pairs.resetPairsCounter();
-    off("#advanceToLevelTwoModal");
+    turnOff("#advanceToLevelTwoModal");
 });
+
 
 document.getElementById("advance3").addEventListener("click", function() {
     $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
-    assignCards();
+    assignCards(audio);
     timer.resetTimer();
     moves.resetMovesCounter();
     pairs.resetPairsCounter();
-    off("#advanceToLevelThreeModal");
+    turnOff("#advanceToLevelThreeModal");
 });
-
-
-// Turn on modal
-function on(modalId) {
-    $(modalId).modal('show');
-};
-
-
-// Turn off modal
-function off(modalId) {
-    $(modalId).modal('hide');
-};
-
-
-// Freeze Board
-function freezeBoard(){
-    $(".game-card").off("click");   
-};
-
-
-// Time's Up
-function timeUp(){
-    if (timeLeft === 0);
-    on("#gameOverModal");
-    audio.gameOverSound();
-}
 
 
 // On receiving the Home Button or the Begin Again Button message.
@@ -363,12 +369,12 @@ function timeUp(){
 // Assign cards to the first eight divs.
 $(".restart").click(function(){
     $(".extra-row").remove();
-    assignCards();
+    assignCards(audio);
     timer.stopTimer();
     moves.resetMovesCounter();
     pairs.resetPairsCounter();
-    off("#gameOverModal");
-    on("#homeModal");
+    turnOff("#gameOverModal");
+    turnOn("#homeModal");
 });
 
 // Freeze board when modal is dismissed rather than one of the options taken
