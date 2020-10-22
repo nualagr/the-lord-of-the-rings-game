@@ -4,6 +4,7 @@ let timeLeft = null;
 let checkArray = [];
 let pairsMatched = 0;
 let chosenCardList = [];
+let sound = true;
 
 // Card List Information
 var fellowshipCardList = [
@@ -36,14 +37,6 @@ class AudioController {
         this.cardsMatchSound = new Audio("assets/audio/cards-match.mp3");
         this.gameOverSound = new Audio("assets/audio/game-over.mp3");
         this.congratsSound = new Audio("assets/audio/winner.mp3");
-    }
-
-    unMute() {
-
-    }
-
-    mute() {
-            
     }
 
     flip() {
@@ -120,7 +113,9 @@ class Timer {
                 document.getElementById("timeRemaining").textContent = timeLeft;
                 freezeBoard();
                 turnOn("#gameOverModal");
-                audio.gameOver();
+                if(sound){
+                    audio.gameOver();
+                }
                 timeLeft--;
             }             
         }, 1000);
@@ -191,7 +186,9 @@ function freezeBoard(){
 function timeUp(){
     if (timeLeft === 0);
     turnOn("#gameOverModal");
-    audio.gameOver();
+    if(sound){
+        audio.gameOver();
+    }
 }
   
     
@@ -243,8 +240,9 @@ function assignCards(audioPlayer){
         var cardSlots = document.getElementsByClassName('game-card-column');
              
         $(this).children(".card-front").addClass("face-up");
-        audioPlayer.flip();
-   
+        if(sound){
+            audioPlayer.flip();
+        }
         // if checkArray length is equal to 0 add the first card name and id to the array
         if (checkArray.length === 0) { 
             checkArray.push([cardName, cardId]);
@@ -261,7 +259,9 @@ function assignCards(audioPlayer){
                 moves.incrementMovesCounter();
                 var otherCardId = checkArray[0][1];
                 pairs.incrementPairsCounter();
+                if(sound){
                 audioPlayer.cardsMatch();
+                }
                 $("#" + otherCardId).addClass("matched");
                 $(this).removeClass("unmatched").addClass("matched");  
                 $(".game-card.matched").off("click"); 
@@ -282,7 +282,9 @@ function assignCards(audioPlayer){
                     else if (cardSlots.length === 16){
                         checkArray.splice(0, 1); 
                         turnOn("#congratulationsModal");
-                        audioPlayer.congrats();
+                        if(sound){
+                            audioPlayer.congrats();
+                        }
                     }
                 }         
          
@@ -307,7 +309,9 @@ function assignCards(audioPlayer){
                 checkArray.splice(0, 1);
                 $(otherCardNumber).children(".card-front").removeClass("face-up");
                 $this.children(".card-front").removeClass("face-up");  
-                audioPlayer.unflip();
+                if (sound) {
+                    audioPlayer.unflip();
+                }
                 isProcessing = false; 
                 }, 1000);                                          
             }
@@ -393,5 +397,16 @@ $(".restart").click(function(){
  });
 
 
+// Mute and unmute sounds when speaker icon is clicked and replace icon
+$("#soundToggler").click(function(){
+    if (sound){
+        sound = false;
+        $(this).html(`<i class="fas fa-volume-mute"></i>`);
+    }
+    else{
+        sound = true;
+        $(this).html(`<i class="fas fa-volume-up"></i>`);
+    }
+});
 
 
