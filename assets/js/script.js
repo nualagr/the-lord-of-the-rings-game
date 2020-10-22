@@ -6,6 +6,7 @@ let pairsMatched = 0;
 let chosenCardList = [];
 let mute = false;
 
+
 // Card List Information
 var fellowshipCardList = [
     {name:"Frodo", image:"frodo.png", cardBackImage:"green"},
@@ -41,39 +42,41 @@ class AudioController {
     }
 
     muted(){
+        mute = true;
         this.mute = true;
     }
 
     unmuted(){
+        mute = false;
         this.mute = false;
     }
 
     flip() {
-        if(this.mute == false){
+        if(this.mute === false){
         this.flipSound.play();
         }
     }
 
     unflip() {
-        if(this.mute == false){
+        if(this.mute === false){
         this.unflipSound.play();
         }
     }
 
     cardsMatch() {
-        if(this.mute == false){
+        if(this.mute === false){
         this.cardsMatchSound.play();
         }
     }
 
     congrats() {
-        if(this.mute == false){
+        if(this.mute === false){
         this.congratsSound.play();
         }
     }
 
     gameOver() {
-        if(this.mute == false){
+        if(this.mute === false){
         this.gameOverSound.play();
         }
     }
@@ -407,14 +410,107 @@ $(".restart").click(function(){
 
 // Mute and unmute sounds when speaker icon is clicked and replace icon
 $("#soundToggler").click(function(){
-    if (mute) {
+    if (mute === true) {
         audio.unmuted();
         $(this).html(`<i class="fas fa-volume-up"></i>`);
+        console.log("Volume has now been turned on!");
     }
-    else {
+    else if (mute === false) {
         audio.muted();
         $(this).html(`<i class="fas fa-volume-mute"></i>`);
+        console.log("Volume has now been turned off!")
     }
 });
 
+//curl -k -X GET -H "Authorization: Bearer ERyHRqZKa0LqLBPZbuEE" https://the-one-api.dev/v2/character
 
+const baseURL = "https://the-one-api.dev/v2/";
+
+function getData(type, cb){
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", baseURL + type + "/");
+    xhr.setRequestHeader("Authorization", "Bearer ERyHRqZKa0LqLBPZbuEE");
+
+    xhr.send();
+
+    xhr.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            cb(JSON.parse(this.responseText));
+            //document.getElementById("prizeModalContent").innerHTML=this.responseText;
+        }
+    };
+}
+
+function getTableHeaders(obj){
+    var tableHeaders = [];
+
+    Object.keys(obj).forEach(function(key){
+        tableHeaders.push(`<td>${key}</td>`)
+    });
+    return `<tr>${tableHeaders}</tr>`;
+}
+
+function writeToDocument(type) {
+    var tableRows = [];
+    var el = document.getElementById("prizeModalContent");
+    el.innerHTML = "";
+
+    getData(type, function(data){
+        data = data.docs;
+
+        var tableHeaders = getTableHeaders(data[0]);
+
+        data.forEach(function(item){
+            var dataRow = [];
+
+            Object.keys(item).forEach(function(key){
+                var rowData = item[key].toString();
+                var truncatedData = rowData.substring(0,15);
+
+                dataRow.push(`<td>${truncatedData}</td>`);
+            });
+            tableRows.push(`<tr>${dataRow}</tr>`);
+        });
+            el.innerHTML = `<table>${tableHeaders}${tableRows}</table`;
+    });
+};
+
+
+
+
+
+
+
+
+//function fetchData() {
+//    let baseURL = "https://the-one-api.dev/v2/";
+//         // const apikey = "&limit=100&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
+//    const apikey = "ERyHRqZKa0LqLBPZbuE"
+//         let offSet = (Math.floor(Math.random() * 15)) * 100;
+//         //let apikey = `&limit=100&offset=${offSet}&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2`;
+//         let prizeCharacters1 = [];
+//         fetch(baseURL + apikey)
+//             .then(response => response.json())
+//             .then(json => {
+//                 let data = json;
+//                 $('#footer-text').html(data.attributionText.toUpperCase());
+//                 let prizeList = data.data.results;
+
+//                 for (var prize of prizeList) {
+//                     if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extension === "gif") {
+//                         continue;
+//                     } else {
+//                         prizeCharacters1.push(prize);
+//                     }
+//                 }
+//                 let prizeNum = Math.floor(Math.random() * prizeCharacters1.length + 1);
+//                 let prizeCharacter = (prizeCharacters1[prizeNum]);
+//                 $('.prize-text').html(prizeCharacter.name.toUpperCase());
+//                 $('.prize-content').html(`<img src="${prizeCharacter.thumbnail.path}/portrait_fantastic.${prizeCharacter.thumbnail.extension}"></img>`);
+//                 $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click <span>here</span> to GO TO MARVEL.com for more on ${prizeCharacter.name} or...</a>`);
+
+//             })
+//             .catch(err => console.log(err));
+//     }
+//     fetchData();
