@@ -5,15 +5,16 @@ let checkArray = [];
 let pairsMatched = 0;
 let chosenCardList = [];
 let mute = false;
+let chosenAPICharacter = [];
 
 
 // Card List Information
 var fellowshipCardList = [
-    {name:"Frodo", image:"frodo.png", cardBackImage:"green"},
-    {name:"Samwise", image:"sam.png", cardBackImage:"green"},
+    {name:"Frodo Baggins", image:"frodo.png", cardBackImage:"green"},
+    {name:"Samwise Gamgee", image:"sam.png", cardBackImage:"green"},
     {name:"Gandalf", image:"gandalf.png", cardBackImage:"green"},
     {name:"Gimli", image:"gimli.png", cardBackImage:"green"},
-    {name:"Aragorn", image:"aragorn.png", cardBackImage:"green"},
+    {name:"Aragorn II Elessar", image:"aragorn.png", cardBackImage:"green"},
     {name:"Legolas", image:"legolas.png", cardBackImage:"green"},
     {name:"Boromir", image:"boromir.png", cardBackImage:"green"},
     {name:"Elrond", image:"elrond.png", cardBackImage:"green"},
@@ -21,11 +22,11 @@ var fellowshipCardList = [
 
 var mordorCardList = [
     {name:"Gollum", image:"gollum.png", cardBackImage:"black"},
-    {name:"Denethor", image:"denethor.png", cardBackImage:"black"},
+    {name:"Denethor II", image:"denethor.png", cardBackImage:"black"},
     {name:"Isildur", image:"isildur.png", cardBackImage:"black"},
-    {name:"Wormtongue", image:"wormtongue.png", cardBackImage:"black"},
+    {name:"Gríma Wormtongue", image:"wormtongue.png", cardBackImage:"black"},
     {name:"Saruman", image:"saruman.png", cardBackImage:"black"},
-    {name:"Nazgul", image:"nazgul.png", cardBackImage:"black"},
+    {name:"Khamúl", image:"nazgul.png", cardBackImage:"black"},
     {name:"Shagrat", image:"shagrat.png", cardBackImage:"black"},
     {name:"Gorbag", image:"gorbag.png", cardBackImage:"black"},
 ]
@@ -278,6 +279,7 @@ function assignCards(audioPlayer){
         }
         var cardName = $(this).children().children("img").attr("alt");
         var cardId = $(this).attr("id");
+        var cardImage = $(this).children().children("img").attr("src");
         var cardSlots = document.getElementsByClassName('game-card-column');
              
         $(this).children(".card-front").addClass("face-up");
@@ -285,7 +287,7 @@ function assignCards(audioPlayer){
 
         // if checkArray length is equal to 0 add the first card name and id to the array
         if (checkArray.length === 0) { 
-            checkArray.push([cardName, cardId]);
+            checkArray.push([cardName, cardId, cardImage]);
             $(this).removeClass("unmatched");
             moves.incrementMovesCounter();
         }
@@ -318,6 +320,8 @@ function assignCards(audioPlayer){
                         turnOn("#advanceToLevelThreeModal");
                     } 
                     else if (cardSlots.length === 16){
+                        chosenAPICharacter = checkArray[0];
+                        console.log(chosenAPICharacter);
                         checkArray.splice(0, 1); 
                         turnOn("#congratulationsModal");
                         audioPlayer.congrats();
@@ -377,7 +381,6 @@ $(document).ready(function(){
 });
 
 
-
 // Freeze board when modal is dismissed rather than one of the options taken
  $(".close").click(function(){
     freezeBoard();
@@ -405,7 +408,16 @@ $("#soundToggler").click(function(){
     }
 });
 
-//curl -k -X GET -H "Authorization: Bearer ERyHRqZKa0LqLBPZbuEE" https://the-one-api.dev/v2/character
+
+
+$("#prize").click(function(){
+    turnOn("#prizeModal");
+});
+
+
+//curl -k -X GET -H "Authorization: Bearer ERyHRqZKa0LqLBPZbuEE" https://the-one-api.dev/v2/character?sort=name:asc
+
+//var samId = 5cd99d4bde30eff6ebccfd0d;
 
 const baseURL = "https://the-one-api.dev/v2/";
 
@@ -425,75 +437,29 @@ function getData(type, cb){
     };
 }
 
-function getTableHeaders(obj){
-    var tableHeaders = [];
-
-    Object.keys(obj).forEach(function(key){
-        tableHeaders.push(`<td>${key}</td>`)
-    });
-    return `<tr>${tableHeaders}</tr>`;
-}
 
 function writeToDocument(type) {
-    var tableRows = [];
+    // var tableRows = [];
     var el = document.getElementById("prizeModalContent");
     el.innerHTML = "";
 
     getData(type, function(data){
         data = data.docs;
+        console.log(chosenAPICharacter);
+        prizeCharacter = data.find(element => element["name"] == chosenAPICharacter[0]);
+        console.log(prizeCharacter);
+        prizeImage = chosenAPICharacter[2];
+        console.log(prizeImage);
 
-        var tableHeaders = getTableHeaders(data[0]);
-
-        data.forEach(function(item){
-            var dataRow = [];
-
-            Object.keys(item).forEach(function(key){
-                var rowData = item[key].toString();
-                var truncatedData = rowData.substring(0,15);
-
-                dataRow.push(`<td>${truncatedData}</td>`);
-            });
-            tableRows.push(`<tr>${dataRow}</tr>`);
-        });
-            el.innerHTML = `<table>${tableHeaders}${tableRows}</table`;
+        el.innerHTML = `<div><img src="${prizeImage}" class="card-image" alt="${prizeCharacter["name"]}" height="360px" width="300px" />></div>
+                        <div>
+                        <p>Name: ${prizeCharacter["name"]}</p>
+                        <p>Race: ${prizeCharacter["race"]}</p>
+                        <p>Gender: ${prizeCharacter["gender"]}</p>
+                        <p>Hair colour: ${prizeCharacter["hair"]}</p>
+                        <p>Height: ${prizeCharacter["height"]}</p>
+                        <p>Want to find out more? Click 
+                        <a target="_blank" href="${prizeCharacter["wikiUrl"]}"><span>here</span></a> to go to The One Wiki To Rule Them All and learn more about ${prizeCharacter["name"]}</p>
+                        </div>`;
     });
 };
-
-
-
-
-
-
-
-
-//function fetchData() {
-//    let baseURL = "https://the-one-api.dev/v2/";
-//         // const apikey = "&limit=100&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2"
-//    const apikey = "ERyHRqZKa0LqLBPZbuE"
-//         let offSet = (Math.floor(Math.random() * 15)) * 100;
-//         //let apikey = `&limit=100&offset=${offSet}&ts=1&apikey=2479ac670ffd22a005793a85e2cd6556&hash=148c15d91ce2f088e7a99e28892d0da2`;
-//         let prizeCharacters1 = [];
-//         fetch(baseURL + apikey)
-//             .then(response => response.json())
-//             .then(json => {
-//                 let data = json;
-//                 $('#footer-text').html(data.attributionText.toUpperCase());
-//                 let prizeList = data.data.results;
-
-//                 for (var prize of prizeList) {
-//                     if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extension === "gif") {
-//                         continue;
-//                     } else {
-//                         prizeCharacters1.push(prize);
-//                     }
-//                 }
-//                 let prizeNum = Math.floor(Math.random() * prizeCharacters1.length + 1);
-//                 let prizeCharacter = (prizeCharacters1[prizeNum]);
-//                 $('.prize-text').html(prizeCharacter.name.toUpperCase());
-//                 $('.prize-content').html(`<img src="${prizeCharacter.thumbnail.path}/portrait_fantastic.${prizeCharacter.thumbnail.extension}"></img>`);
-//                 $('.prize-bio').html(`<a target="_blank" href="${prizeCharacter.urls[0].url}">click <span>here</span> to GO TO MARVEL.com for more on ${prizeCharacter.name} or...</a>`);
-
-//             })
-//             .catch(err => console.log(err));
-//     }
-//     fetchData();
