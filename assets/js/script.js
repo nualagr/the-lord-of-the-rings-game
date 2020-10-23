@@ -209,7 +209,31 @@ function timeUp(){
     audio.gameOver();
 }
   
-    
+
+// User Card Pack Choice
+function packChoice(pack){
+    if (pack == "fellowship") {
+        chosenCardList = fellowshipCardList;
+    }
+    else if (pack == "mordor") {
+        chosenCardList = mordorCardList;
+    }
+    assignCards(audio);
+    timer = new Timer(30);
+}
+
+
+// On receiving the Advance Level message.
+// Clone card-row-2 and reclassify clone as extra-row.
+function advanceLevel(){
+    $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
+    assignCards(audio);
+    timer.resetTimer();
+    moves.resetMovesCounter();
+    pairs.resetPairsCounter();
+}
+
+
 // Make a new deck of new cards for each level dependent on the number of divs to be filled
 function makeDeck(num, array) {
     var newDeck = [];
@@ -238,7 +262,7 @@ function shuffle(newDeck) {
 
 // Assign cards to the divs
 function assignCards(audioPlayer){
-   
+    console.log(chosenCardList);
     var cardSlots = document.getElementsByClassName('game-card-column');
     levelDeck = makeDeck(cardSlots.length / 2, chosenCardList);
     for (var i = 0; i < cardSlots.length; i ++){
@@ -340,45 +364,6 @@ $(document).ready(function(){
 });
 
 
-// User Card Pack Choice
-$("#fellowshipBtn").on("click", function (){
-    chosenCardList = fellowshipCardList;
-    assignCards(audio);
-    timer = new Timer(30);
-    turnOff("#homeModal");
-});
-
-
-$("#mordorBtn").on("click", function (){
-    chosenCardList = mordorCardList;
-    assignCards(audio);
-    timer = new Timer(30);
-    turnOff("#homeModal");
-});
-
-
-// On receiving the Advance Level message.
-// Clone card-row-2 and reclassify clone as extra-row.
-document.getElementById("advance2").addEventListener("click", function() {
-    $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
-    assignCards(audio);
-    timer.resetTimer();
-    moves.resetMovesCounter();
-    pairs.resetPairsCounter();
-    turnOff("#advanceToLevelTwoModal");
-});
-
-
-document.getElementById("advance3").addEventListener("click", function() {
-    $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
-    assignCards(audio);
-    timer.resetTimer();
-    moves.resetMovesCounter();
-    pairs.resetPairsCounter();
-    turnOff("#advanceToLevelThreeModal");
-});
-
-
 // On receiving the Home Button or the Begin Again Button message.
 // Delete the level 2 and/or level 3 card rows with the class "extra-row".
 // Assign cards to the first eight divs.
@@ -413,12 +398,10 @@ $("#soundToggler").click(function(){
     if (mute === true) {
         audio.unmuted();
         $(this).html(`<i class="fas fa-volume-up"></i>`);
-        console.log("Volume has now been turned on!");
     }
     else if (mute === false) {
         audio.muted();
         $(this).html(`<i class="fas fa-volume-mute"></i>`);
-        console.log("Volume has now been turned off!")
     }
 });
 
