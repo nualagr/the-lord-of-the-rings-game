@@ -262,7 +262,6 @@ function shuffle(newDeck) {
 
 // Assign cards to the divs
 function assignCards(audioPlayer){
-    console.log(chosenCardList);
     var cardSlots = document.getElementsByClassName('game-card-column');
     levelDeck = makeDeck(cardSlots.length / 2, chosenCardList);
     for (var i = 0; i < cardSlots.length; i ++){
@@ -354,6 +353,20 @@ function assignCards(audioPlayer){
     });
 };
 
+
+// On receiving the Home Button or the Begin Again Button message.
+// Delete the level 2 and/or level 3 card rows with the class "extra-row".
+// Assign cards to the first eight divs.
+function restart(){
+    $(".extra-row").remove();
+    assignCards(audio);
+    timer.stopTimer();
+    moves.resetMovesCounter();
+    pairs.resetPairsCounter();
+    turnOn("#homeModal");
+}
+
+
 $(document).ready(function(){
     //creates new counters
     moves = new movesCounter();
@@ -364,18 +377,6 @@ $(document).ready(function(){
 });
 
 
-// On receiving the Home Button or the Begin Again Button message.
-// Delete the level 2 and/or level 3 card rows with the class "extra-row".
-// Assign cards to the first eight divs.
-$(".restart").click(function(){
-    $(".extra-row").remove();
-    assignCards(audio);
-    timer.stopTimer();
-    moves.resetMovesCounter();
-    pairs.resetPairsCounter();
-    turnOff("#gameOverModal");
-    turnOn("#homeModal");
-});
 
 // Freeze board when modal is dismissed rather than one of the options taken
  $(".close").click(function(){
@@ -391,7 +392,6 @@ $(".restart").click(function(){
  $(".resume").click(function(){
     timer.resumeTimer();
  });
-
 
 // Mute and unmute sounds when speaker icon is clicked and replace icon
 $("#soundToggler").click(function(){

@@ -137,7 +137,7 @@ p {
 }
 
 .game-card.turn {
-  transform: rotateY(180deg);
+  /* transform: rotateY(180deg); */
 }
 
 /*----------------------------------Buttons Section*/
