@@ -330,7 +330,7 @@ function assignCards(audioPlayer){
                     } 
                     else if (cardSlots.length === 16){
                         chosenAPICharacter = checkArray[0];
-                        console.log(chosenAPICharacter);
+                        writeToDocument('character');
                         checkArray.splice(0, 1); 
                         turnOn("#congratulationsModal");
                         audioPlayer.congrats();
@@ -454,13 +454,10 @@ function writeToDocument(type) {
 
     getData(type, function(data){
         data = data.docs;
-        console.log(chosenAPICharacter);
         prizeCharacter = data.find(element => element["name"] == chosenAPICharacter[0]);
-        console.log(prizeCharacter);
         prizeImage = chosenAPICharacter[2];
-        console.log(prizeImage);
 
-        el.innerHTML = `<div><img src="${prizeImage}" class="card-image" alt="${prizeCharacter["name"]}" height="360px" width="300px" />></div>
+        el.innerHTML = `<div><img src="${prizeImage}" class="card-image" alt="${prizeCharacter["name"]}" height="auto" width="80%" style="border-radius: 0.25rem"/></div>
                         <div>
                         <p>Name: ${prizeCharacter["name"]}</p>
                         <p>Race: ${prizeCharacter["race"]}</p>
@@ -468,7 +465,7 @@ function writeToDocument(type) {
                         <p>Hair colour: ${prizeCharacter["hair"]}</p>
                         <p>Height: ${prizeCharacter["height"]}</p>
                         <p>Want to find out more? Click 
-                        <a target="_blank" href="${prizeCharacter["wikiUrl"]}"><span>here</span></a> to go to The One Wiki To Rule Them All and learn more about ${prizeCharacter["name"]}</p>
+                        <a target="_blank" href="${prizeCharacter["wikiUrl"]}" style="text-decoration: none; font-weight: bold"><span>here</span></a> to go to <em>The One Wiki To Rule Them All</em> and learn more about ${prizeCharacter["name"]}</p>
                         </div>`;
     });
 };
