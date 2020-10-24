@@ -268,7 +268,7 @@
                     <div class="modal-body">
                         <p>You have defeated Sauron and restored order to Middle Earth!</p>
                         <br>
-                        <p>Click <button class="btn btn-lg btn-warning" id="prize" data-dismiss="modal" data-toggle="modal" data-target="#myModal">Here</button> to receive your prize </p>
+                        <p>Click <button class="btn btn-lg btn-warning" id="prize" data-dismiss="modal" data-toggle="modal" data-target="#prizeModal">Here</button> to receive your prize </p>
                     </div>                
                     <div class="modal-footer justify-content-center">
                         <button class="btn btn-continue restart" id="restart" data-dismiss="modal" onclick="restart();">Begin Again</button> 
@@ -277,7 +277,7 @@
             </div>
         </div>
         <!-- Prize Modal -->
-        <div class="modal fade" id="prizeModal" tabindex="-1" role="dialog" aria-labelledby="prizeModalTitle" aria-hidden="true">
+        <div class="modal fade" id="prizeModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -293,7 +293,7 @@
                 </div>
             </div>
         </div>
-    <button onclick="writeToDocument('character')">Prize</button>
+    <button data-toggle="modal" data-target="#prizeModal" onclick="writeToDocument('character')">Prize</button>
 
     </section>
     <!-- jQuery -->
@@ -301,8 +301,6 @@
     <!-- Bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!-- The One API -->
-    <!-- <script async defer src="https://the-one-api.dev/v2/key=ERyHRqZKa0LqLBPZbuEE="></script> -->
     <!-- My JS-->
     <script src="assets/js/script.js"></script>
 

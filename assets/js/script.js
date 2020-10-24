@@ -418,14 +418,7 @@ $("#soundToggler").click(function(){
 });
 
 
-
-$("#prize").click(function(){
-    turnOn("#prizeModal");
-});
-
-
 //curl -k -X GET -H "Authorization: Bearer ERyHRqZKa0LqLBPZbuEE" https://the-one-api.dev/v2/character?sort=name:asc
-
 //var samId = 5cd99d4bde30eff6ebccfd0d;
 
 const baseURL = "https://the-one-api.dev/v2/";
@@ -455,8 +448,11 @@ function writeToDocument(type) {
     getData(type, function(data){
         data = data.docs;
         prizeCharacter = data.find(element => element["name"] == chosenAPICharacter[0]);
+        console.log(prizeCharacter);
+        console.log(typeof(prizeCharacter));
         prizeImage = chosenAPICharacter[2];
 
+            
         el.innerHTML = `<div><img src="${prizeImage}" class="card-image" alt="${prizeCharacter["name"]}" height="auto" width="80%" style="border-radius: 0.25rem"/></div>
                         <div>
                         <p>Name: ${prizeCharacter["name"]}</p>
@@ -465,7 +461,17 @@ function writeToDocument(type) {
                         <p>Hair colour: ${prizeCharacter["hair"]}</p>
                         <p>Height: ${prizeCharacter["height"]}</p>
                         <p>Want to find out more? Click 
-                        <a target="_blank" href="${prizeCharacter["wikiUrl"]}" style="text-decoration: none; font-weight: bold"><span>here</span></a> to go to <em>The One Wiki To Rule Them All</em> and learn more about ${prizeCharacter["name"]}</p>
+                        <a target="_blank" href="${prizeCharacter["wikiUrl"]}" style="text-decoration: none; font-weight: bold; color: #311C17;"><span>here</span></a> to go to <em>The One Wiki To Rule Them All</em> and learn more about ${prizeCharacter["name"]}</p>
                         </div>`;
     });
 };
+
+// let prizeList = data.data.results;
+
+//                 for (var prize of prizeList) {
+//                     if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extension === "gif") {
+//                         continue;
+//                     } else {
+//                         prizeCharacters1.push(prize);
+//                     }
+//                 }
