@@ -379,44 +379,40 @@ function restart(){
     turnOn("#homeModal");
 }
 
+function freezeBoardOnModalClose() {
+    // Freeze board when modal is dismissed rather than one of the options taken
+    $(".close").click(function(){
+        freezeBoard();
+    });
+}
 
-$(document).ready(function(){
-    //creates new counters
-    moves = new movesCounter();
-    pairs = new pairsCounter();
-    isProcessing = false;
-    $("#homeModal").modal("show");
-    audio = new AudioController();
-});
+function pauseCountdownOnModalOpen() {
+    // Pause countdown clock when Help modal is opened
+    $(".rules").click(function(){
+        timer.pauseTimer();
+    });
+}
 
+function resumeCountDownOnModalClose() {
+    // Resume countdown clock when Help modal is closed
+    $(".resume").click(function(){
+        timer.resumeTimer();
+    });
+}
 
-// Freeze board when modal is dismissed rather than one of the options taken
- $(".close").click(function(){
-    freezeBoard();
- });
-
- // Pause countdown clock when Help modal is opened
- $(".rules").click(function(){
-    timer.pauseTimer();
- });
-
- // Resume countdown clock when Help modal is closed
- $(".resume").click(function(){
-    timer.resumeTimer();
- });
-
-// Mute and unmute sounds when speaker icon is clicked and replace icon
-$("#soundToggler").click(function(){
-    if (mute === true) {
-        audio.unmuted();
-        $(this).html(`<i class="fas fa-volume-up"></i>`);
-    }
-    else if (mute === false) {
-        audio.muted();
-        $(this).html(`<i class="fas fa-volume-mute"></i>`);
-    }
-});
-
+function toggleSoundOnSpeakerClick() {
+    // Mute and unmute sounds when speaker icon is clicked and replace icon
+    $("#soundToggler").click(function(){
+        if (mute === true) {
+            audio.unmuted();
+            $(this).html(`<i class="fas fa-volume-up"></i>`);
+        }
+        else if (mute === false) {
+            audio.muted();
+            $(this).html(`<i class="fas fa-volume-mute"></i>`);
+        }
+    });
+}
 
 //curl -k -X GET -H "Authorization: Bearer ERyHRqZKa0LqLBPZbuEE" https://the-one-api.dev/v2/character?sort=name:asc
 //var samId = 5cd99d4bde30eff6ebccfd0d;
@@ -441,37 +437,54 @@ function getData(type, cb){
 
 
 function writeToDocument(type) {
-    // var tableRows = [];
     var el = document.getElementById("prizeModalContent");
     el.innerHTML = "";
+    var elImg = document.getElementById("prizeModalImage");
 
     getData(type, function(data){
         data = data.docs;
         prizeCharacter = data.find(element => element["name"] == chosenAPICharacter[0]);
-        console.log(prizeCharacter);
-        console.log(typeof(prizeCharacter));
+        //prizeCharacter = data.find(element => element["name"] == "Samwise Gamgee");
         prizeImage = chosenAPICharacter[2];
+        //prizeImage = "assets/images/sam.png";
 
+        function removeIfBlank(key) {
+            if (prizeCharacter[key] == "" || prizeCharacter[key] == "NaN") {
+                delete prizeCharacter[key];
+            }
+        };
+        Object.keys(prizeCharacter).forEach(removeIfBlank);      
+
+        //Draw the image of the Prize Character in the Modal
+        elImg.innerHTML = `<div><img src="${prizeImage}" class="card-image rounded mx-auto d-block alt="${prizeCharacter["name"]}" height="auto" width="80%" style="border-radius: 0.25rem"/></div>`;
             
-        el.innerHTML = `<div><img src="${prizeImage}" class="card-image" alt="${prizeCharacter["name"]}" height="auto" width="80%" style="border-radius: 0.25rem"/></div>
-                        <div>
-                        <p>Name: ${prizeCharacter["name"]}</p>
-                        <p>Race: ${prizeCharacter["race"]}</p>
-                        <p>Gender: ${prizeCharacter["gender"]}</p>
-                        <p>Hair colour: ${prizeCharacter["hair"]}</p>
-                        <p>Height: ${prizeCharacter["height"]}</p>
-                        <p>Want to find out more? Click 
-                        <a target="_blank" href="${prizeCharacter["wikiUrl"]}" style="text-decoration: none; font-weight: bold; color: #311C17;"><span>here</span></a> to go to <em>The One Wiki To Rule Them All</em> and learn more about ${prizeCharacter["name"]}</p>
-                        </div>`;
+        for (let [key, value] of Object.entries(prizeCharacter)) {
+            if (key !== "name" && key !== "_id" && key !== "wikiUrl") {
+                el.innerHTML += `<div><span class="text-uppercase">${key}:</span> ${value}</div>`
+                console.log(`${key}: ${value}`);
+            }
+            if (key == "wikiUrl") {
+                el.innerHTML += `<div>For more indepth information, click <a href="${value}" target="_blank" style="text-decoration: none; font-weight: bold; color: #311C17;">here </a>to go to <em>The One Wiki To Rule Them All</em>.</div>`
+            }
+        }
     });
 };
 
-// let prizeList = data.data.results;
+$(document).ready(function(){
 
-//                 for (var prize of prizeList) {
-//                     if (prize.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || prize.thumbnail.extension === "gif") {
-//                         continue;
-//                     } else {
-//                         prizeCharacters1.push(prize);
-//                     }
-//                 }
+    // set up some shit
+    moves = new movesCounter();
+    pairs = new pairsCounter();
+    isProcessing = false;    
+    audio = new AudioController();
+    // set up modal
+    freezeBoardOnModalClose();
+    pauseCountdownOnModalOpen();
+    resumeCountDownOnModalClose();
+    toggleSoundOnSpeakerClick();
+
+    //writeToDocument("character");
+
+    // do our shit
+    $("#homeModal").modal("show");
+});

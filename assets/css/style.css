@@ -31,7 +31,8 @@ body {
 
 .modal-header, 
 .modal-body,
-.modal-footer {
+.modal-footer,
+.modal-image {
     background-color: #EBE3D0;
 }
 
@@ -202,8 +203,15 @@ p {
     font-size: small;
 }
 /*----------------------------------Modals */
+.modal-header,
+.modal-image,
+.modal-content,
+.modal-footer {
+    border: 0;
+}
+
 .modal-header {
-    border-bottom: 0;
+    min-height: 40px;
 }
 
 .modal-title {
@@ -220,10 +228,6 @@ p {
 
 .modal-header button.close:hover {
     opacity: 1;
-}
-
-.modal-footer {
-    border-top: 0;
 }
 
 .modal-footer button {
