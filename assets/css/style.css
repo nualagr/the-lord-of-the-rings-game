@@ -205,6 +205,7 @@ p {
 .modal-header {
     border-bottom: 0;
 }
+
 .modal-title {
     width: 100%;
     font-family: 'ringbearermedium', Fallback, sans-serif;
@@ -215,7 +216,6 @@ p {
     position: absolute;
     right: 0;
     margin-right: 10px;
-
 }
 
 .modal-header button.close:hover {
@@ -226,12 +226,16 @@ p {
     border-top: 0;
 }
 
-.modal-footer button.btn-success {
+.modal-footer button {
+    color: #FFFFFF;
+}
+
+.modal-footer button.shire {
     background-color: #494021;
     border-color: #494021;
 }
 
-.modal-footer button.btn-danger {
+.modal-footer button.mordor {
     background-color: #000000;
     border-color: #000000;
 }
@@ -247,6 +251,32 @@ p {
 
 .modal-footer button.btn-continue:hover {
     background-color: #976D0C;
+}
+
+/*----------------------------------404 Page*/
+body#lost {
+    background-image: url("../images/grey-forest-mountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#lost-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem; 
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 0.25rem;
+    color: black;
+    text-align: center;
+}
+
+#lost-text h3 {
+    line-height: 1.5em;
 }
 /*----------------------------------Media Queries*/
 @media only screen and (min-width: 1600px) {

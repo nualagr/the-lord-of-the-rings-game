@@ -38,6 +38,7 @@ class AudioController {
         this.flipSound = new Audio("assets/audio/card-flip.mp3");
         this.unflipSound = new Audio("assets/audio/unflip.mp3");
         this.cardsMatchSound = new Audio("assets/audio/cards-match.mp3");
+        this.levelCompleteSound = new Audio("assets/audio/level-complete.mp3");
         this.gameOverSound = new Audio("assets/audio/game-over.mp3");
         this.congratsSound = new Audio("assets/audio/winner.mp3");
     }
@@ -67,6 +68,12 @@ class AudioController {
     cardsMatch() {
         if(this.mute === false){
         this.cardsMatchSound.play();
+        }
+    }
+
+    levelUp() {
+        if(this.mute === false){
+            this.levelCompleteSound.play();
         }
     }
 
@@ -310,14 +317,16 @@ function assignCards(audioPlayer){
                 if(pairsMatched === cardSlots.length / 2){
                     // All cards have been matched and the level ends   
                     timer.stopTimer(); 
-                    // Display the Advance LevelOverlay  
+                    // Display the Advance Level Overlay  
                     if (cardSlots.length === 8) {
                         checkArray.splice(0, 1); 
-                        turnOn("#advanceToLevelTwoModal");                             
+                        turnOn("#advanceToLevelTwoModal");
+                        audioPlayer.levelUp();                             
                     }  
                     else if (cardSlots.length === 12) {
                         checkArray.splice(0, 1); 
                         turnOn("#advanceToLevelThreeModal");
+                        audioPlayer.levelUp();
                     } 
                     else if (cardSlots.length === 16){
                         chosenAPICharacter = checkArray[0];

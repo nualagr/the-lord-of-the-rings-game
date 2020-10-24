@@ -332,7 +332,7 @@ The colour scheme was chosen by uploading The Lord of the Rings film poster to
 #### Cards
 [SP-Studio](https://www.sp-studio.de/) was used to create the Lord of the Rings themed character images.
 
-<img src="assets/images/sam.jpg" height="auto%" width="100%" alt="Samwise Gamgee" />
+<img src="documentation/readme-images/samwise-gamgee.jpg" height="auto%" width="100%" alt="Samwise Gamgee" />
 
 
 #### Icons
@@ -341,7 +341,7 @@ They were taken from [Font Awesome](https://fontawesome.com/) and chosen to be s
 a house was chosen for the Home button.
 
 #### Typography
-*Uncial Antiqua* was chosen as the main heading font.  
+*Uncial Antiqua* was initially chosen as the main heading font.  
 <br>
 
 <img src="documentation/readme-images/uncial-antiqua-title.png" height="auto%" width="100%" alt="Uncial Antiqua font example" />
@@ -351,10 +351,12 @@ was chosen for the text used within the body of the site.
 
 <img src="documentation/readme-images/roboto-slab-example.png" height="auto%" width="100%" alt="Roboto Slab font example" />
 
-*Bilbo*, a legible calligraphic style, was chosen for the quotes from the book that are displayed upon completion of the level.
+When it came to creating the playing cards it was decided that a fan-made version of the actual font used for the Lord of the Rings film titles, *Ringbearer Medium* designed by Peter Klassen, was to be used for 
+the character names on the cards.  Therefore in order to create visual unity that font was also used for titles within the site instead of *Uncial Antiqua*.  The font file was uploaded 
+to [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator)'s webfont generator and the webfont styles were stored in the assets folder along with the style.css file. 
 
-<img src="documentation/readme-images/bilbo-quote.png" height="auto%" width="100%" alt="Bilbo font example" />
-
+The original elvish font used for the writing on the ring in The Lord of the Rings films, *tengwarg* was used within Inkscape in order
+to create the circle design for the back of the Mordor Card Pack.
 <br>
 
 ##### back to [top](#table-of-contents)
