@@ -20,15 +20,29 @@ body {
     font-family: 'Roboto Slab', serif;
     background-color: #EBE3D0;
     color: #311C17;
-    margin:0;
-    padding:0;
-    overflow:auto;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     height: 100vh;
-    position:relative; 
+    position: relative; 
+    overflow-x: hidden;
+    overflow-y: scroll; /* Add the ability to scroll */
 }
 
 main {
     min-height: 71%;
+}
+
+/* Code to hide the scrollbar but keep the functionality found at https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp#:~:text=Hide%20Scrollbars%20But%20Keep%20Functionality&text=IE%20and%20Edge%20supports%20the,the%20scrollbar%2C%20but%20keep%20functionality. */
+/* Hide scrollbar for Chrome, Safari and Opera */
+body.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /*----------------------------------Colours*/

@@ -277,13 +277,11 @@ function assignCards(audioPlayer){
     var cardSlots = document.getElementsByClassName('game-card-column');
     levelDeck = makeDeck(cardSlots.length / 2, chosenCardList);
     for (var i = 0; i < cardSlots.length; i ++){
-        //var gameCard = getRandomCard(levelDeck);
         var gameCard = levelDeck[i];
         cardSlots[i].innerHTML = gameCard.html;
     }
 
-
-    //When card is clicked reveal front-of-card.
+    // When card is clicked reveal front-of-card.
     $(".game-card.unmatched").on("click", function (){
         if (isProcessing) { 
             return; 
@@ -296,7 +294,7 @@ function assignCards(audioPlayer){
         $(this).children(".card-front").addClass("face-up");
         audioPlayer.flip();
 
-        // if checkArray length is equal to 0 add the first card name and id to the array
+        // If checkArray length is equal to 0 add the first card name and id to the array
         if (checkArray.length === 0) { 
             checkArray.push([cardName, cardId, cardImage]);
             $(this).removeClass("unmatched");
@@ -419,8 +417,12 @@ function toggleSoundOnSpeakerClick() {
     });
 }
 
+
+//FOR TESTING
 //curl -k -X GET -H "Authorization: Bearer ERyHRqZKa0LqLBPZbuEE" https://the-one-api.dev/v2/character?sort=name:asc
 //var samId = 5cd99d4bde30eff6ebccfd0d;
+
+
 // Call the API to get the Prize Modal content data on the last card matched.
 function getData(type, cb){
     var xhr = new XMLHttpRequest();
@@ -433,6 +435,7 @@ function getData(type, cb){
     xhr.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){
             cb(JSON.parse(this.responseText));
+            //FOR TESTING
             //document.getElementById("prizeModalContent").innerHTML=this.responseText;
         }
     };
@@ -446,10 +449,12 @@ function writeToDocument(type) {
 
     getData(type, function(data){
         data = data.docs;
-        //prizeCharacter = data.find(element => element["name"] == chosenAPICharacter[0]);
-        prizeCharacter = data.find(element => element["name"] == "Isildur");
-        //prizeImage = chosenAPICharacter[2];
-        prizeImage = "assets/images/isildur.png";
+        prizeCharacter = data.find(element => element["name"] == chosenAPICharacter[0]);
+        //FOR TESTING
+        //prizeCharacter = data.find(element => element["name"] == "Isildur");
+        prizeImage = chosenAPICharacter[2];
+        //FOR TESTING
+        //prizeImage = "assets/images/isildur.png";
 
         function removeIfBlank(key) {
             if (prizeCharacter[key] == "" || prizeCharacter[key] == "NaN") {
@@ -487,5 +492,6 @@ $(document).ready(function(){
 
 
     // Start game
-    //$("#homeModal").modal("show");
+    // FOR TESTING
+    $("#homeModal").modal("show");
 });
