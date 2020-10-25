@@ -24,88 +24,88 @@
     </header>
     <main>
         <!-- Counters Section -->
-        <section id="countersSection">
-            <div class="counters-container">
-                <div class="row counters-row justify-content-center">
-                    <div class="col-2">
-                        <p>MOVES:
-                            <span class="d-inline d-md-none"><br /></span>
-                            <span id="movesCounter">0
-                            </span>
-                        </p>
-                    </div>
-                    <div class="col-2">
-                        <p>PAIRS:
-                            <span class="d-inline d-md-none"><br /></span>
-                            <span id="pairs">0
-                            </span> 
-                        </p>
-                    </div>
-                    <div class="col-2">
-                        <p>TIME:
-                            <span class="d-inline d-md-none"><br /></span>
-                            <span id="timeRemaining">0
-                            </span>
-                        </p>
-                    </div>
+        <div id="countersSeciton" class="counters-container">
+            <div class="row counters-row justify-content-center">
+                <div class="col-2">
+                    <p>MOVES:
+                        <span class="d-inline d-md-none">
+                            <br />
+                        </span>
+                        <span id="movesCounter">0
+                        </span>
+                    </p>
+                </div>
+                <div class="col-2">
+                    <p>PAIRS:
+                        <span class="d-inline d-md-none">
+                            <br />
+                        </span>
+                        <span id="pairs">0
+                        </span> 
+                    </p>
+                </div>
+                <div class="col-2">
+                    <p>TIME:
+                        <span class="d-inline d-md-none">
+                            <br />
+                        </span>
+                        <span id="timeRemaining">0
+                        </span>
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
         <!-- Game Board Section-->
-        <section>
-            <div class="container-fluid" id="gameBoard">
-                <div class="row card-row">
-                    <div class="col-3 level-1 game-card-column">
-                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
-                    </div>
-                    <div class="col-3 level-1 game-card-column">
-                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
-                    </div>
-                    <div class="col-3 level-1 game-card-column">
-                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
-                    </div>
-                    <div class="col-3 level-1 game-card-column">
-                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
-                    </div>
+        <div class="container-fluid" id="gameBoard">
+            <div class="row card-row">
+                <div class="col-3 level-1 game-card-column">
+                    <img class="back" src="assets/images/card-back-green.png" alt="Card back">
                 </div>
-                <div class="row card-row card-row-2">
-                    <div class="col-3 level-1 game-card-column">
-                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
-                    </div>
-                    <div class="col-3 level-1 game-card-column">
-                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
-                    </div>
-                    <div class="col-3 level-1 game-card-column">
-                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
-                    </div>
-                    <div class="col-3 level-1 game-card-column">
-                        <img class="back" src="assets/images/card-back-green.png" alt="Card back">
-                    </div>
+                <div class="col-3 level-1 game-card-column">
+                    <img class="back" src="assets/images/card-back-green.png" alt="Card back">
+                </div>
+                <div class="col-3 level-1 game-card-column">
+                    <img class="back" src="assets/images/card-back-green.png" alt="Card back">
+                </div>
+                <div class="col-3 level-1 game-card-column">
+                    <img class="back" src="assets/images/card-back-green.png" alt="Card back">
                 </div>
             </div>
-        </section>
+            <div class="row card-row card-row-2">
+                <div class="col-3 level-1 game-card-column">
+                    <img class="back" src="assets/images/card-back-green.png" alt="Card back">
+                </div>
+                <div class="col-3 level-1 game-card-column">
+                    <img class="back" src="assets/images/card-back-green.png" alt="Card back">
+                </div>
+                <div class="col-3 level-1 game-card-column">
+                    <img class="back" src="assets/images/card-back-green.png" alt="Card back">
+                </div>
+                <div class="col-3 level-1 game-card-column">
+                    <img class="back" src="assets/images/card-back-green.png" alt="Card back">
+                </div>
+            </div>
+        </div>
         <!-- Buttons Section-->
-         <section id="buttonsSection">
-            <div class="buttons-container">
-                <div class="row buttons-row justify-content-center">
-                    <div class="col-2">
-                        <button type="button" class="btn sound" id="soundToggler">
-                            <i class="fas fa-volume-up"></i>
-                        </button>
-                    </div>
-                    <div class="col-2">
-                        <button type="button" class="btn home restart" data-toggle="modal" data-target="#homeModal" onclick="restart();">
-                            <i class="fas fa-home"></i>
-                        </button>
-                    </div>
-                    <div class="col-2">
-                        <button type="button" class="btn rules" data-toggle="modal" data-target="#helpModal">
-                            <i class="fas fa-question"></i>
-                        </button>
-                    </div>
+        <div id ="buttonsSection" class="buttons-container">
+            <div class="row buttons-row justify-content-center">
+                <div class="col-2">
+                    <button type="button" class="btn sound" id="soundToggler">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn home restart" data-toggle="modal" data-target="#homeModal" onclick="restart();">
+                        <i class="fas fa-home"></i>
+                    </button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn rules" data-toggle="modal" data-target="#helpModal">
+                        <i class="fas fa-question"></i>
+                    </button>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
     <!-- Footer -->
     <footer>
@@ -144,7 +144,7 @@
 	    </div>
     </footer>
     <!-- Modals Section -->
-    <section id="modalsSection">
+    <div id="modalsSection">
         <!-- Help Modal -->
         <!-- Modal copied from Bootstrap Modal - https://getbootstrap.com/docs/4.0/components/modal/ - and then modified -->
         <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalTitle" aria-hidden="true">
@@ -164,18 +164,17 @@
                 </div>
             </div>
         </div>
-        <!-- Home Modal -->
+        <!-- Home Modal / Opening Modal-->
         <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="homeModalTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header border-0">
                         <h5 class="modal-title" id="homeModalTitle">                            
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <br>
-                            Card-matching Memory Game                         
-
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <br>
+                        Card-Matching Memory Game             
                         </h5>                        
                     </div>
                     <div class="modal-body">
@@ -302,7 +301,7 @@
             </div>
         </div>
     <!-- <button data-toggle="modal" data-target="#prizeModal" onclick="writeToDocument('character')">Prize</button> -->
-    </section>
+    </div>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
@@ -310,6 +309,5 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- My JS-->
     <script src="assets/js/script.js"></script>
-
 </body>
 </html>
