@@ -15,13 +15,20 @@
   box-sizing: border-box;
 }
 
+html,
 body {
     font-family: 'Roboto Slab', serif;
     background-color: #EBE3D0;
     color: #311C17;
-    display: flex;
-    flex-direction: column;
+    margin:0;
+    padding:0;
+    overflow:auto;
     height: 100vh;
+    position:relative; 
+}
+
+main {
+    min-height: 71%;
 }
 
 /*----------------------------------Colours*/
@@ -171,6 +178,12 @@ p {
     border: 0;
 }
 /*----------------------------------Footer*/
+footer {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
 .footer-area {
     padding: 20px 0px 5px 0px;
     text-align: center;
