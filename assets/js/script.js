@@ -446,10 +446,10 @@ function writeToDocument(type) {
 
     getData(type, function(data){
         data = data.docs;
-        prizeCharacter = data.find(element => element["name"] == chosenAPICharacter[0]);
-        //prizeCharacter = data.find(element => element["name"] == "Samwise Gamgee");
-        prizeImage = chosenAPICharacter[2];
-        //prizeImage = "assets/images/sam.png";
+        //prizeCharacter = data.find(element => element["name"] == chosenAPICharacter[0]);
+        prizeCharacter = data.find(element => element["name"] == "Isildur");
+        //prizeImage = chosenAPICharacter[2];
+        prizeImage = "assets/images/isildur.png";
 
         function removeIfBlank(key) {
             if (prizeCharacter[key] == "" || prizeCharacter[key] == "NaN") {
@@ -487,5 +487,5 @@ $(document).ready(function(){
 
 
     // Start game
-    $("#homeModal").modal("show");
+    //$("#homeModal").modal("show");
 });

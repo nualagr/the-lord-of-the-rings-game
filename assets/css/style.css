@@ -204,6 +204,11 @@ p {
 }
 
 /*----------------------------------Modals */
+.modal {
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;  
+}
+
 .modal-title {
     width: 100%;
     font-family: 'ringbearermedium', Fallback, sans-serif;
