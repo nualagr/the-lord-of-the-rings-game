@@ -1,11 +1,12 @@
 // Global variables
-// (we'll get rid of these as a luxury)
 let timeLeft = null;
 let checkArray = [];
 let pairsMatched = 0;
 let chosenCardList = [];
 let mute = false;
 let chosenAPICharacter = [];
+
+const baseURL = "https://the-one-api.dev/v2/";
 
 
 // Card List Information
@@ -30,6 +31,7 @@ var mordorCardList = [
     {name:"Shagrat", image:"shagrat.png", cardBackImage:"black"},
     {name:"Gorbag", image:"gorbag.png", cardBackImage:"black"},
 ]
+
 
 // Audio Controller Constructor
 class AudioController {
@@ -90,6 +92,7 @@ class AudioController {
     }
 }
 
+
 // Moves Counter Constructor
 class movesCounter {
     constructor(){
@@ -123,6 +126,7 @@ class pairsCounter {
         document.getElementById("pairs").textContent = pairsMatched;
     }
 }
+
 
 //Count Down Timer Constructor
 class Timer {
@@ -218,7 +222,7 @@ function timeUp(){
 }
   
 
-// User Card Pack Choice
+// User Card Pack Choice from Opening Modal
 function packChoice(pack){
     if (pack == "fellowship") {
         chosenCardList = fellowshipCardList;
@@ -297,10 +301,10 @@ function assignCards(audioPlayer){
             checkArray.push([cardName, cardId, cardImage]);
             $(this).removeClass("unmatched");
             moves.incrementMovesCounter();
-        }
+        }        
         
-        // Two cards have been selected. So lock the ability to click any other card
         else {
+            // Two cards have been selected. So lock the ability to click any other card
             // check and see whether the cards match
 
             // If the card the same name but a different id add one to the moves counter add one to the Pairs counter, remove the class 'unmatched', add the class 'matched', remove the ability to turn the matched cards.
@@ -345,7 +349,8 @@ function assignCards(audioPlayer){
             }
 
             // If the cards do not match, add one to the moves counter
-            // Wait one second, clear checkArray, remove class 'face-up' so that the cards flip face down again. Remove class 'matched' so that the first card can be selected again.
+            // Wait one second, clear checkArray, remove class 'face-up' so that the cards flip face down again. 
+            // Remove class 'matched' so that the first card can be selected again.
             else if (checkArray[0][0] !== cardName) {
                 moves.incrementMovesCounter();
                 $this = $(this)
@@ -380,28 +385,28 @@ function restart(){
 }
 
 function freezeBoardOnModalClose() {
-    // Freeze board when modal is dismissed rather than one of the options taken
+    // Freeze board when the user dismisses the modal rather than choosing an option button.
     $(".close").click(function(){
         freezeBoard();
     });
 }
 
 function pauseCountdownOnModalOpen() {
-    // Pause countdown clock when Help modal is opened
+    // Pause countdown clock when Help modal is opened.
     $(".rules").click(function(){
         timer.pauseTimer();
     });
 }
 
 function resumeCountDownOnModalClose() {
-    // Resume countdown clock when Help modal is closed
+    // Resume countdown clock when Help modal is closed.
     $(".resume").click(function(){
         timer.resumeTimer();
     });
 }
 
 function toggleSoundOnSpeakerClick() {
-    // Mute and unmute sounds when speaker icon is clicked and replace icon
+    // Mute and unmute sounds when speaker icon is clicked and replace icon.
     $("#soundToggler").click(function(){
         if (mute === true) {
             audio.unmuted();
@@ -416,9 +421,7 @@ function toggleSoundOnSpeakerClick() {
 
 //curl -k -X GET -H "Authorization: Bearer ERyHRqZKa0LqLBPZbuEE" https://the-one-api.dev/v2/character?sort=name:asc
 //var samId = 5cd99d4bde30eff6ebccfd0d;
-
-const baseURL = "https://the-one-api.dev/v2/";
-
+// Call the API to get the Prize Modal content data on the last card matched.
 function getData(type, cb){
     var xhr = new XMLHttpRequest();
 
@@ -455,16 +458,15 @@ function writeToDocument(type) {
         };
         Object.keys(prizeCharacter).forEach(removeIfBlank);      
 
-        //Draw the image of the Prize Character in the Modal
-        elImg.innerHTML = `<div><img src="${prizeImage}" class="card-image rounded mx-auto d-block alt="${prizeCharacter["name"]}" height="auto" width="80%" style="border-radius: 0.25rem"/></div>`;
+        // Draw the image of the Prize Character in the Modal
+        elImg.innerHTML = `<div><img src="${prizeImage}" class="card-image rounded mx-auto d-block" alt="${prizeCharacter["name"]}" /></div>`;
             
         for (let [key, value] of Object.entries(prizeCharacter)) {
             if (key !== "name" && key !== "_id" && key !== "wikiUrl") {
                 el.innerHTML += `<div><span class="text-uppercase">${key}:</span> ${value}</div>`
-                console.log(`${key}: ${value}`);
             }
             if (key == "wikiUrl") {
-                el.innerHTML += `<div>For more indepth information, click <a href="${value}" target="_blank" style="text-decoration: none; font-weight: bold; color: #311C17;">here </a>to go to <em>The One Wiki To Rule Them All</em>.</div>`
+                el.innerHTML += `<div>For more indepth information, click <a href="${value}" target="_blank">here </a>to go to ${prizeCharacter["name"]}'s dedicated page on <em>The One Wiki To Rule Them All</em>.</div>`
             }
         }
     });
@@ -472,7 +474,7 @@ function writeToDocument(type) {
 
 $(document).ready(function(){
 
-    // set up some shit
+    // Set up game
     moves = new movesCounter();
     pairs = new pairsCounter();
     isProcessing = false;    
@@ -483,8 +485,7 @@ $(document).ready(function(){
     resumeCountDownOnModalClose();
     toggleSoundOnSpeakerClick();
 
-    //writeToDocument("character");
 
-    // do our shit
+    // Start game
     $("#homeModal").modal("show");
 });
