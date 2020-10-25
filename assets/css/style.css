@@ -70,6 +70,7 @@ p {
     font-weight: 500;
     font-size: 1em;
 }
+
 .row {
     margin: 0;
 }
@@ -320,4 +321,12 @@ body#lost {
    .card-row {
        padding: 0;
    }
+
+   #countersSection p {
+       font-size: 0.9em;
+    }
+
+    #buttonsSection i {
+        font-size: 1.2em;
+    }
 }
