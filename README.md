@@ -387,6 +387,7 @@ For each, provide its name, a link to its official site and a short sentence of 
   * [Slack](code-institute-room.slack.com). Used during all phases of development and testing to find the answers to questions and the solutions to problems enountered.
   * [SP-Studio](https://www.sp-studio.de/).  Used to create the Lord of the Rings themed character images.
   * [Stack Overflow](https://stackoverflow.com/). Used to search for the answers to problems encountered during the development and testing of the website.
+  * [TinyPNG](https://tinypng.com/). Used to compress the images to improve site loading times.
   * [Vectorstock](https://www.vectorstock.com/). Used to source the White Tree of Gondor image used for the back of the game cards.
   * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/validator). Used to validate the CSS file.
   * [W3C HTML Validation Service](https://validator.w3.org/#validate_by_uri). Used to validate the HTML files.
