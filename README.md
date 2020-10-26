@@ -380,9 +380,23 @@ The *one-ring-font* by [Gaut Fonts](https://www.fontspace.com/gaut-fonts) was us
 ---
 
 ## Development
-Google Chrome Developer Tools were used extensively throughout the development process in order to test whether elements were responsive when 
-viewed on mobile and tablet devices. When problems were encountered the Device Selector was used to target the element. Using the Elements Panel in Developer Tools the code in question was altered in order to achieve the desired result. Working code snippets were then replicated in the style.css file in Gitpod. 
+During the first mentor session it became apparent that the wireframes and the project outline did not fully fulfil the Milestone 2 project specification
+in that the user was not able to alter their playing environment other than by muting the ingame sounds. Therefore it was decided to add a second pack of
+playing cards and allow the user to choose between the Fellowship characters or the Mordor characters when playing the game.
+
+The index.html file and accompanying style.css files were created first to provide the game structure and general appearance.
+The Bootstrap grid was used to create the game board so that it would respond automatically to the differing dimensions of possible viewing devices.
+Google Chrome Developer Tools were used throughout the development process in order to test how elements responded when 
+viewed on mobile and tablet devices. When problems were encountered the Device Selector was used to target the element. 
+Using the Elements Panel in Developer Tools the code in question was altered in order to achieve the desired result. 
+Working code snippets were then replicated in the style.css file in Gitpod. 
 Other solutions for errors were found in the Code Institute Slack channels, on Stack Overflow and on W3Schools.
+
+When it came to the interactive aspect of the project my mentor, Mr. Reuben Ferrante, suggested starting with the logic regarding the addition of extra rows 
+of cards with the progression of each round.  As this is a single-page site and the opening modal would not obscure the page behind the initial two rows of 
+four cards were created in the HTML page.  The addition of the next row of cards was created in the script.js file by cloning row 2 of the initial board.  
+A class of 'extra-row' is added to this new row in order to allow for easy deletion if the player runs out of time or presses the restart button.
+
 
 <br>
 
@@ -431,9 +445,6 @@ Other solutions for errors were found in the Code Institute Slack channels, on S
 
 ##### back to [top](#table-of-contents)
 ---
-
-## JQuery
-The project uses JQuery to simplify DOM manipulation.
 
 ## Testing
 To ensure that the site contains valid HTML, the HTML code was checked by direct input using the [W3C Markup Validation Service](https://validator.w3.org/).
@@ -740,8 +751,9 @@ The [Boostrap Modal component](https://getbootstrap.com/docs/4.0/components/moda
 
 ### Acknowledgements
 - [Code Institue](https://codeinstitute.net/) and the very helpful tutors.
-- A special thank you to my project mentor [Reuben Ferrante](https://uk.linkedin.com/in/reuben-ferrante) for his wisdom and guidance during the project. 
+- Thank you to my project mentor [Reuben Ferrante](https://uk.linkedin.com/in/reuben-ferrante) for his wisdom and guidance during the project. 
 - The [Code Institue](https://codeinstitute.net/) community on [Slack](code-institute-room.slack.com) for their support.
+- A special thank you to my partner Kevin for his patience and support throughout this project. 
 - I received inspiration for this project from:
   - https://zahur76.github.io/MilestoneProject2/
   - https://nickbell123.github.io/Marvel-Memory-Game/
