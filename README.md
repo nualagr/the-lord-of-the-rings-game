@@ -46,6 +46,10 @@ Click <a href="https://nualagr.github.io/the-lord-of-the-rings-game/">here</a> t
 3. [**Development**](#development)
 4. [**Technologies Used**](#technologies-used)
 5. [**Testing**](#testing)
+    - [Performance](#performance)
+    - [Responsiveness](#responsiveness)
+    - [Tested User Stories](#tested-user-stories)
+    - [Bugs](#bugs)
 6. [**Deployment**](#deployment)
 7. [**Credits**](#credits)
     - [Content](#content)
@@ -519,7 +523,7 @@ the site has been manually checked and found to function as desired on the follo
 
 #### New User
 
-As a new user I would like to be able to:
+As a new user I can:
 
 &#9745; play a card-matching game presented in a visually appealing format.
 ![alt text](documentation/readme-images/visually-appealing-screenshot.png "Screenshot of game in progress, showing cute character images.")
@@ -571,7 +575,90 @@ As a new user I would like to be able to:
 
 &#9745; improve my reaction times.
 
+<br>
+
+
+#### General User
+
+As a returning user I am able to:
+
+&#9745; play a simple card-matching game presented in a visually appealing format.
+
+&#9745; play a game which increases in complexity/challenge.
+
+&#9745; receive different visual rewards for completing the game on subsequent attempts.
+
+&#9745; view and match themed images of The Lord of the Rings characters.
+
+&#9745; navigate through the site with ease.
+
+&#9745; modify settings to suit my game-play requirements with regard to 
+  - whether I want in-game sound effect
+  - whether I want to play with the Fellowship Card Pack or the Mordor Card Pack.
+
+&#9745; receive regular, up-to-date feedback about how I am progressing in the game.
+
+&#9745; enjoy the experience of playing the game.
+
+&#9745; be exposed to interesting facts about The Lord of the Rings characters.
+
+&#9745; read some interesting quotes by The Lord of the Rings characters.
+
+&#9745; improve my cognitive function.
+
+&#9745; improve my reaction times.
+
+<br>
+
+#### The Lord of the Rings Fan
+
+As a Lord of the Rings fan I am able to:
+
+&#9745; view and match themed images of The Lord of the Rings characters.
+
+&#9745; enjoy the experience of playing the game.
+
+&#9745; receive a visual reward for completing the game.
+
+&#9745; be exposed to interesting facts about different Lord of the Rings characters.
+
+&#9745; read some interesting quotes by The Lord of the Rings characters.
+
+<br>
+
+#### Site Owner
+As the owner of The Lord of the Rings Memory Game site I am able to:
+
+&#9745; enjoy the experience of playing the game myself.
+
+&#9745; provide site users with an enjoyable playing experience.
+
+&#9745; provide site users with a visually appealing game. 
+
+&#9745; provide site users with a game that is intuitive to play.
+
+&#9745; provide site users with a game which increases in difficulty.
+
+&#9745; provide new users with game rules that are concise and easy to read. 
+
+&#9745; provide site users with a website that is easy to navigate.
+
+&#9745; provide site users with the ability to tailor their game experience by including the ability to turn the audio component off if desired
+and to choose to play with either the Fellowship Card Pack or the Mordor Card Pack. 
+
+&#9745; expose site users to interesting facts and quotes from The Lord of the Rings 
+books with a view to sharing my love of the Trilogy and instilling a curiosity in those who 
+have not yet read the books. 
+
+&#9745; provide users with links to other websites, social media sites and *The One Wiki to Rule them All* where they can access further information
+about *The Lord of the Rings* trilogy and connect with other fans of the books and films.
+
+![alt text](documentation/readme-images/social-media-links.png "Screenshot showing the social media links to Facebook, Instagram and Twitter.")
+
+<br>
+
 ### Bugs
+
 - Upon first loading the site when the user chooses the Mordor pack the character images can often be seen before the card back images are written to screen.
 - The 'cards-match.mp3' sound plays before the 'card-flip.mp3' sound.
 - The second card 'card-flip.mp3' sound will not play if the user clicks on card 2 too quickly after card 1 and the first sound has not finished playing.
