@@ -473,16 +473,16 @@ The site performed well when tested for desktop viewing.
 Web developer tools in each of the following browsers were used to ensure responsiveness and functionality of the site:
 
 -Google Chrome
--Microsift Edge
+-Microsoft Edge
 -Microsoft Opera
 -Mozilla Firefox
 
 Each website feature including, but not exclusive to, modals, buttons, game responses, mute, external links, hover effects etc. were manually checked within the 
 aforementioned browsers.
 
-Within each browser the site was checked for responsiveness and functionality when viewed on the following devices: 
+Within each browser the site was checked for responsiveness and functionality when viewed on the following: 
 
-**Mobile**
+**Mobile Devices**
 - Android 7.0
 - Galaxy S5
 - Galaxy S9
@@ -495,21 +495,78 @@ Within each browser the site was checked for responsiveness and functionality wh
 - Pixel 2XL
 - Surface Duo
 
-**Tablet**
+**Tablet Devices**
 - iPad
 - iPad Pro
 - Kindle Fire HDX
 
-**Laptop**
-- Laptop with HiDPI screen
-- Laptop with MDPI screen
-- Laptop with touch
+**Laptop dimensions:**
+
+- 15" Laptop (1024 x 800)
+- 13" Laptop (1024 x 800)
+
+**Desktop dimensions:**
+
+- 24" Desktop (1920 x 1200)
+- 22" Desktop (1680 x 1050)
+- 20" Desktop (1600 x 900)
 
 In addition to checking the game's functionality using browser developer tools, 
 the site has been manually checked and found to function as desired on the following devices:
 
 - Dell XPS 13
 - Samsung S7
+
+### Tested User Stories
+
+#### New User
+
+As a new user I would like to be able to:
+
+&#9745; play a card-matching game presented in a visually appealing format.
+<img src="documentation/readme-images/visually-appealing-screenshot.png" height="auto%" width="100%" alt="Screenshot of game in progress, showing cute character images." />
+
+<br>
+&#9745;  play a game which increases in complexity/challenge.
+<img src="documentation/readme-images/round-two-completed-on-ipad.png" height="auto%" width="100%" alt="Screenshot of round two of game completed on ipad." />
+
+<br>
+&#9745; read the rules of the game.
+<img src="documentation/readme-images/instructions-modal-on-iphone.png" height="auto%" width="100%" alt="Screenshot of Instructions Modal on iphone." />
+
+<br>
+
+&#9745; navigate through the site with ease.
+<img src="documentation/readme-images/home-screen-showing-intuitive-icons.png" height="auto%" width="100%" alt="Home screen showing intuitive icons such as a house for the home button." />
+
+<br>
+
+&#9745; modify settings to suit my game-play requirements with regard to 
+  - whether to play in-game audio
+  - whether to play with the Fellowship Card Pack or the Mordor Card Pack.
+<img src="documentation/readme-images/opening-modal-showing-cardpack-choice.png" height="auto%" width="100%" alt="Opening modal showing cardpack choice." />
+
+<br>
+
+&#9745; receive regular, up-to-date feedback about how I am progressing in the game.
+<img src="documentation/readme-images/screenshot-showing-counters-and-timer.png" height="auto%" width="100%" alt="Screenshot showing counters and timer." />
+
+<br>
+&#9745; enjoy the experience of playing the game.
+
+&#9745; receive a visual reward for completing the game.
+<img src="documentation/readme-images/screenshot-prize-modal.png" height="auto%" width="100%" alt="Screenshot showing the prize modal with information about the character of Gimli the dwarf." />
+
+<br>
+&#9745; learn some interesting facts about The Lord of the Rings characters.
+
+&#9745; read some interesting quotes by the different Lord of the Rings characters.
+<img src="documentation/readme-images/opening-modal-on-iphone.png" height="auto%" width="100%" alt="Screenshot showing the opening modal with a quote by Gandalf." />
+
+<br>
+&#9745; improve my cognitive function.
+
+&#9745; improve my reaction times.
 
 ### Bugs
 - Upon first loading the site when the user chooses the Mordor pack the character images can often be seen before the card back images are written to screen.
