@@ -335,10 +335,8 @@ During development it became necessary to expand the colour palette in order to 
 [SP-Studio](https://www.sp-studio.de/) was used to create the Lord of the Rings themed character images.
 
 <img src="documentation/readme-images/samwise-gamgee.jpg" height="auto%" width="100%" alt="Samwise Gamgee" />
-<sub>Character image created at [SP-Studio](https://www.sp-studio.de/).</sub>
 
 <img src="documentation/readme-images/denethor.jpg" height="auto%" width="100%" alt="Denethor II" />
-<sub> Character image created at [SP-Studio](https://www.sp-studio.de/).</sub>
 
 #### Icons
 Icons were used alongside the text within the site in order to help the user to understand the content at a glance. 
@@ -454,7 +452,7 @@ To test the validity of the JavaScript [Espirima](https://esprima.org/demo/valid
 
 <br>
 
-Performance
+### Performance
 Once completed the website was tested using the Google Chrome Developer Tools Lighthouse test. Initially the site received a 75% rating on performance, 
 largely due to the size of the images.
 <img src="documentation/readme-images/lighthouse-mobile-performance-1.png" height="auto%" width="100%" alt="Lighthouse Performance Results" />
@@ -471,43 +469,52 @@ The site performed well when tested for desktop viewing.
 
 <br>
 
-To ensure the site's functionality across various devices, I used the web developer tools inspection feature of each of the following browsers:
+### Responsiveness
+Web developer tools in each of the following browsers were used to ensure responsiveness and functionality of the site:
 
-Google Chrome
-Mozilla Firefox
-Microsoft Opera
-Microsift Edge
-For each browser, I checked the preview of each of the site's pages for the following devices, in both vertical and horizontal views for mobile devices:
+-Google Chrome
+-Microsift Edge
+-Microsoft Opera
+-Mozilla Firefox
 
-Kindle Fire HDX
-Laptop with HiDPI screen
-Laptop with MDPI screen
-Laptop with touch
-Moto G4
-Galaxy S5
-Pixel 2
-Pixel 2XL
-iPhone 5/SE
-iPhone 6/7/8
-iPhone 6/7/8 plus
-iPhone X
-iPad
-iPad Pro
-Surface Duo
-Galaxy Fold
+Each website feature including, but not exclusive to, modals, buttons, game responses, mute, external links, hover effects etc. were manually checked within the 
+aforementioned browsers.
 
-I manually checked all the pages and features of the website (i.e. navigation, links external and internal, buttons, hover effects, game) 
-across all device simulations that each browser offers.
+Within each browser the site was checked for responsiveness and functionality when viewed on the following devices: 
 
-In addition to checking the application's functionality using browser developer tools, 
+**Mobile**
+- Android 7.0
+- Galaxy S5
+- Galaxy S9
+- iPhone 5/SE
+- iPhone 6/7/8
+- iPhone 6/7/8 plus
+- iPhone X / XS
+- Moto G4
+- Pixel 2
+- Pixel 2XL
+- Surface Duo
+
+**Tablet**
+- iPad
+- iPad Pro
+- Kindle Fire HDX
+
+**Laptop**
+- Laptop with HiDPI screen
+- Laptop with MDPI screen
+- Laptop with touch
+
+In addition to checking the game's functionality using browser developer tools, 
 the site has been manually checked and found to function as desired on the following devices:
 
-Laptops:
-
+- Dell XPS 13
+- Samsung S7
 
 ### Bugs
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
+- Upon first loading the site when the user chooses the Mordor pack the character images can often be seen before the card back images are written to screen.
+- The 'cards-match.mp3' sound plays before the 'card-flip.mp3' sound.
+- The second card 'card-flip.mp3' sound will not play if the user clicks on card 2 too quickly after card 1 and the first sound has not finished playing.
 
 ##### back to [top](#table-of-contents)
 ---
@@ -559,22 +566,12 @@ The website will open in a separate browser window.
 
 9) Press 'Enter' to create the clone.
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-
-Different values for environment variables (Heroku Config Vars)?
-Different configuration files?
-Separate git branch?
-In addition, if it is not obvious, you should also describe how to run your code locally.
-
 ##### back to [top](#table-of-contents)
 ---
 
 ## Credits
 ### Content
 The [Boostrap Modal component](https://getbootstrap.com/docs/4.0/components/modal/) was used and modified for each of the modals on the site.
-
 
 
 ### Media
