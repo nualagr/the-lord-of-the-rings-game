@@ -8,10 +8,10 @@ within a minimum number of mouse clicks in a set timeframe. The game, while bein
 as to improve hand-eye coordination and reaction times.
 
 The game is geared towards fans of *The Lord of the Rings Trilogy* by J. R. R. Tolkien.  It incorportes 
-The Lord of the Rings themed images, audio and facts with the intention of making the playing 
+The Lord of the Rings themed images and facts with the intention of making the playing 
 experience more enjoyable for the user.
 
-The Lord of the Rings Memory Game website consists of one webpage and six modals created using [HTML5](http://en.wikipedia.org/wiki/HTML5), 
+The Lord of the Rings Memory Game website consists of one webpage and seven modals created using [HTML5](http://en.wikipedia.org/wiki/HTML5), 
 [CSS3](http://en.wikipedia.org/wiki/CSS), [JavaScript](https://en.wikipedia.org/wiki/JavaScript), 
 the JavaScript library [jQuery](https://jquery.com/) and [The One API](https://the-one-api.dev/).  It was
 created in order to fulfil the requirements of the Interactive Frontend Development Milestone Project 2, 
@@ -57,13 +57,7 @@ Click <a href="https://nualagr.github.io/the-lord-of-the-rings-game/">here</a> t
 ---
 
 ## UX
-*Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-
-As a user type, I want to perform an action, so that I can achieve a goal.
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the 
-project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.*
 ### User Stories
 
 #### New User
@@ -76,12 +70,13 @@ As a new user I would like to be able to:
 - navigate through the site with ease.
 - modify settings to suit my game-play requirements with regard to 
   - whether to play in-game audio
+  - whether to play with the Fellowship Card Pack or the Mordor Card Pack.
 - receive regular, up-to-date feedback about how I am progressing in the game.
 - enjoy the experience of playing the game.
 - receive a visual reward for completing the game.
 - learn some interesting facts about The Lord of the Rings characters.
 - read some interesting quotes by the different Lord of the Rings characters.
-- improve my congnitive function.
+- improve my cognitive function.
 - improve my reaction times.
 
 #### General User
@@ -90,17 +85,17 @@ As a returning user I would like to be able to:
 
 - play a simple card-matching game presented in a visually appealing format.
 - play a game which increases in complexity/challenge.
-- be able to measure improving performance - feedback in the form of time taken and number of clicks displayed upon completion.
 - receive different visual rewards for completing the game on subsequent attempts.
 - view and match themed images of The Lord of the Rings characters.
 - navigate through the site with ease.
 - modify settings to suit my game-play requirements with regard to 
-  - whether to play in-game audio.
+  - whether I want in-game sound effect
+  - whether I want to play with the Fellowship Card Pack or the Mordor Card Pack.
 - receive regular, up-to-date feedback about how I am progressing in the game.
 - enjoy the experience of playing the game.
 - be exposed to interesting facts about The Lord of the Rings characters.
 - read some interesting quotes by The Lord of the Rings characters.
-- improve my congnitive function.
+- improve my cognitive function.
 - improve my reaction times.
 
 #### The Lord of the Rings Fan
@@ -110,8 +105,7 @@ As a Lord of the Rings fan I would like to be able to:
 - view and match themed images of The Lord of the Rings characters.
 - enjoy the experience of playing the game.
 - receive a visual reward for completing the game.
-- be able to measure improving performance - feedback in the form of time taken and number of clicks displayed upon completion.
-- be exposed to interesting facts about The Lord of the Rings characters.
+- be exposed to interesting facts about different Lord of the Rings characters.
 - read some interesting quotes by The Lord of the Rings characters.
 
 #### Site Owner
@@ -123,12 +117,14 @@ As the owner of The Lord of the Rings Memory Game site I would like:
 - to provide site users with a game that is intuitive to play.
 - to provide site users with a game which increases in difficulty.
 - to provide new users with game rules that are concise and easy to read. 
-- to provide site users with feedback on their performance in order to encourage them to play again.
 - to provide site users with a website that is easy to navigate.
-- to provide site users with the ability to tailor their game experience by including the ability to turn the audio component off if desired. 
+- to provide site users with the ability to tailor their game experience by including the ability to turn the audio component off if desired
+and to choose to play with either the Fellowship Card Pack or the Mordor Card Pack. 
 - to expose site users to interesting facts and quotes from The Lord of the Rings 
 books with a view to sharing my love of the Trilogy and instilling a curiosity in those who 
 have not yet read the books. 
+- to provide users with links to other websites, social media sites and *The One Wiki to Rule them All* where they can access further information
+about *The Lord of the Rings* trilogy and connect with other fans of the books and films.
 
 <br>
 
@@ -154,16 +150,16 @@ The site has been designed to provide minimal, but relevant, content that is eas
 The key features of the website were developed based on the user needs. 
 
 Users should be able to do the following on the website:
-- Read the rules of the game
+- Choose a card pack
 - Start a game
+- Read the rules of the game
 - Mute the sound effects
 - Turn over two cards at a time
 - Match cards
-- See their score at the end
 - See how much time is left in the current level
 - Advance to levels of increasing difficulty
-- Read interesting facts about *The Lord of the Rings* characters.
-- Easily access dedicated *The Lord of the Rings* social media channels.
+- Read interesting facts about *The Lord of the Rings* characters
+- Easily access dedicated *The Lord of the Rings* social media channels
 
 <br>
 
@@ -176,24 +172,19 @@ After identifying the needs of the site's users and after visiting pairs card ma
 
 For ease of navigation it was decided to opt for a single page with pop-up modals 
 - to start the game
-- to provide a failure to proceed message
-- to show a 'proceed to the next level' message
-- to congratulate winners and show them their score
 - to provide the user with the rules of the game
+- to provide a 'game over' message when the user runs out of time
+- to show an 'advance to the next level' message for each round
+- to congratulate winners
 - to provide winners with a visual prize modal which displays character information.
 
 <br>
 
 ### Features
-*In this section, you should go over the different parts of your project, and describe each in a sentence or so.*
 
 The game is designed to be as intuitive as possible.
 
 ### Existing Features
-*Feature 1 - allows users X to achieve Y, by having them fill out Z*
-
-*For some/all of your features, you may choose to reference the specific project files that implement them, 
-although this is entirely optional.*
 
 A ring **favicon**, displayed on the web brower's tab, allows the user to identify the website by sight.
 
@@ -228,7 +219,7 @@ They provide the user with visually pleasing and easily differentiated images to
 
 **Help button** - brings up a modal of the game rules.
 
-**Failure Modal** - alerts the user to the fact that they did no complete the round in the given timeframe.  A **Restart** button allows them to start a new game immediately.
+**Game Over Modal** - alerts the user to the fact that they did no complete the round in the given timeframe.  A **Restart** button allows them to start a new game immediately.
 
 **Completion Modal** - pop up window congratulates the user at the end of Round Three and provides them with a **Prize Button** which opens a visual prize modal.
 
@@ -272,6 +263,8 @@ A Pairs Counter is visible above the card-deck-area showing the number of pairs 
 
 A Count Down Timer is visible above the left-hand corner of the card-deck area displaying the number of seconds left to complete the current round.
 
+The Mute button, Home button and Help button, expressed visually using intuitive icons, are centrally aligned under the playing cards in each round.
+
 A footer, which contains links to Lord of the Rings social media sites was included at the bottom of every page.
 
 
@@ -287,7 +280,7 @@ A footer, which contains links to Lord of the Rings social media sites was inclu
 
 - [Desktop Round One with Advance to Level 2 Modal](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/desktop-round-one-with-modal.png)
 
-- [Desktop Round Two with Failure Modal](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/desktop-round-two-with-modal.png)
+- [Desktop Round Two with Game Over Modal](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/desktop-round-two-with-modal.png)
 
 - [Desktop Round Three with Winning Modal](https://github.com/nualagr/the-lord-of-the-rings-game/blob/master/documentation/wireframes/desktop-round-three-with-modal.png)
 
@@ -317,11 +310,11 @@ A footer, which contains links to Lord of the Rings social media sites was inclu
 #### Design
 
 #### Colour Scheme
-<img src="documentation/readme-images/lotr-movie-poster.jpg" height="auto%" width="100%" alt="The Lord of the Rings Memory Game colour palette" />
+<img src="documentation/readme-images/lotr-movie-poster.jpg" height="auto%" width="100%" alt="The Lord of the Rings film poster" />
 
 <br>
 
-The colour scheme was chosen by uploading The Lord of the Rings film poster to 
+The initial colour scheme was chosen by uploading The Lord of the Rings film poster to 
 [coolors.co](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff).  Using the colour picker
  the hexidecimal equivalent of the prevailing colours used within the poster were identified. 
 
@@ -331,11 +324,21 @@ The colour scheme was chosen by uploading The Lord of the Rings film poster to
 
 <sub>*Colour palette created at* [coolors.co](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff).</sub>
 
+During development it became necessary to expand the colour palette in order to provide visual contrast when the Mordor themed playing cards were chosen.
+*Bistre Brown*, #8B720E with white text was chosen for the Mordor playing cards when face up and black and gold were chosen for the back of the card design.
+
+<img src="documentation/readme-images/mordor-playing-cards-palette.png" height="auto%" width="100%" alt="The colour palette used for the Mordor playing cards pack." />
+
+<sub>*Colour palette created at* [coolors.co](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff).</sub>
+
 #### Cards
 [SP-Studio](https://www.sp-studio.de/) was used to create the Lord of the Rings themed character images.
 
 <img src="documentation/readme-images/samwise-gamgee.jpg" height="auto%" width="100%" alt="Samwise Gamgee" />
+<sub>Character image created at [SP-Studio](https://www.sp-studio.de/).</sub>
 
+<img src="documentation/readme-images/denethor.jpg" height="auto%" width="100%" alt="Denethor II" />
+<sub> Character image created at [SP-Studio](https://www.sp-studio.de/).</sub>
 
 #### Icons
 Icons were used alongside the text within the site in order to help the user to understand the content at a glance. 
@@ -366,7 +369,7 @@ to [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator)'s webfo
 
 <br>
 
-The *one-ring-font* by [Gaut Fonts](https://www.fontspace.com/gaut-fonts) was used for creating the ring design on the back of the Mordor Card Pack cards.
+The *one-ring-font* by [Gaut Fonts](https://www.fontspace.com/gaut-fonts) was used to create the ring design on the back of the Mordor Card Pack cards.
 
 <img src="documentation/readme-images/the-one-ring-font-example.png" height="auto%" width="100%" alt="Ringbearer Medium font example" />
 
@@ -376,6 +379,9 @@ The *one-ring-font* by [Gaut Fonts](https://www.fontspace.com/gaut-fonts) was us
 ---
 
 ## Development
+Google Chrome Developer Tools were used extensively throughout the development process in order to test whether elements were responsive when 
+viewed on mobile and tablet devices. When problems were encountered the Device Selector was used to target the element. Using the Elements Panel in Developer Tools the code in question was altered in order to achieve the desired result. Working code snippets were then replicated in the style.css file in Gitpod. 
+Other solutions for errors were found in the Code Institute Slack channels, on Stack Overflow and on W3Schools.
 
 <br>
 
@@ -383,8 +389,6 @@ The *one-ring-font* by [Gaut Fonts](https://www.fontspace.com/gaut-fonts) was us
 ---
 
 ## Technologies Used
-*In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. 
-For each, provide its name, a link to its official site and a short sentence of why it was used.*
 
 - Languages: 
 
@@ -431,11 +435,6 @@ For each, provide its name, a link to its official site and a short sentence of 
 The project uses JQuery to simplify DOM manipulation.
 
 ## Testing
-Google Chrome Developer Tools were used extensively throughout the development process in order to test whether elements were responsive when 
-viewed on mobile and tablet devices. When problems were encountered the Device Selector was used to target the element. Using the Elements Panel in Developer Tools the code in question was altered in order to achieve the desired result. Working code snippets were then replicated in the style.css file in Gitpod. 
-Other solutions for errors were found in the Code Institute Slack channels, on Stack Overflow and on W3Schools.
-
-
 To ensure that the site contains valid HTML, the HTML code was checked by direct input using the [W3C Markup Validation Service](https://validator.w3.org/).
 The site has no errors.
 <img src="documentation/readme-images/html-validator-no-errors.png" height="auto%" width="100%" alt="HTML Validator No Errors Returned" />
@@ -461,7 +460,7 @@ largely due to the size of the images.
 <img src="documentation/readme-images/lighthouse-mobile-performance-1.png" height="auto%" width="100%" alt="Lighthouse Performance Results" />
 
 <br>
-The images were then compressed using an online image compressor site, [Optimizilla](https://imagecompressor.com/), and the new smaller images were then uploaded to the site. 
+The images were then compressed using an online image compressor site, [Optimizilla](https://imagecompressor.com) and the new smaller images were then uploaded to the site. 
 The subsequent test results showed marked improvement.
 <img src="documentation/readme-images/lighthouse-mobile-performance-2.png" height="auto%" width="100%" alt="Lighthouse Performance Improved Results" />
 
