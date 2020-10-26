@@ -124,10 +124,6 @@ p {
     z-index: -1;
 }
 
-.card-back {
-
-}
-
 .face-up {
     z-index: 200;
 }
@@ -144,22 +140,12 @@ p {
   position: relative;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
   transform: scale(1);
-  /*transform-style: preserve-3d, to position them in the 3D space created in the parent
-  , instead of flattening it to the z = 0 plane (transform-style).*/
-  transform-style: preserve-3d;
-  /*Now, a transition has to be applied to the transform property to produce the movement effect:*/
   transition: transform .5s;
-  
 }
 
-/*The :active pseudo class will be triggered every time the element gets clicked. It will apply a .2s transition to its size:*/
 .game-card:active {
   transform: scale(0.97);
   transition: transform .2s;
-}
-
-.game-card.turn {
-  /* transform: rotateY(180deg); */
 }
 
 /*----------------------------------Buttons Section*/
@@ -190,6 +176,7 @@ p {
     outline-color: #311C17;
     border: 0;
 }
+
 /*----------------------------------Footer*/
 footer {
     position: relative;
@@ -326,6 +313,17 @@ body#lost {
 #lost-text h3 {
     line-height: 1.5em;
 }
+
+#lost-text a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #A4770D;
+}
+
+#lost-text a:hover {
+    color: #494021;
+}
+
 /*----------------------------------Media Queries*/
 @media only screen and (min-width: 1600px) {
     .card-row {
