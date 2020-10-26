@@ -1,8 +1,9 @@
 <h1 align="center">The Lord of the Rings Memory Game</h1>
-<img src="documentation/readme-images/amiresponsive-mockup.png" height="auto" width="100%" alt="Mockup of The Lord of the Rings Memory Game index.html page when viewed on a desktop, tablet and mobile device." />
 
+![alt text](documentation/readme-images/amiresponsive-mockup.png "Mockup of The Lord of the Rings Memory Game index.html page when viewed on a desktop, tablet and mobile device.")
 <sub>*Created using* [Am I Responsive](http://ami.responsivedesign.is/)</sub>
 <br>
+
 The Lord of the Rings Memory Game is a themed card-matching game. The game objective is to find the matching pairs of cards 
 within a minimum number of mouse clicks in a set timeframe. The game, while being fun to play, can also be used as a brain training tool to improve recall as well
 as to improve hand-eye coordination and reaction times.
@@ -267,8 +268,7 @@ The Mute button, Home button and Help button, expressed visually using intuitive
 
 A footer, which contains links to Lord of the Rings social media sites was included at the bottom of every page.
 
-
-<img src="documentation/wireframes/desktop-round-three-with-modal.png" height="auto%" width="100%" alt="Desktop Round Three with Modal congratulating the winner." />
+![alt text](documentation/wireframes/desktop-round-three-with-modal.png "Desktop Round Three with Modal congratulating the winner.")
 
 
 <br>
@@ -310,7 +310,7 @@ A footer, which contains links to Lord of the Rings social media sites was inclu
 #### Design
 
 #### Colour Scheme
-<img src="documentation/readme-images/lotr-movie-poster.jpg" height="auto%" width="100%" alt="The Lord of the Rings film poster" />
+![alt text](documentation/readme-images/lotr-movie-poster.jpg "The Lord of the Rings film poster.")
 
 <br>
 
@@ -320,23 +320,22 @@ The initial colour scheme was chosen by uploading The Lord of the Rings film pos
 
 <br>
 
-<img src="documentation/readme-images/lord-of-the-rings-colour-palette.png" height="auto%" width="100%" alt="The Lord of the Rings Memory Game colour palette" />
-
+![alt text](documentation/readme-images/lord-of-the-rings-colour-palette.png "The Lord of the Rings Memory Game colour palette.")
 <sub>*Colour palette created at* [coolors.co](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff).</sub>
 
 During development it became necessary to expand the colour palette in order to provide visual contrast when the Mordor themed playing cards were chosen.
 *Bistre Brown*, #8B720E with white text was chosen for the Mordor playing cards when face up and black and gold were chosen for the back of the card design.
 
-<img src="documentation/readme-images/mordor-playing-cards-palette.png" height="auto%" width="100%" alt="The colour palette used for the Mordor playing cards pack." />
+![alt text](documentation/readme-images/mordor-playing-cards-palette.png "The colour palette used for the Mordor playing cards pack.")
 
 <sub>*Colour palette created at* [coolors.co](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff).</sub>
 
 #### Cards
 [SP-Studio](https://www.sp-studio.de/) was used to create the Lord of the Rings themed character images.
 
-<img src="documentation/readme-images/samwise-gamgee.jpg" height="auto%" width="100%" alt="Samwise Gamgee" />
+![alt text](documentation/readme-images/samwise-gamgee.jpg "Samwise Gamgee")
 
-<img src="documentation/readme-images/denethor.jpg" height="auto%" width="100%" alt="Denethor II" />
+![alt text](documentation/readme-images/denethor.jpg "Denethor II")
 
 #### Icons
 Icons were used alongside the text within the site in order to help the user to understand the content at a glance. 
@@ -347,29 +346,29 @@ a house was chosen for the Home button.
 *Uncial Antiqua* was initially chosen as the main heading font.  
 <br>
 
-<img src="documentation/readme-images/uncial-antiqua-title.png" height="auto%" width="100%" alt="Uncial Antiqua font example" />
+![alt text](documentation/readme-images/uncial-antiqua-title.png "Uncial Antiqua font example.")
 
 The complimentary font *Roboto Slab*, which was recommended by [Google Fonts](https://fonts.google.com/), 
 was chosen for the text used within the body of the site.  
 
-<img src="documentation/readme-images/roboto-slab-example.png" height="auto%" width="100%" alt="Roboto Slab font example" />
+![alt text](documentation/readme-images/roboto-slab-example.png "Roboto Slab font example.")
+
 
 When it came to creating the playing cards it was decided that a fan-made version of the actual font used for the Lord of the Rings film titles, *Ringbearer Medium* designed by Peter Klassen, was to be used for 
 the character names on the cards.  
 
-<img src="documentation/readme-images/frodo.png" height="auto%" width="100%" alt="Ringbearer Medium font example" />
-
+![alt text](documentation/readme-images/frodo.png "Frodo character card showing his name in Ringbearer Medium font.")
 
 Therefore in order to create visual unity that font was also used for titles within the site instead of *Uncial Antiqua*.  The font file was uploaded 
 to [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator)'s webfont generator and the webfont styles were stored in the assets folder along with the style.css file. 
 
-<img src="documentation/readme-images/ringbearer-medium-example.png" height="auto%" width="100%" alt="Ringbearer Medium font example" />
+![alt text](documentation/readme-images/ringbearer-medium-example.png "Ringbearer Medium font example")
 
 <br>
 
 The *one-ring-font* by [Gaut Fonts](https://www.fontspace.com/gaut-fonts) was used to create the ring design on the back of the Mordor Card Pack cards.
 
-<img src="documentation/readme-images/the-one-ring-font-example.png" height="auto%" width="100%" alt="Ringbearer Medium font example" />
+![alt text](documentation/readme-images/the-one-ring-font-example.png "Mordor Card back showing ring from One Ring Font")
 
 <br>
 
@@ -435,47 +434,46 @@ The project uses JQuery to simplify DOM manipulation.
 ## Testing
 To ensure that the site contains valid HTML, the HTML code was checked by direct input using the [W3C Markup Validation Service](https://validator.w3.org/).
 The site has no errors.
-<img src="documentation/readme-images/html-validator-no-errors.png" height="auto%" width="100%" alt="HTML Validator No Errors Returned" />
 
+![alt text](documentation/readme-images/html-validator-no-errors.png "HTML Validator No Errors Returned")
 <br>
 
 
 To check that the CSS file contained valid code it was inputted directly into the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).  
 The style.css file returned no errors.
-<img src="documentation/readme-images/css-validator-no-errors.png" height="auto%" width="100%" alt="CSS Validator No Errors Returned" />
 
+![alt text](documentation/readme-images/css-validator-no-errors.png "CSS Validator No Errors Returned")
 <br>
 
 
 To test the validity of the JavaScript [Espirima](https://esprima.org/demo/validate.html) was used to check for syntactical errors.
-<img src="documentation/readme-images/javascript-validator-no-errors.png" height="auto%" width="100%" alt="JavaScript Validator No Errors Returned" />
 
+![alt text](documentation/readme-images/javascript-validator-no-errors.png "JavaScript Validator No Errors Returned")
 <br>
 
 ### Performance
 Once completed the website was tested using the Google Chrome Developer Tools Lighthouse test. Initially the site received a 75% rating on performance, 
 largely due to the size of the images.
-<img src="documentation/readme-images/lighthouse-mobile-performance-1.png" height="auto%" width="100%" alt="Lighthouse Performance Results" />
 
+![alt text](documentation/readme-images/lighthouse-mobile-performance-1.png "Lighthouse Performance Results")
 <br>
 The images were then compressed using an online image compressor site, [Optimizilla](https://imagecompressor.com) and the new smaller images were then uploaded to the site. 
 The subsequent test results showed marked improvement.
-<img src="documentation/readme-images/lighthouse-mobile-performance-2.png" height="auto%" width="100%" alt="Lighthouse Performance Improved Results" />
 
+![alt text](documentation/readme-images/lighthouse-mobile-performance-2.png "Lighthouse Performance Improved Results")
 <br>
 
 The site performed well when tested for desktop viewing.
-<img src="documentation/readme-images/lighthouse-desktop-performance-3.png" height="auto%" width="100%" alt="Lighthouse Performance Desktop Results" />
-
+![alt text](documentation/readme-images/lighthouse-desktop-performance-3.png "Lighthouse Performance Desktop Results")
 <br>
 
 ### Responsiveness
 Web developer tools in each of the following browsers were used to ensure responsiveness and functionality of the site:
 
--Google Chrome
--Microsoft Edge
--Microsoft Opera
--Mozilla Firefox
+- Google Chrome
+- Microsoft Edge
+- Microsoft Opera
+- Mozilla Firefox
 
 Each website feature including, but not exclusive to, modals, buttons, game responses, mute, external links, hover effects etc. were manually checked within the 
 aforementioned browsers.
@@ -524,46 +522,51 @@ the site has been manually checked and found to function as desired on the follo
 As a new user I would like to be able to:
 
 &#9745; play a card-matching game presented in a visually appealing format.
-<img src="documentation/readme-images/visually-appealing-screenshot.png" height="auto%" width="100%" alt="Screenshot of game in progress, showing cute character images." />
+![alt text](documentation/readme-images/visually-appealing-screenshot.png "Screenshot of game in progress, showing cute character images.")
 
 <br>
 &#9745;  play a game which increases in complexity/challenge.
-<img src="documentation/readme-images/round-two-completed-on-ipad.png" height="auto%" width="100%" alt="Screenshot of round two of game completed on ipad." />
+
+![alt text](documentation/readme-images/round-two-completed-on-ipad.png "Screenshot of round two of game completed on ipad.")
 
 <br>
 &#9745; read the rules of the game.
-<img src="documentation/readme-images/instructions-modal-on-iphone.png" height="auto%" width="100%" alt="Screenshot of Instructions Modal on iphone." />
+
+![alt text](documentation/readme-images/instructions-modal-on-iphone.png "Screenshot of Instructions Modal on iphone.")
 
 <br>
 
 &#9745; navigate through the site with ease.
-<img src="documentation/readme-images/home-screen-showing-intuitive-icons.png" height="auto%" width="100%" alt="Home screen showing intuitive icons such as a house for the home button." />
+![alt text](documentation/readme-images/home-screen-showing-intuitive-icons.png "Home screen showing intuitive icons such as a house for the home button.")
 
 <br>
 
 &#9745; modify settings to suit my game-play requirements with regard to 
   - whether to play in-game audio
   - whether to play with the Fellowship Card Pack or the Mordor Card Pack.
-<img src="documentation/readme-images/opening-modal-showing-cardpack-choice.png" height="auto%" width="100%" alt="Opening modal showing cardpack choice." />
+![alt text](documentation/readme-images/opening-modal-showing-cardpack-choice.png "Opening modal showing cardpack choice.")
 
 <br>
 
 &#9745; receive regular, up-to-date feedback about how I am progressing in the game.
-<img src="documentation/readme-images/screenshot-showing-counters-and-timer.png" height="auto%" width="100%" alt="Screenshot showing counters and timer." />
+![alt text](documentation/readme-images/screenshot-showing-counters-and-timer.png "Screenshot showing counters and timer.")
 
 <br>
+
 &#9745; enjoy the experience of playing the game.
 
 &#9745; receive a visual reward for completing the game.
-<img src="documentation/readme-images/screenshot-prize-modal.png" height="auto%" width="100%" alt="Screenshot showing the prize modal with information about the character of Gimli the dwarf." />
+![alt text](documentation/readme-images/screenshot-prize-modal.png "Screenshot showing the prize modal with information about the character of Gimli the dwarf.")
 
 <br>
+
 &#9745; learn some interesting facts about The Lord of the Rings characters.
 
 &#9745; read some interesting quotes by the different Lord of the Rings characters.
-<img src="documentation/readme-images/opening-modal-on-iphone.png" height="auto%" width="100%" alt="Screenshot showing the opening modal with a quote by Gandalf." />
+![alt text](documentation/readme-images/opening-modal-on-iphone.png "Screenshot showing the opening modal with a quote by Gandalf.")
 
 <br>
+
 &#9745; improve my cognitive function.
 
 &#9745; improve my reaction times.
