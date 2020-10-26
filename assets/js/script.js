@@ -19,7 +19,7 @@ var fellowshipCardList = [
     {name:"Legolas", image:"legolas.png", cardBackImage:"green"},
     {name:"Boromir", image:"boromir.png", cardBackImage:"green"},
     {name:"Elrond", image:"elrond.png", cardBackImage:"green"},
-]
+];
 
 var mordorCardList = [
     {name:"Gollum", image:"gollum.png", cardBackImage:"black"},
@@ -30,7 +30,7 @@ var mordorCardList = [
     {name:"Khamúl", image:"nazgul.png", cardBackImage:"black"},
     {name:"Shagrat", image:"shagrat.png", cardBackImage:"black"},
     {name:"Gorbag", image:"gorbag.png", cardBackImage:"black"},
-]
+];
 
 
 // Audio Controller Constructor
@@ -108,7 +108,7 @@ class movesCounter {
         this.movesMade = 0;
         document.getElementById("movesCounter").textContent = this.movesMade;
     }
-};
+}
 
 
 //Pairs Counter Constructor
@@ -173,7 +173,7 @@ class Timer {
         this.time = resumeTime;
         this.startTimer();
     }
-};
+}
 
 
 //Card Constructor
@@ -181,7 +181,7 @@ class Card {
     constructor(name, image, cardBackImage, cardId) {
         this.name = name;
         this.image = image;
-        this.cardBackImage = cardBackImage
+        this.cardBackImage = cardBackImage;
         this.cardId = cardId;
         this.html = 
             `<div class="game-card unmatched" id="${this.cardId}" >
@@ -193,25 +193,25 @@ class Card {
                 </div>
             </div>`;
     }
-};
+}
 
 
 // Turn on modal
 function turnOn(modalId) {
     $(modalId).modal('show');
-};
+}
 
 
 // Turn off modal
 function turnOff(modalId) {
     $(modalId).modal('hide');
-};
+}
 
 
 // Freeze Board
 function freezeBoard(){
     $(".game-card").off("click");   
-};
+}
 
 
 // Time's Up
@@ -260,7 +260,7 @@ function makeDeck(num, array) {
     }
     shuffle(newDeck);
     return newDeck;
-};
+}
 
 
 // Shuffle Deck
@@ -351,9 +351,9 @@ function assignCards(audioPlayer){
             // Remove class 'matched' so that the first card can be selected again.
             else if (checkArray[0][0] !== cardName) {
                 moves.incrementMovesCounter();
-                $this = $(this)
+                $this = $(this);
                 otherCardId = checkArray[0][1];
-                let otherCardNumber = "#" + otherCardId
+                let otherCardNumber = "#" + otherCardId;
                 // Fix to stop the user clicking other cards while the setTimeout function is waiting was found on Stack Overflow
                 // https://stackoverflow.com/questions/56283681/js-memory-card-game-how-to-prevent-user-flipping-more-then-2-cards-at-the-same
                 isProcessing = true;
@@ -367,7 +367,7 @@ function assignCards(audioPlayer){
             }
         }
     });
-};
+}
 
 
 // On receiving the Home Button or the Begin Again Button message.
@@ -460,7 +460,7 @@ function writeToDocument(type) {
             if (prizeCharacter[key] == "" || prizeCharacter[key] == "NaN") {
                 delete prizeCharacter[key];
             }
-        };
+        }
         Object.keys(prizeCharacter).forEach(removeIfBlank);      
 
         // Draw the image of the Prize Character in the Modal
@@ -468,7 +468,7 @@ function writeToDocument(type) {
             
         for (let [key, value] of Object.entries(prizeCharacter)) {
             if (key !== "name" && key !== "_id" && key !== "wikiUrl") {
-                el.innerHTML += `<div><span class="text-uppercase">${key}:</span> ${value}</div>`
+                el.innerHTML += `<div><span class="text-uppercase">${key}:</span> ${value}</div>`;
             }
             if (key == "wikiUrl") {
                 el.innerHTML += `<div>For more indepth information, click <a href="${value}" target="_blank">here </a>to go to ${prizeCharacter["name"]}'s dedicated page on <em>The One Wiki To Rule Them All</em>.</div>`
@@ -495,3 +495,4 @@ $(document).ready(function(){
     // FOR TESTING
     $("#homeModal").modal("show");
 });
+

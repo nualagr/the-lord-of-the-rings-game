@@ -1,5 +1,5 @@
 <h1 align="center">The Lord of the Rings Memory Game</h1>
-<img src="documentation/readme-images/lotr-responsive-screenshot.png" height="auto" width="100%" alt="Mockup of The Lord of the Rings Memory Game index.html page when viewed on a desktop, tablet and mobile device." />
+<img src="documentation/readme-images/amiresponsive-mockup.png" height="auto" width="100%" alt="Mockup of The Lord of the Rings Memory Game index.html page when viewed on a desktop, tablet and mobile device." />
 
 <sub>*Created using* [Am I Responsive](http://ami.responsivedesign.is/)</sub>
 <br>
@@ -20,7 +20,7 @@ The main requirements were to create a dynamic, interactive and responsive websi
 responses to the users' actions. Users should be able to actively engage with the data, alter the way the site 
 displays the information in order achieve their goals. 
 
-Click <a href="https://nualagr.github.io/lotr/">here</a> to play the game online.
+Click <a href="https://nualagr.github.io/the-lord-of-the-rings-game/">here</a> to play the game online.
 <br>
 
 ## **Table of Contents**
@@ -199,7 +199,7 @@ A ring **favicon**, displayed on the web brower's tab, allows the user to identi
 
 The **Title**, displayed on the web browser's tab at all times, clearly identifies the site as a *Lord of the Rings* themed memory game.
 
-**Opening Modal** - Outlines the rules of the game and explains what is needed in order to advance to the next level.
+**Opening Modal** - Provides the user with a choice of themed playing cards.
 
 **Playing Cards** - The playing cards, 8 (round one), 12 (round two) or 16 (round three) are displayed face down in a grid formation.  A uniform
 back-of-card image makes it obvious to the user that the cards are face down.
@@ -211,12 +211,14 @@ They provide the user with visually pleasing and easily differentiated images to
 - when the game starts, 
 - when they click on a card, 
 - when a match is successful, 
-- when a match is not successful and 
-- when the game is over.
+- when a match is not successful and the cards flip back over,
+- when a level has successfully been completed,
+- when the player has successfully completed the game,
+- if the player runs out of time and the game is over.
 
 **Pairs Counter** - provides the user with a visual score of the number of pairs they have matched within a given round.
 
-**Clicks Counter** - provides the user with a visual score of the number of clicks they have used so far within a given round.
+**Moves Counter** - provides the user with a visual score of the number of clicks they have used so far within a given round.
 
 **Count Down Timer** - provides the user with a visual representation of the game-play time left in the current round.
 
@@ -228,9 +230,9 @@ They provide the user with visually pleasing and easily differentiated images to
 
 **Failure Modal** - alerts the user to the fact that they did no complete the round in the given timeframe.  A **Restart** button allows them to start a new game immediately.
 
-**Completion Modal** - pop up window congratulates the user at the end of Round Three and provides them with their **Score** (calculated by adding the seconds unused to the number of clicks left out of 100) and provides them with a **Prize Button** which opens a visual prize modal.
+**Completion Modal** - pop up window congratulates the user at the end of Round Three and provides them with a **Prize Button** which opens a visual prize modal.
 
-**Character Information Modal** - Modal which contains a random character image and information (name, species, place of birth, etc.) and a quote from the character.
+**Character Information Modal** - Modal which contains a random character image and information (gender, place of birth, etc.) about the character.
 
 A **footer** contains **social media** links to:
 
@@ -245,7 +247,7 @@ A **footer** contains **social media** links to:
 
 A **highest score board** would allow players to compete with other users in an asynchronous fashion.
 
-A **themed playing environment**. Expand the range of characters and allow users to choose whether to play for Sauron or The Fellowship. Change the font, colour-scheme and music accordingly. 
+A **themed playing environment**. Expand the range of characters. Change the font, colour-scheme and add different in-game background music accordingly. 
 
 <br>
 
@@ -352,11 +354,29 @@ was chosen for the text used within the body of the site.
 <img src="documentation/readme-images/roboto-slab-example.png" height="auto%" width="100%" alt="Roboto Slab font example" />
 
 When it came to creating the playing cards it was decided that a fan-made version of the actual font used for the Lord of the Rings film titles, *Ringbearer Medium* designed by Peter Klassen, was to be used for 
-the character names on the cards.  Therefore in order to create visual unity that font was also used for titles within the site instead of *Uncial Antiqua*.  The font file was uploaded 
+the character names on the cards.  
+
+<img src="documentation/readme-images/frodo.png" height="auto%" width="100%" alt="Ringbearer Medium font example" />
+
+
+Therefore in order to create visual unity that font was also used for titles within the site instead of *Uncial Antiqua*.  The font file was uploaded 
 to [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator)'s webfont generator and the webfont styles were stored in the assets folder along with the style.css file. 
 
-The original elvish font used for the writing on the ring in The Lord of the Rings films, *tengwarg* was used within Inkscape in order
-to create the circle design for the back of the Mordor Card Pack.
+<img src="documentation/readme-images/ringbearer-medium-example.png" height="auto%" width="100%" alt="Ringbearer Medium font example" />
+
+<br>
+
+The *one-ring-font* by [Gaut Fonts](https://www.fontspace.com/gaut-fonts) was used for creating the ring design on the back of the Mordor Card Pack cards.
+
+<img src="documentation/readme-images/the-one-ring-font-example.png" height="auto%" width="100%" alt="Ringbearer Medium font example" />
+
+<br>
+
+##### back to [top](#table-of-contents)
+---
+
+## Development
+
 <br>
 
 ##### back to [top](#table-of-contents)
@@ -377,51 +397,113 @@ For each, provide its name, a link to its official site and a short sentence of 
   * [Code Institute](https://codeinstitute.net/). Used to review concepts covered in preceding modules and walk-through projects. 
   * [Coolors](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff). Used to choose a colour scheme.
   * [Font Awesome](https://fontawesome.com/). Used to source the free icons that were used for the social media links in the footer and for the mute icon.
+  * [Font Space](https://fontspace.com/).  Used to source the One Ring Font used to create the design on the back of the Mordor pack playing cards.
   * [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator). Used to create the Web Font Kit for the Ringbearer font.
   * [Google Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools). Used extensively throughout the project to test the responsiveness of elements, to target and apply CSS styles during the design phase and to test the site's performance once built. 
   * [Google Fonts](https://fonts.google.com/). Used to choose and source the fonts used throughout the site.
   * [Github](https://github.com/). Used to host the deployed site and used as a respository for all previous versions of the build.
   * [Gitpod](https://www.gitpod.io/). Online IDE used to build and develop the website.
   * [jQuery](https://jquery.com/). The JavaScript library was used to traverse the DOM tree, event handling and CSS animation.
-  * [Optimizilla](https://imagecompressor.com/). Used during the testing phase in order to compress the photographs to reduce the site loading time.
+  * [Optimizilla](https://imagecompressor.com/). Used to compress the images to improve site loading times.
   * [Slack](code-institute-room.slack.com). Used during all phases of development and testing to find the answers to questions and the solutions to problems enountered.
   * [SP-Studio](https://www.sp-studio.de/).  Used to create the Lord of the Rings themed character images.
   * [Stack Overflow](https://stackoverflow.com/). Used to search for the answers to problems encountered during the development and testing of the website.
   * [TinyPNG](https://tinypng.com/). Used to compress the images to improve site loading times.
   * [Vectorstock](https://www.vectorstock.com/). Used to source the White Tree of Gondor image used for the back of the game cards.
   * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/validator). Used to validate the CSS file.
-  * [W3C HTML Validation Service](https://validator.w3.org/#validate_by_uri). Used to validate the HTML files.
+  * [W3C HTML Validation Service](https://validator.w3.org/). Used to validate the HTML files.
 
 - Frameworks
   * [Bootstrap Framework](https://getbootstrap.com/). Used to structure the website layout and ensure that it was responsive on all devices.
   * [Jasmine](https://en.wikipedia.org/wiki/Jasmine_(JavaScript_testing_framework)). JavaScript testing framework used to create the testing suite.
 
 - APIs
-  * [The Lord of the Rings API](https://the-one-api.dev/). Used to source the character information and quotes displayed during game play.
+  * [The Lord of the Rings API](https://the-one-api.dev/). Used to source the character information displayed as a prize upon completion of level three.
 
 - Apps:
   * [Balsamiq](https://balsamiq.com/). Used to create the project wireframes.
-  * [Inkscape](https://inkscape.org/). Used to edit the FontAwesome ring icons that was used as the Favicon.
+  * [Inkscape](https://inkscape.org/). Used to edit the FontAwesome ring icon that was used as the Favicon.
 
 ##### back to [top](#table-of-contents)
 ---
 
 ## JQuery
 The project uses JQuery to simplify DOM manipulation.
+
 ## Testing
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+Google Chrome Developer Tools were used extensively throughout the development process in order to test whether elements were responsive when 
+viewed on mobile and tablet devices. When problems were encountered the Device Selector was used to target the element. Using the Elements Panel in Developer Tools the code in question was altered in order to achieve the desired result. Working code snippets were then replicated in the style.css file in Gitpod. 
+Other solutions for errors were found in the Code Institute Slack channels, on Stack Overflow and on W3Schools.
 
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
 
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
+To ensure that the site contains valid HTML, the HTML code was checked by direct input using the [W3C Markup Validation Service](https://validator.w3.org/).
+The site has no errors.
+<img src="documentation/readme-images/html-validator-no-errors.png" height="auto%" width="100%" alt="HTML Validator No Errors Returned" />
 
-Contact form:
-Go to the "Contact Us" page
-Try to submit the empty form and verify that an error message about the required fields appears
-Try to submit the form with an invalid email address and verify that a relevant error message appears
-Try to submit the form with all inputs valid and verify that a success message appears.
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+<br>
 
+
+To check that the CSS file contained valid code it was inputted directly into the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).  
+The style.css file returned no errors.
+<img src="documentation/readme-images/css-validator-no-errors.png" height="auto%" width="100%" alt="CSS Validator No Errors Returned" />
+
+<br>
+
+
+To test the validity of the JavaScript [Espirima](https://esprima.org/demo/validate.html) was used to check for syntactical errors.
+<img src="documentation/readme-images/javascript-validator-no-errors.png" height="auto%" width="100%" alt="JavaScript Validator No Errors Returned" />
+
+<br>
+
+Performance
+Once completed the website was tested using the Google Chrome Developer Tools Lighthouse test. Initially the site received a 75% rating on performance, 
+largely due to the size of the images.
+<img src="documentation/readme-images/lighthouse-mobile-performance-1.png" height="auto%" width="100%" alt="Lighthouse Performance Results" />
+
+<br>
+The images were then compressed using an online image compressor site, [Optimizilla](https://imagecompressor.com/), and the new smaller images were then uploaded to the site. 
+The subsequent test results showed marked improvement.
+<img src="documentation/readme-images/lighthouse-mobile-performance-2.png" height="auto%" width="100%" alt="Lighthouse Performance Improved Results" />
+
+<br>
+
+The site performed well when tested for desktop viewing.
+<img src="documentation/readme-images/lighthouse-desktop-performance-3.png" height="auto%" width="100%" alt="Lighthouse Performance Desktop Results" />
+
+<br>
+
+To ensure the site's functionality across various devices, I used the web developer tools inspection feature of each of the following browsers:
+
+Google Chrome
+Mozilla Firefox
+Microsoft Opera
+Microsift Edge
+For each browser, I checked the preview of each of the site's pages for the following devices, in both vertical and horizontal views for mobile devices:
+
+Kindle Fire HDX
+Laptop with HiDPI screen
+Laptop with MDPI screen
+Laptop with touch
+Moto G4
+Galaxy S5
+Pixel 2
+Pixel 2XL
+iPhone 5/SE
+iPhone 6/7/8
+iPhone 6/7/8 plus
+iPhone X
+iPad
+iPad Pro
+Surface Duo
+Galaxy Fold
+
+I manually checked all the pages and features of the website (i.e. navigation, links external and internal, buttons, hover effects, game) 
+across all device simulations that each browser offers.
+
+In addition to checking the application's functionality using browser developer tools, 
+the site has been manually checked and found to function as desired on the following devices:
+
+Laptops:
 
 
 ### Bugs
@@ -492,55 +574,24 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 ## Credits
 ### Content
-*The text for section Y was copied from the Wikipedia article Z*
+The [Boostrap Modal component](https://getbootstrap.com/docs/4.0/components/modal/) was used and modified for each of the modals on the site.
+
+
+
 ### Media
-*The photos used in this site were obtained from ...*
-
-Font Awesome icons used: 
-<i class="fas fa-ring"></i>
-
-<i class="fas fa-volume-mute"></i>
-
-<i class="fas fa-volume-up"></i>
-
-<i class="fas fa-question"></i>
-
-<i class="fab fa-facebook-f"></i>
-
-<i class="fab fa-instagram"></i>
-
-<i class="fab fa-twitter"></i>
-
-<i class="fas fa-home"></i>
 
 ### Images
-- Forest background from [Vecteezy](https://www.vecteezy.com/vector-art/224401-vector-cartoon-landscape-illustration).
-
-- Mountain and river background from [Vecteezy](https://www.vecteezy.com/vector-art/171288-free-hand-drawn-vector-landscape-illustration).
-
-- Grey foret and mountian from [Vecteezy]](https://www.vecteezy.com/vector-art/229817-vector-beautiful-landscape-illustration)
-
-- A flat natural landscape from [Vecteezy](https://www.vecteezy.com/vector-art/296664-a-flat-nature-landscape)
-
-- Nature scene with dark sky over volcano from [Vecteezy](https://www.vecteezy.com/vector-art/669093-nature-scene-with-dark-sky-over-volcano)
-
-- Path through fields from [Vecteezy](https://www.vecteezy.com/vector-art/303633-nature-hill-landscape-vector)
-
-- Hot desert landscape from [Vecteezy](https://www.vecteezy.com/vector-art/300455-a-hot-desert-landscape)
-
-- Unique Martian landscape from [Vecteezy](https://www.vecteezy.com/vector-art/187145-unique-martian-landscape-vectors)
-
-- Stones, river, trees, mountains from [Vecteezy](https://www.vecteezy.com/vector-art/297137-a-nature-green-landscape)
-
-- White Tree of Gondor [Vectorstock](https://www.vectorstock.com/royalty-free-vector/white-tree-gondor-isolated-black-and-white-eps-vector-27150646)
+- Grey forest and mountain from [Vecteezy](https://www.vecteezy.com/vector-art/229817-vector-beautiful-landscape-illustration) was used for the 404.html page background.
+- White Tree of Gondor [Vectorstock](https://www.vectorstock.com/royalty-free-vector/white-tree-gondor-isolated-black-and-white-eps-vector-27150646) was used for the back of the Fellowship playing cards.
+- The character images on each of the playing cards were created using [SP-Studio](https://www.sp-studio.de/).
 <br>
 
 ### Sounds
-- Card flipping sound from [ZapSplat](https://www.zapsplat.com/?s=playing+card&post_type=music&sound-effect-category-id=)
-- Game Monopoly game card pack place donw on playing board 2 used for unmatched cards turning from [ZapSplat](https://www.zapsplat.com/page/3/?s=playing+card&post_type=music&sound-effect-category-id)
-- Playing card on top of deck turn over used for card flipping sound [ZapSplat](https://www.zapsplat.com/page/4/?s=playing+card&post_type=music&sound-effect-category-id)
-- Cartoon success fanfare used for Congratulations Modal opening from [ZapSplat](https://www.zapsplat.com/?s=success&post_type=music&sound-effect-category-id=)
-- Cartoon musical accent clarinet oboe fail descending used for Game Over Modal [ZapSplat](https://www.zapsplat.com/?s=failure&post_type=music&sound-effect-category-id=)
+- Game Monopoly game card pack place down on playing board 2, used for unmatched cards turning from [ZapSplat](https://www.zapsplat.com/page/3/?s=playing+card&post_type=music&sound-effect-category-id).
+- Playing card on top of deck turn over, used for card flipping sound [ZapSplat](https://www.zapsplat.com/page/4/?s=playing+card&post_type=music&sound-effect-category-id).
+- Cartoon success fanfare, used for Congratulations Modal opening from [ZapSplat](https://www.zapsplat.com/?s=success&post_type=music&sound-effect-category-id=).
+- Cartoon musical accent clarinet oboe fail descending, used for Game Over Modal [ZapSplat](https://www.zapsplat.com/?s=failure&post_type=music&sound-effect-category-id=).
+- Multimedia game musical success complete orchestral horns 001, used for Advance Level Modals [ZapSplat](https://www.zapsplat.com/my_list/milikansama-list-1594971790/).
 ##### back to [top](#table-of-contents)
 ---
 

@@ -57,10 +57,6 @@ body.hide-scrollbar {
 }
 
 /*----------------------------------Special paddings/margins/text*/
-.quote {
-    font-style: italic;
-}
-
 .modal-header, 
 .modal-body,
 .modal-footer {
@@ -89,6 +85,10 @@ p {
     text-align: center;
     font-weight: 500;
     font-size: 1em;
+}
+
+.quote {
+    font-style: italic;
 }
 
 .row {
