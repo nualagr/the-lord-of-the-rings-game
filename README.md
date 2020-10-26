@@ -91,15 +91,15 @@ As a returning user I would like to be able to:
 - play a simple card-matching game presented in a visually appealing format.
 - play a game which increases in complexity/challenge.
 - receive different visual rewards for completing the game on subsequent attempts.
-- view and match themed images of The Lord of the Rings characters.
+- view and match themed images of *The Lord of the Rings* characters.
 - navigate through the site with ease.
 - modify settings to suit my game-play requirements with regard to 
-  - whether I want in-game sound effect
+  - whether I want in-game sound effects
   - whether I want to play with the Fellowship Card Pack or the Mordor Card Pack.
 - receive regular, up-to-date feedback about how I am progressing in the game.
 - enjoy the experience of playing the game.
-- be exposed to interesting facts about The Lord of the Rings characters.
-- read some interesting quotes by The Lord of the Rings characters.
+- be exposed to interesting facts about *The Lord of the Rings* characters.
+- read some interesting quotes by *The Lord of the Rings* characters.
 - improve my cognitive function.
 - improve my reaction times.
 
@@ -107,11 +107,11 @@ As a returning user I would like to be able to:
 
 As a Lord of the Rings fan I would like to be able to:
 
-- view and match themed images of The Lord of the Rings characters.
+- view and match themed images of *The Lord of the Rings* characters.
 - enjoy the experience of playing the game.
 - receive a visual reward for completing the game.
 - be exposed to interesting facts about different Lord of the Rings characters.
-- read some interesting quotes by The Lord of the Rings characters.
+- read some interesting quotes by *The Lord of the Rings* characters.
 
 #### Site Owner
 As the owner of The Lord of the Rings Memory Game site I would like:
@@ -125,8 +125,8 @@ As the owner of The Lord of the Rings Memory Game site I would like:
 - to provide site users with a website that is easy to navigate.
 - to provide site users with the ability to tailor their game experience by including the ability to turn the audio component off if desired
 and to choose to play with either the Fellowship Card Pack or the Mordor Card Pack. 
-- to expose site users to interesting facts and quotes from The Lord of the Rings 
-books with a view to sharing my love of the Trilogy and instilling a curiosity in those who 
+- to expose site users to interesting facts and quotes from *The Lord of the Rings* 
+books with a view to sharing my love of the trilogy and instilling a curiosity in those who 
 have not yet read the books. 
 - to provide users with links to other websites, social media sites and *The One Wiki to Rule them All* where they can access further information
 about *The Lord of the Rings* trilogy and connect with other fans of the books and films.
@@ -141,7 +141,7 @@ about *The Lord of the Rings* trilogy and connect with other fans of the books a
 The User Centered Design process started with the creation of the User Stories.  These influenced subsequent feature, layout and design decisions.
 
 The main  goal of the website is to provide users with an engaging game. 
-The perceived audience of this site are fans of The Lord of the Rings Trilogy, teenagers and younger children who want to play a fun game or compete against 
+The perceived audience of this site are fans of *The Lord of the Rings Trilogy*, teenagers and younger children who want to play a fun game or compete against 
 each other or people who want to improve their memory and/or reaction times.
 
 The site has been designed to provide minimal, but relevant, content that is easy to comprehend and that satisfies the needs of both the users and the site owner. 
@@ -210,13 +210,15 @@ They provide the user with visually pleasing and easily differentiated images to
 - when a match is not successful and the cards flip back over,
 - when a level has successfully been completed,
 - when the player has successfully completed the game,
-- if the player runs out of time and the game is over.
+- if the player runs out of time and the game is over.  
+
+**Instructive subheading**  - located above the game board, this line succinctly explains the aim of the game to the user, "Find pairs of characters under the cards".
 
 **Pairs Counter** - provides the user with a visual score of the number of pairs they have matched within a given round.
 
 **Moves Counter** - provides the user with a visual score of the number of clicks they have used so far within a given round.
 
-**Count Down Timer** - provides the user with a visual representation of the game-play time left in the current round.
+**Count Down Timer** - provides the user with a visual representation of the game-play time remaining in the current round.
 
 **Mute sound effects button** - allows the user to turn off in-game sound effects.
 
@@ -228,7 +230,8 @@ They provide the user with visually pleasing and easily differentiated images to
 
 **Completion Modal** - pop up window congratulates the user at the end of Round Three and provides them with a **Prize Button** which opens a visual prize modal.
 
-**Character Information Modal** - Modal which contains a random character image and information (gender, place of birth, etc.) about the character.
+**Character Information Modal** - This modal, the visual prize, is populated with information on the last card matched in the game.  
+It contains the ingame character image and information (gender, place of birth, etc.) drawn from *The One API*.
 
 A **footer** contains **social media** links to:
 
@@ -325,17 +328,16 @@ The initial colour scheme was chosen by uploading The Lord of the Rings film pos
 <br>
 
 ![alt text](documentation/readme-images/lord-of-the-rings-colour-palette.png "The Lord of the Rings Memory Game colour palette.")
-<sub>*Colour palette created at* [coolors.co](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff).</sub>
+
 
 During development it became necessary to expand the colour palette in order to provide visual contrast when the Mordor themed playing cards were chosen.
 *Bistre Brown*, #8B720E with white text was chosen for the Mordor playing cards when face up and black and gold were chosen for the back of the card design.
 
 ![alt text](documentation/readme-images/mordor-playing-cards-palette.png "The colour palette used for the Mordor playing cards pack.")
 
-<sub>*Colour palette created at* [coolors.co](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff).</sub>
 
 #### Cards
-[SP-Studio](https://www.sp-studio.de/) was used to create the Lord of the Rings themed character images.
+[SP-Studio](https://www.sp-studio.de/) was used to create *The Lord of the Rings* themed character images.
 
 ![alt text](documentation/readme-images/samwise-gamgee.jpg "Samwise Gamgee")
 
@@ -393,10 +395,46 @@ Working code snippets were then replicated in the style.css file in Gitpod.
 Other solutions for errors were found in the Code Institute Slack channels, on Stack Overflow and on W3Schools.
 
 When it came to the interactive aspect of the project my mentor, Mr. Reuben Ferrante, suggested starting with the logic regarding the addition of extra rows 
-of cards with the progression of each round.  As this is a single-page site and the opening modal would not obscure the page behind the initial two rows of 
-four cards were created in the HTML page.  The addition of the next row of cards was created in the script.js file by cloning row 2 of the initial board.  
+of cards with the progression of each round.  As this is a single-page site and the opening modal does not obscure the page behind, the initial two rows of 
+four cards are created in the HTML page.  The addition of the next row of cards is created in the *script.js* file by cloning row 2 of the initial board. 
 A class of 'extra-row' is added to this new row in order to allow for easy deletion if the player runs out of time or presses the restart button.
 
+**Game Logic**
+When the player makes their initial choice of card pack the *packChoice* function calls the *assignCards* function.  
+This in turn calls the *makeDeck* function which creates a smaller array of cards from the full deck.  It's length is calculated by halving the number of divs to be filled. 
+The *makeDeck* function uses the Card class to create a pair of each cards with differing ids, so that they can be differentiated later and cannot be matched with themselves.  
+The *shuffle* function is called to randomize the order of the cards. The *assignCards* function then continues and assigns the cards to the empty divs.
+
+The countdown clock starts immediately when the the cards have been assigned.  
+
+When the user clicks on a div an *if* statement checks whether *isProcessing* is false.  
+This is to ensure that two cards have not already been turned up and are in the process of being compared.  
+If *isProcessing* is false the function continues.
+The class of 'unmatched' is removed from the div in order to remove the event listener and prevent the card from responding to a further click.
+The front of the card image is revealed to the user and a 'flip' sound effect is played to give the user auditory feedback.  
+The *incrementMoves* method adds one to the Moves Counter. 
+If the *checkArray* global variable is an empty array then the card is the first to be clicked and is added to the array.  
+
+If the array has a card in it then the cards are compared using the card 'name' and 'id'.  
+
+If the cards match, the *incrementPairs* method increases the Pairs Counter by one and the *incrementMoves* method increases the Moves Counter by one. 
+A 'bell chime' sound indicates to the user that a successful match has been made. 
+The Matching cards are left face-up, the class of 'matched' is applied to the divs, which removes the click functionality from the divs.  
+At this point, *if* and *else if* statements check whether the round is complete and whether the game is over and turn on the corresponding modals accordingly.
+If the round or game is not over the *checkArray* is emptied and the game continues.
+
+If the cards do not match the *incrementMoves* method adds one to the Moves Counter. 
+The *checkArray* is cleared, the 'face-up' class is removed from the divs and an 'unflip' sound is played.            
+A one second delay was applied to the comparison through the use of a *setTimeout* function so that the second card face would be revealed to the user before being placed back in a face-down position.
+
+**API Call**
+If the user successfully completes the game in the allotted timeframe the *Congratulations* modal appears and the 'winner.mp3' sound is played.
+At this point the API call is made and the relevant information relating to the character on the final card that was matched is written to the *Prize Modal*.
+The *Congratulations Modal* contains the button which calls the *Prize Modal*.
+Once opened the user is presented with the final character's ingame image along with information ranging from the character's height, race, gender, birth, spouse, death, 
+realm, hair-colour and a link to their dedicated page on *The One Wiki to Rule them All*, if one exists.
+As this information varies from character to character the *removeIfBlank* function within the *getData* function removes any key value pairs that contain an empty string or 'NaN'.
+The user is presented only with the entries that contain data.
 
 <br>
 
@@ -743,6 +781,7 @@ The [Boostrap Modal component](https://getbootstrap.com/docs/4.0/components/moda
 ### Sounds
 - Game Monopoly game card pack place down on playing board 2, used for unmatched cards turning from [ZapSplat](https://www.zapsplat.com/page/3/?s=playing+card&post_type=music&sound-effect-category-id).
 - Playing card on top of deck turn over, used for card flipping sound [ZapSplat](https://www.zapsplat.com/page/4/?s=playing+card&post_type=music&sound-effect-category-id).
+- Multimedia alert bell chime notification metallic high pitched sound, used to indicate that cards have been matched, from [ZapSplat](https://www.zapsplat.com/music/bell-chime-notification-high-pitched-metallic-good-for-apps-games-and-other-ui-3/)
 - Cartoon success fanfare, used for Congratulations Modal opening from [ZapSplat](https://www.zapsplat.com/?s=success&post_type=music&sound-effect-category-id=).
 - Cartoon musical accent clarinet oboe fail descending, used for Game Over Modal [ZapSplat](https://www.zapsplat.com/?s=failure&post_type=music&sound-effect-category-id=).
 - Multimedia game musical success complete orchestral horns 001, used for Advance Level Modals [ZapSplat](https://www.zapsplat.com/my_list/milikansama-list-1594971790/).
