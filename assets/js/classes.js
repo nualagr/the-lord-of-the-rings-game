@@ -2,12 +2,12 @@
 class AudioController {
     constructor() {
         this.mute = mute;
-        this.flipSound = new Audio("assets/audio/card-flip.mp3");
-        this.unflipSound = new Audio("assets/audio/unflip.mp3");
-        this.cardsMatchSound = new Audio("assets/audio/cards-match.mp3");
-        this.levelCompleteSound = new Audio("assets/audio/level-complete.mp3");
-        this.gameOverSound = new Audio("assets/audio/game-over.mp3");
-        this.congratsSound = new Audio("assets/audio/winner.mp3");
+        this.flipSound = new Audio(baseDir + "card-flip.mp3");
+        this.unflipSound = new Audio(baseDir + "unflip.mp3");
+        this.cardsMatchSound = new Audio(baseDir + "cards-match.mp3");
+        this.levelCompleteSound = new Audio(baseDir + "level-complete.mp3");
+        this.gameOverSound = new Audio(baseDir + "game-over.mp3");
+        this.congratsSound = new Audio(baseDir + "winner.mp3");
     }
 
     muted(){

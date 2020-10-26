@@ -26,10 +26,10 @@ function timeUp(){
 
 // User Card Pack Choice from Opening Modal
 function packChoice(pack){
-    if (pack == "fellowship") {
+    if (pack === "fellowship") {
         chosenCardList = fellowshipCardList;
     }
-    else if (pack == "mordor") {
+    else if (pack === "mordor") {
         chosenCardList = mordorCardList;
     }
     assignCards(audio);
@@ -106,11 +106,10 @@ function assignCards(audioPlayer){
         else {
             // Two cards have been selected. So lock the ability to click any other card
             // check and see whether the cards match
-
+            var otherCardId = checkArray[0][1];
             // If the card the same name but a different id add one to the moves counter add one to the Pairs counter, remove the class 'unmatched', add the class 'matched', remove the ability to turn the matched cards.
             if (checkArray[0][0] === cardName && checkArray[0][1] !== cardId) {
-                moves.incrementMovesCounter();
-                var otherCardId = checkArray[0][1];
+                moves.incrementMovesCounter();              
                 pairs.incrementPairsCounter();
                 audioPlayer.cardsMatch();
                 $("#" + otherCardId).addClass("matched");
@@ -133,7 +132,9 @@ function assignCards(audioPlayer){
                         audioPlayer.levelUp();
                     } 
                     else if (cardSlots.length === 16){
+                        // Make the API request with regard to this character.
                         chosenAPICharacter = checkArray[0];
+                        // Write the information received from the API to the Prize Modal
                         writeToDocument('character');
                         checkArray.splice(0, 1); 
                         turnOn("#congratulationsModal");
@@ -154,7 +155,6 @@ function assignCards(audioPlayer){
             else if (checkArray[0][0] !== cardName) {
                 moves.incrementMovesCounter();
                 $this = $(this);
-                otherCardId = checkArray[0][1];
                 let otherCardNumber = "#" + otherCardId;
                 // Fix to stop the user clicking other cards while the setTimeout function is waiting was found on Stack Overflow
                 // https://stackoverflow.com/questions/56283681/js-memory-card-game-how-to-prevent-user-flipping-more-then-2-cards-at-the-same
@@ -235,7 +235,7 @@ function getData(type, cb){
     xhr.send();
 
     xhr.onreadystatechange = function(){
-        if (this.readyState == 4 && this.status == 200){
+        if (this.readyState === 4 && this.status === 200){
             cb(JSON.parse(this.responseText));
             //FOR TESTING
             //document.getElementById("prizeModalContent").innerHTML=this.responseText;
@@ -251,15 +251,15 @@ function writeToDocument(type) {
 
     getData(type, function(data){
         data = data.docs;
-        prizeCharacter = data.find(element => element["name"] == chosenAPICharacter[0]);
+        prizeCharacter = data.find(element => element["name"] === chosenAPICharacter[0]);
         //FOR TESTING
-        //prizeCharacter = data.find(element => element["name"] == "Isildur");
+        //prizeCharacter = data.find(element => element["name"] === "Isildur");
         prizeImage = chosenAPICharacter[2];
         //FOR TESTING
         //prizeImage = "assets/images/isildur.png";
 
         function removeIfBlank(key) {
-            if (prizeCharacter[key] == "" || prizeCharacter[key] == "NaN") {
+            if (prizeCharacter[key] === "" || prizeCharacter[key] === "NaN") {
                 delete prizeCharacter[key];
             }
         }
@@ -272,7 +272,7 @@ function writeToDocument(type) {
             if (key !== "name" && key !== "_id" && key !== "wikiUrl") {
                 el.innerHTML += `<div><span class="text-uppercase">${key}:</span> ${value}</div>`;
             }
-            if (key == "wikiUrl") {
+            if (key === "wikiUrl") {
                 el.innerHTML += `<div>For more indepth information, click <a href="${value}" target="_blank">here </a>to go to ${prizeCharacter["name"]}'s dedicated page on <em>The One Wiki To Rule Them All</em>.</div>`
             }
         }

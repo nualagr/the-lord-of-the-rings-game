@@ -9,6 +9,8 @@ var chosenAPICharacter = [];
 // API baseURL
 const baseURL = "https://the-one-api.dev/v2/";
 
+// Audio base directory
+const baseDir = "assets/audio/";
 
 // Card List Information
 const fellowshipCardList = [

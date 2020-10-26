@@ -382,6 +382,7 @@ The *one-ring-font* by [Gaut Fonts](https://www.fontspace.com/gaut-fonts) was us
 ---
 
 ## Development
+
 During the first mentor session it became apparent that the wireframes and the project outline did not fully fulfil the Milestone 2 project specification
 in that the user was not able to alter their playing environment other than by muting the ingame sounds. Therefore it was decided to add a second pack of
 playing cards and allow the user to choose between the Fellowship characters or the Mordor characters when playing the game.
@@ -400,6 +401,7 @@ four cards are created in the HTML page.  The addition of the next row of cards 
 A class of 'extra-row' is added to this new row in order to allow for easy deletion if the player runs out of time or presses the restart button.
 
 **Game Logic**
+
 When the player makes their initial choice of card pack the *packChoice* function calls the *assignCards* function.  
 This in turn calls the *makeDeck* function which creates a smaller array of cards from the full deck.  It's length is calculated by halving the number of divs to be filled. 
 The *makeDeck* function uses the Card class to create a pair of each cards with differing ids, so that they can be differentiated later and cannot be matched with themselves.  
@@ -428,6 +430,7 @@ The *checkArray* is cleared, the 'face-up' class is removed from the divs and an
 A one second delay was applied to the comparison through the use of a *setTimeout* function so that the second card face would be revealed to the user before being placed back in a face-down position.
 
 **API Call**
+
 If the user successfully completes the game in the allotted timeframe the *Congratulations* modal appears and the 'winner.mp3' sound is played.
 At this point the API call is made and the relevant information relating to the character on the final card that was matched is written to the *Prize Modal*.
 The *Congratulations Modal* contains the button which calls the *Prize Modal*.
@@ -436,6 +439,16 @@ realm, hair-colour and a link to their dedicated page on *The One Wiki to Rule t
 As this information varies from character to character the *removeIfBlank* function within the *getData* function removes any key value pairs that contain an empty string or 'NaN'.
 The user is presented only with the entries that contain data.
 
+
+**Refactoring**
+Refactoring of the code happened throughout the development process.  
+
+Notable improvements include the use of classes for the creation of the Cards, the Audio Controller,
+the Moves Counter, the Pairs Counter and the Timer.
+
+During Mentor Session 2 it was recommended that the JavaScript code be split into four separate files in order to make the code easier to work with and to manage.
+The code has since been separated into: 'constants.js', 'classes.js', 'helpers.js' and 'script.js'.  
+ 
 <br>
 
 ##### back to [top](#table-of-contents)
@@ -707,6 +720,7 @@ about *The Lord of the Rings* trilogy and connect with other fans of the books a
 <br>
 
 ### Bugs
+
 
 - Upon first loading the site when the user chooses the Mordor pack the character images can often be seen before the card back images are written to screen.
 - The 'cards-match.mp3' sound plays before the 'card-flip.mp3' sound.
