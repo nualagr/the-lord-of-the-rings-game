@@ -95,7 +95,7 @@
                     </button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn home restart" data-toggle="modal" data-target="#homeModal" onclick="restart();" aria-label="Restart">
+                    <button type="button" class="btn home restart" data-toggle="modal" data-target="#homeModal" aria-label="Restart">
                         <i class="fas fa-home"></i>
                     </button>
                 </div>
@@ -145,26 +145,8 @@
     </footer>
     <!-- Modals Section -->
     <div id="modalsSection">
-        <!-- Help Modal -->
+        <!-- Home Modal / Restart Modal-->
         <!-- Modal copied from Bootstrap Modal - https://getbootstrap.com/docs/4.0/components/modal/ - and then modified -->
-        <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="helpModalTitle">Instructions</h5>
-                    </div>
-                    <div class="modal-body">
-                        <p>Click on a card to reveal the character underneath.</p>
-                        <p>Click on a second to try and find its matching pair.</p>
-                        <p>Match all the pairs in 30 seconds in order to advance to the next stage of your journey.</p>
-                    </div>
-                    <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-continue resume" data-dismiss="modal" aria-label="Close">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Home Modal / Opening Modal-->
         <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="homeModalTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -186,8 +168,26 @@
                         <br>    
                     </div>                
                     <div class="modal-footer justify-content-center">
-                        <button class="btn btn-lg shire" data-dismiss="modal" id="fellowshipBtn" onclick="packChoice('fellowship');" aria-label="Choose the path to The Shire">The Shire</button>
-                        <button class="btn btn-lg mordor" data-dismiss="modal" id="mordorBtn" onclick = "packChoice('mordor');" aria-label="Choose the path to Mordor">Mordor</button>    
+                        <button class="btn btn-lg shire" data-dismiss="modal" id="fellowshipBtn" onclick="startGame('fellowship');" aria-label="Choose the path to The Shire">The Shire</button>
+                        <button class="btn btn-lg mordor" data-dismiss="modal" id="mordorBtn" onclick = "startGame('mordor');" aria-label="Choose the path to Mordor">Mordor</button>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Help Modal -->
+        <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="helpModalTitle">Instructions</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Click on a card to reveal the character underneath.</p>
+                        <p>Click on a second to try and find its matching pair.</p>
+                        <p>Match all the pairs in 30 seconds in order to advance to the next stage of your journey.</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-continue resume" data-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -210,7 +210,7 @@
                         <p>Courage is the best defence that you have now!</p>  
                     </div>                
                     <div class="modal-footer justify-content-center">
-                        <button class="btn btn-lg btn-continue" id="advance2" data-dismiss="modal" onclick="advanceLevel();" aria-label="Advance to Level Two">Advance to Level Two</button>   
+                        <button class="advance btn btn-lg btn-continue" id="advance2" data-dismiss="modal" aria-label="Advance to Level Two">Advance to Level Two</button>   
                     </div>
                 </div>
             </div>
@@ -232,7 +232,7 @@
                         <br> 
                     </div>                
                     <div class="modal-footer justify-content-center">
-                        <button class="btn btn-lg btn-continue" data-dismiss="modal" id="advance3" onclick="advanceLevel();" aria-label="Advance to Level Three">Advance to Level Three</button>   
+                        <button class="advance btn btn-lg btn-continue" data-dismiss="modal" id="advance3" aria-label="Advance to Level Three">Advance to Level Three</button>   
                     </div>
                 </div>
             </div>
@@ -259,7 +259,7 @@
                         <br>
                     </div>                
                     <div class="modal-footer justify-content-center">
-                        <button class="btn btn-continue btn-lg restart" id="beginAgain" data-dismiss="modal" onclick="restart();" aria-label="Restart">Begin Again</button> 
+                        <button class="btn btn-continue btn-lg restart" id="beginAgain" data-dismiss="modal" aria-label="Restart">Begin Again</button> 
                     </div>
                 </div>
             </div>
@@ -277,10 +277,10 @@
                     <div class="modal-body">
                         <p>You have defeated Sauron and restored order to Middle Earth!</p>
                         <br>
-                        <p>Click <button class="btn btn-lg btn-warning" id="prize" data-dismiss="modal" data-toggle="modal" data-target="#prizeModal">Here</button> to receive your prize </p>
+                        <p>Click <button class="btn btn-warning" id="prize" data-dismiss="modal" data-toggle="modal" data-target="#prizeModal">Here</button> to receive your prize </p>
                     </div>                
                     <div class="modal-footer justify-content-center">
-                        <button class="btn btn-continue restart" id="restart" data-dismiss="modal" onclick="restart();" aria-label="Restart">Begin Again</button> 
+                        <button class="btn btn-continue restart" id="restart" data-dismiss="modal" aria-label="Restart">Begin Again</button> 
                     </div>
                 </div>
             </div>
@@ -299,7 +299,7 @@
                     <div id="prizeModalContent" class="modal-body">
                     </div>                
                     <div class="modal-footer justify-content-center">
-                        <button class="btn btn-continue restart" data-dismiss="modal" onclick="restart();" aria-label="Restart">Restart Game</button> 
+                        <button class="btn btn-continue restart" data-dismiss="modal" aria-label="Restart">Restart Game</button> 
                     </div>
                 </div>
             </div>
@@ -312,9 +312,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- My JS-->
-    <script src="assets/js/constants.js"></script>
-    <script src="assets/js/classes.js"></script>
-    <script src="assets/js/helpers.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

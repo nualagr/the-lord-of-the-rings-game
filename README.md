@@ -401,10 +401,16 @@ of cards with the progression of each round.  As this is a single-page site and 
 four cards are created in the HTML page.  The addition of the next row of cards is created in the 'script.js' file by cloning row 2 of the initial board. 
 A class of 'extra-row' is added to this new row in order to allow for easy deletion if the player runs out of time or presses the restart button.
 
+
 **Game Logic**
 
-When the player makes their initial choice of card pack the *packChoice* function calls the *assignCards* function.  
-This in turn calls the *makeDeck* function which creates a smaller array of cards from the full deck.  It's length is calculated by halving the number of divs to be filled. 
+When the player makes their initial choice of card pack the button calls the *startGame* function.  This in turn sets 
+up the game by creating a new Audio Controller, Moves Counter, Pairs Counter and passing these variables, as well as 
+the chosenCardList to other functions such as the *setUpAdvanceLevel* function, the *setUpRestart* function and the
+*assignCards* function.
+
+The *assignCards* function calls the *makeDeck* function which creates a smaller array of cards from the full deck.  
+It's length is calculated by halving the number of divs to be filled. 
 The *makeDeck* function uses the *Card* class to create a pair of each cards with differing ids, so that they can be differentiated later and cannot be matched with themselves.  
 The *shuffle* function is called to randomize the order of the cards. The *assignCards* function then continues and assigns the cards to the empty divs.
 
@@ -430,10 +436,12 @@ If the cards do not match the *incrementMoves* method adds one to the Moves Coun
 The *checkArray* is cleared, the 'face-up' class is removed from the divs and an 'unflip' sound is played.            
 A one second delay was applied to the comparison through the use of a *setTimeout* function so that the second card face would be revealed to the user before being placed back in a face-down position.
 
+
 **API Call**
 
 If the user successfully completes the game in the allotted timeframe the *Congratulations* modal appears and the 'winner.mp3' sound is played.
 At this point the API call is made and the relevant information relating to the character on the final card that was matched is written to the *Prize Modal*.
+If the XMLHttpRequest is not successful the error message is written to the *Prize Modal*.
 The *Congratulations Modal* contains the button which calls the *Prize Modal*.
 Once opened the user is presented with the final character's ingame image along with information ranging from the character's height, race, gender, birth, spouse, death, 
 realm, hair-colour and a link to their dedicated page on *The One Wiki to Rule them All*, if one exists.
@@ -449,7 +457,12 @@ Notable improvements include the use of classes for the creation of the Cards, t
 the Moves Counter, the Pairs Counter and the Timer.
 
 During Mentor Session 2 it was recommended that the JavaScript code be split into four separate files in order to make the code easier to work with and to manage.
-The code has since been separated into: 'constants.js', 'classes.js', 'helpers.js' and 'script.js'.  
+The code was separated into: 'constants.js', 'classes.js', 'helpers.js' and 'script.js'.  However, when it came to the final linter test the code was again
+amalgamated into 'script.js'.  
+
+The final refactoring consisted of removing the need for some of the global variables by creating the Timer, Audio Controller, Moves Counter and Pairs Counter
+within a new *startGame* function.  This function then called other functions, such as the *assignCards* function and passed the timer, the other counters and the chosenCardPack
+to these functions as variables. 
  
 <br>
 
@@ -517,6 +530,14 @@ The style.css file returned no errors.
 To test the validity of the JavaScript [Espirima](https://esprima.org/demo/validate.html) was used to check for syntactical errors.
 
 ![alt text](documentation/readme-images/javascript-validator-no-errors.png "JavaScript Validator No Errors Returned")
+<br>
+
+The JavaScipt file was also passed into [JSHint](jshint.com).  This highlighted many errors and warnings, predominantly relating to variables that had been declared
+without the use of 'let' or 'var'.  These errors have since been rectified.  
+A StackOverflow suggestion of declaring /*globals $:false */ at the start of the file 
+removed the warnings regarding the jQuery dollar sign without replacing every dollar sign with 'jquery'.  
+The remaining so-called 'unused variable' is the startGame function which is called in the 'index.html' file in the opening modal. 
+![alt text](documentation/readme-images/jshint-results.png "JSHint results, no remaining errors")
 <br>
 
 ### Performance
@@ -722,11 +743,28 @@ about *The Lord of the Rings* trilogy and connect with other fans of the books a
 <br>
 
 ### Bugs
+Upon first loading the site when the user chose the Mordor pack the character images could often be seen before the card back images are written to screen.
+This was not an issue in subsequent rounds after the card-back-image had been cached.
+The images were compressed to decrease the page load time but this failed to solve the problem. My mentor helpfully suggested applying the jQuery .hide() method 
+to hide the back of the card during this loading stage. This was applied. Although the card-back images are still slow to load the user can no longer 
+see the front of card images before the game begins.
 
+A significant issue during development regarded the cards that had been selected, clicked and revealed, but had no yet been successfully matched. 
+At first jQuery's off() method was applied to the cards, however this removed the event handler and replacing it each time a card was clicked was unwieldy. 
+A solution was found on [StackOverflow](https://stackoverflow.com/questions/56283681/js-memory-card-game-how-to-prevent-user-flipping-more-then-2-cards-at-the-same). 
+An *if* statement was used to check the Boolean value of *isProcessing* and if true, to *return*, stopping any further processes from happening. 
+An *or* operator and a further statement checking whether the class of 'face-up' had been applied to the same div was later added to the *if* statement in order to 
+solve the problem of the 'card-flip' sound playing even though the card was in a face-up position.
 
-- Upon first loading the site when the user chooses the Mordor pack the character images can often be seen before the card back images are written to screen.
-- The 'cards-match.mp3' sound plays before the 'card-flip.mp3' sound.
-- The second card 'card-flip.mp3' sound will not play if the user clicks on card 2 too quickly after card 1 and the first sound has not finished playing.
+#### Remaining Issues
+The remaining issues regard the playing of ingame sound effects.  
+When two cards are matched, the 'cards-match.mp3' sound plays before the second 'card-flip.mp3' sound.  
+Similarly, the second card 'card-flip.mp3' sound will not play if the user clicks on card 2 too quickly after card 1 
+and the first sound has not yet finished playing.  A delay using the *setTimeout* function was implemented however this 
+did not solve the issue of the overlapping sound and degraded the performance of the game.  As the inclusion of ingame sound
+effects greatly enhances the playing experience as well as providing auditory feedback to the user the sound effects were not
+removed from the game despite this issue.  It is envisaged that this issue may be resolved given more time to investigate the use
+of channels or a JavaScript audio library.
 
 ##### back to [top](#table-of-contents)
 ---
@@ -740,8 +778,14 @@ This project is hosted on [GitHub Pages](https://pages.github.com/)
 1) When logged in to the [Github](https://github.com/) website the *The Lord of the Rings Memory Game* repository was selected from the repositories list in the top left-hand corner of the screen.
 
 2) When in the selected respository, **Settings** was chosen from the navigation bar below the repository title.
+![alt text](documentation/readme-images/github-settings-screen.png "Screenshot showing the Settings page in GitHub.")
+
+<br>
 
 3) Scrolling down the **Settings** page revealed the **GitHub Pages** heading.  Under the **Source** subheading, the dropdown menu, whose default value is 'None', was clicked.  'Master' was selected from the dropdown list.
+![alt text](documentation/readme-images/github-pages-screenshot.png "Screenshot showing the GitHub Pages section of the Settings page in GitHub.")
+
+<br>
 
 4) The **Save** button to the right of the newly selected 'Branch: master' was then clicked to deploy the site.
 
@@ -749,13 +793,18 @@ This project is hosted on [GitHub Pages](https://pages.github.com/)
 
 ### To find the link to the newly deployed site:
 
-1) When logged in to the [Github](https://github.com/) website, navigate to the desired repository.
+1) Log in to [Github](https://github.com/) and navigate to the repository.
 
-2) In the navigation pane on the right of the screen, under the heading **Environments** click on the 'github-pages' link.
+2) Under the heading **Environments**, in the navigation pane on the right of the screen, click on the 'github-pages' link.
+![alt text](documentation/readme-images/environments-github-pages.png "Screenshot showing the Environments heading and the GitHub Pages link.")
 
-3) Under the heading **Deployments/Activity Log** click on the 'View deployment' button to the right of the screen. 
-The website will open in a separate browser window.
+<br>
 
+3) **Deployments/Activity Log**: 
+Clicking on the 'View deployment' button to the right of the screen will open the website in a separate browser window.
+![alt text](documentation/readme-images/deployments-activity-log.png "Screenshot showing the Deployments Activity Log.")
+
+<br>
 <br>
 
 ### To clone the repository:
@@ -764,17 +813,21 @@ The website will open in a separate browser window.
 
 2) Navigate to the main page of the repository.
 
-3) Select the green **Code** button from the navigation bar below the repository title.
+3) Select the **Code** button from the navigation bar, located above the repository files.
+
+![alt text](documentation/readme-images/clone-button.png "Screenshot showing the clone options from the Code dropdown menu in the repository homepage.")
+
+<br>
 
 4) Under the heading **Clone** select 'HTTPS'
 
-5) Click the image of a clipboard to the right of the URL in order to copy the address. 
+5) Copy the address by clicking on the image of a clipboard to the right of the URL. 
 
-6) Open Git Bash.
+6) Open your local IDE (Integrated Development Environment).
 
-7) Navigate to the desired directory in which you wish to place the cloned directory.
+7) Navigate to the directory where you want to create the cloned directory.
 
-8) Type git clone, space, and then paste the copied URL.  
+8) Type git clone, space, and then paste in the copied URL.  
 
 9) Press 'Enter' to create the clone.
 
