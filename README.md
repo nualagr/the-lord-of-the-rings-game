@@ -226,17 +226,17 @@ They provide the user with visually pleasing and easily differentiated images to
 
 **Help button** - brings up a modal of the game rules.
 
-**Game Over Modal** - alerts the user to the fact that they did no complete the round in the given timeframe.  A **Restart** button allows them to start a new game immediately.
+**Game Over Modal** - alerts the user to the fact that they did not complete the round in the given timeframe.  A **Restart** button allows them to start a new game immediately.
 
 **Completion Modal** - pop up window congratulates the user at the end of Round Three and provides them with a **Prize Button** which opens a visual prize modal.
 
-**Character Information Modal** - This modal, the visual prize, is populated with information on the last card matched in the game.  
+**Character Information Modal** - This modal, the visual prize, is populated with information regarding the last card matched in the game.  
 It contains the ingame character image and information (gender, place of birth, etc.) drawn from *The One API*.
 
 A **footer** contains **social media** links to:
 
-- the official [Facebook](https://www.facebook.com/lordoftheringsbook/) page for The Lord of the Rings Books.
-- The Lord of the Rings [Twitter](https://twitter.com/lotr) page.
+- the official [Facebook](https://www.facebook.com/lordoftheringsbook/) page for *The Lord of the Rings* Books.
+- *The Lord of the Rings* [Twitter](https://twitter.com/lotr) page.
 - a Lord of the Rings [Istagram](https://www.instagram.com/lordoftherings_official/?hl=en) fan page.
 
 <br> 
@@ -366,7 +366,7 @@ the character names on the cards.
 ![alt text](documentation/readme-images/frodo.png "Frodo character card showing his name in Ringbearer Medium font.")
 
 Therefore in order to create visual unity that font was also used for titles within the site instead of *Uncial Antiqua*.  The font file was uploaded 
-to [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator)'s webfont generator and the webfont styles were stored in the assets folder along with the style.css file. 
+to [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator)'s webfont generator and the webfont styles were stored in the assets folder along with the 'style.css' file. 
 
 ![alt text](documentation/readme-images/ringbearer-medium-example.png "Ringbearer Medium font example")
 
@@ -383,28 +383,29 @@ The *one-ring-font* by [Gaut Fonts](https://www.fontspace.com/gaut-fonts) was us
 
 ## Development
 
-During the first mentor session it became apparent that the wireframes and the project outline did not fully fulfil the Milestone 2 project specification
-in that the user was not able to alter their playing environment other than by muting the ingame sounds. Therefore it was decided to add a second pack of
+During the first mentor session it became apparent that the wireframes and the project proposal did not fulfil the Milestone 2 project specification
+with regard to giving the user power to alter the way the site displays information. Therefore it was decided to add a second pack of
 playing cards and allow the user to choose between the Fellowship characters or the Mordor characters when playing the game.
 
-The index.html file and accompanying style.css files were created first to provide the game structure and general appearance.
-The Bootstrap grid was used to create the game board so that it would respond automatically to the differing dimensions of possible viewing devices.
-Google Chrome Developer Tools were used throughout the development process in order to test how elements responded when 
-viewed on mobile and tablet devices. When problems were encountered the Device Selector was used to target the element. 
-Using the Elements Panel in Developer Tools the code in question was altered in order to achieve the desired result. 
-Working code snippets were then replicated in the style.css file in Gitpod. 
-Other solutions for errors were found in the Code Institute Slack channels, on Stack Overflow and on W3Schools.
+The 'index.html' file and accompanying 'style.css' files were created first to provide the game structure and general appearance.
+The [Bootstrap](https://getbootstrap.com/docs/4.0/layout/grid/) grid was used to create the game board so that it would respond automatically to the 
+differing dimensions of possible viewing devices.  [Google Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools) 
+were used throughout the development process to test how elements responded when viewed on mobile and/or tablet devices. 
+When design issues were encountered the Device Selector was used to target the element in question. 
+Using the Elements Panel within the Developer Tools the code was altered in place and working code snippets were then replicated in the 'style.css' file in Gitpod. 
+Solutions for other issues were found in the [Code Institute Slack channels](https://app.slack.com/client/T0L30B202/C7HD37Q1F/thread/C7J2ZAVHB-1602265383.366600), 
+on [Stack Overflow](https://stackoverflow.com/) and on [W3Schools](https://www.w3schools.com/).
 
-When it came to the interactive aspect of the project my mentor, Mr. Reuben Ferrante, suggested starting with the logic regarding the addition of extra rows 
+When it came to the interactive aspect of the project my mentor, Mr. [Reuben Ferrante](https://uk.linkedin.com/in/reuben-ferrante), suggested starting with the logic regarding the addition of extra rows 
 of cards with the progression of each round.  As this is a single-page site and the opening modal does not obscure the page behind, the initial two rows of 
-four cards are created in the HTML page.  The addition of the next row of cards is created in the *script.js* file by cloning row 2 of the initial board. 
+four cards are created in the HTML page.  The addition of the next row of cards is created in the 'script.js' file by cloning row 2 of the initial board. 
 A class of 'extra-row' is added to this new row in order to allow for easy deletion if the player runs out of time or presses the restart button.
 
 **Game Logic**
 
 When the player makes their initial choice of card pack the *packChoice* function calls the *assignCards* function.  
 This in turn calls the *makeDeck* function which creates a smaller array of cards from the full deck.  It's length is calculated by halving the number of divs to be filled. 
-The *makeDeck* function uses the Card class to create a pair of each cards with differing ids, so that they can be differentiated later and cannot be matched with themselves.  
+The *makeDeck* function uses the *Card* class to create a pair of each cards with differing ids, so that they can be differentiated later and cannot be matched with themselves.  
 The *shuffle* function is called to randomize the order of the cards. The *assignCards* function then continues and assigns the cards to the empty divs.
 
 The countdown clock starts immediately when the the cards have been assigned.  
@@ -415,13 +416,13 @@ If *isProcessing* is false the function continues.
 The class of 'unmatched' is removed from the div in order to remove the event listener and prevent the card from responding to a further click.
 The front of the card image is revealed to the user and a 'flip' sound effect is played to give the user auditory feedback.  
 The *incrementMoves* method adds one to the Moves Counter. 
-If the *checkArray* global variable is an empty array then the card is the first to be clicked and is added to the array.  
+If the *checkArray* global variable is an empty array then the card is the first to be clicked and is added to that array.  
 
 If the array has a card in it then the cards are compared using the card 'name' and 'id'.  
 
 If the cards match, the *incrementPairs* method increases the Pairs Counter by one and the *incrementMoves* method increases the Moves Counter by one. 
 A 'bell chime' sound indicates to the user that a successful match has been made. 
-The Matching cards are left face-up, the class of 'matched' is applied to the divs, which removes the click functionality from the divs.  
+The matching cards are left face-up, the class of 'matched' is applied to the divs, which removes the click functionality from the divs.  
 At this point, *if* and *else if* statements check whether the round is complete and whether the game is over and turn on the corresponding modals accordingly.
 If the round or game is not over the *checkArray* is emptied and the game continues.
 
@@ -441,6 +442,7 @@ The user is presented only with the entries that contain data.
 
 
 **Refactoring**
+
 Refactoring of the code happened throughout the development process.  
 
 Notable improvements include the use of classes for the creation of the Cards, the Audio Controller,
