@@ -151,7 +151,7 @@ class Card {
         this.html = 
             `<div class="game-card unmatched" id="${this.cardId}" >
                 <div class="card-front">
-                    <img src="assets/images/${this.image}" class="card-image" alt="${this.name}" >
+                    <img src="assets/images/${this.image}" class="card-image" style="display: none;" alt="${this.name}">
                 </div>
                 <div class="card-back">
                     <img src="assets/images/card-back-${this.cardBackImage}.png" class="card-image show" alt="Tree of Gondor Image">

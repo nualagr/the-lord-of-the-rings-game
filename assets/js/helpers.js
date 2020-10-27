@@ -74,12 +74,13 @@ function shuffle(newDeck) {
   }
 }
 
+
 // Assign cards to the divs
 function assignCards(audioPlayer){
-    var cardSlots = document.getElementsByClassName('game-card-column');
+    let cardSlots = document.getElementsByClassName('game-card-column');
     levelDeck = makeDeck(cardSlots.length / 2, chosenCardList);
-    for (var i = 0; i < cardSlots.length; i ++){
-        var gameCard = levelDeck[i];
+    for (let i = 0; i < cardSlots.length; i ++){
+        let gameCard = levelDeck[i];
         cardSlots[i].innerHTML = gameCard.html;
     }
 
@@ -88,13 +89,15 @@ function assignCards(audioPlayer){
         if (isProcessing) { 
             return; 
         }
-        var cardName = $(this).children().children("img").attr("alt");
-        var cardId = $(this).attr("id");
-        var cardImage = $(this).children().children("img").attr("src");
-        var cardSlots = document.getElementsByClassName('game-card-column');
-             
-        $(this).children(".card-front").addClass("face-up");
-        audioPlayer.flip();
+        let cardName = $(this).children().children("img").attr("alt");
+        let cardId = $(this).attr("id");
+        let cardImage = $(this).children().children("img").attr("src");
+        let cardSlots = document.getElementsByClassName("game-card-column");
+        let cardDiv = $(this).children(".card-front");
+
+        cardDiv.addClass("face-up");
+        cardDiv.children("img").show();
+        audioPlayer.flip();     
 
         // If checkArray length is equal to 0 add the first card name and id to the array
         if (checkArray.length === 0) { 
@@ -102,7 +105,7 @@ function assignCards(audioPlayer){
             $(this).removeClass("unmatched");
             moves.incrementMovesCounter();
         }        
-        
+
         else {
             // Two cards have been selected. So lock the ability to click any other card
             // check and see whether the cards match
@@ -184,12 +187,14 @@ function restart(){
     turnOn("#homeModal");
 }
 
+
 function freezeBoardOnModalClose() {
     // Freeze board when the user dismisses the modal rather than choosing an option button.
     $(".close").click(function(){
         freezeBoard();
     });
 }
+
 
 function pauseCountdownOnModalOpen() {
     // Pause countdown clock when Help modal is opened.
@@ -198,12 +203,14 @@ function pauseCountdownOnModalOpen() {
     });
 }
 
+
 function resumeCountDownOnModalClose() {
     // Resume countdown clock when Help modal is closed.
     $(".resume").click(function(){
         timer.resumeTimer();
     });
 }
+
 
 function toggleSoundOnSpeakerClick() {
     // Mute and unmute sounds when speaker icon is clicked and replace icon.
