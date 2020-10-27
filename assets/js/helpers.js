@@ -50,13 +50,13 @@ function advanceLevel(){
 
 // Make a new deck of new cards for each level dependent on the number of divs to be filled
 function makeDeck(num, array) {
-    var newDeck = [];
+    let newDeck = [];
     cardCounter = 0;
     for (let i = 0; i < num ; i ++) {
         cardCounter++;
-        var newCardA = new Card(array[i].name, array[i].image, array[i].cardBackImage, "card" + cardCounter.toString());
+        let newCardA = new Card(array[i].name, array[i].image, array[i].cardBackImage, "card" + cardCounter.toString());
         cardCounter++;
-        var newCardB = new Card(array[i].name, array[i].image, array[i].cardBackImage, "card" + cardCounter.toString());
+        let newCardB = new Card(array[i].name, array[i].image, array[i].cardBackImage, "card" + cardCounter.toString());
         newDeck.push(newCardA);
         newDeck.push(newCardB);
     }
@@ -86,18 +86,21 @@ function assignCards(audioPlayer){
 
     // When card is clicked reveal front-of-card.
     $(".game-card.unmatched").on("click", function (){
-        if (isProcessing) { 
-            return; 
-        }
         let cardName = $(this).children().children("img").attr("alt");
         let cardId = $(this).attr("id");
         let cardImage = $(this).children().children("img").attr("src");
         let cardSlots = document.getElementsByClassName("game-card-column");
         let cardDiv = $(this).children(".card-front");
+        if (isProcessing || cardDiv.hasClass("face-up")) { 
+            return; 
+        }
 
-        cardDiv.addClass("face-up");
+
+        // If card not face up
+        cardDiv.addClass("face-up").addClass("matched");
         cardDiv.children("img").show();
-        audioPlayer.flip();     
+        audioPlayer.flip(); 
+
 
         // If checkArray length is equal to 0 add the first card name and id to the array
         if (checkArray.length === 0) { 
@@ -109,7 +112,7 @@ function assignCards(audioPlayer){
         else {
             // Two cards have been selected. So lock the ability to click any other card
             // check and see whether the cards match
-            var otherCardId = checkArray[0][1];
+            let otherCardId = checkArray[0][1];
             // If the card the same name but a different id add one to the moves counter add one to the Pairs counter, remove the class 'unmatched', add the class 'matched', remove the ability to turn the matched cards.
             if (checkArray[0][0] === cardName && checkArray[0][1] !== cardId) {
                 moves.incrementMovesCounter();              
@@ -234,7 +237,7 @@ function toggleSoundOnSpeakerClick() {
 
 // Call the API to get the Prize Modal content data on the last card matched.
 function getData(type, cb){
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
 
     xhr.open("GET", baseURL + type + "/");
     xhr.setRequestHeader("Authorization", "Bearer ERyHRqZKa0LqLBPZbuEE");
@@ -247,23 +250,26 @@ function getData(type, cb){
             //FOR TESTING
             //document.getElementById("prizeModalContent").innerHTML=this.responseText;
         }
+        else if (this.status !== 200) {
+            document.getElementById("prizeModalContent").innerHTML=`<h5>Error: ${this.responseText} </h5>`;
+        }
     };
 }
 
 
 function writeToDocument(type) {
-    var el = document.getElementById("prizeModalContent");
+    let el = document.getElementById("prizeModalContent");
     el.innerHTML = "";
-    var elImg = document.getElementById("prizeModalImage");
+    let elImg = document.getElementById("prizeModalImage");
 
     getData(type, function(data){
         data = data.docs;
         prizeCharacter = data.find(element => element["name"] === chosenAPICharacter[0]);
         //FOR TESTING
-        //prizeCharacter = data.find(element => element["name"] === "Isildur");
+        //prizeCharacter = data.find(element => element["name"] === "Shagrat");
         prizeImage = chosenAPICharacter[2];
         //FOR TESTING
-        //prizeImage = "assets/images/isildur.png";
+        //prizeImage = "assets/images/shagrat.png";
 
         function removeIfBlank(key) {
             if (prizeCharacter[key] === "" || prizeCharacter[key] === "NaN") {
