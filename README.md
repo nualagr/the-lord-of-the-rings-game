@@ -9,7 +9,7 @@ within a minimum number of mouse clicks in a set timeframe. The game, while bein
 as to improve hand-eye coordination and reaction times.
 
 The game is geared towards fans of *The Lord of the Rings Trilogy* by J. R. R. Tolkien.  It incorportes 
-The Lord of the Rings themed images and facts with the intention of making the playing 
+*The Lord of the Rings* themed images and facts with the intention of making the playing 
 experience more enjoyable for the user.
 
 The Lord of the Rings Memory Game website consists of one webpage and seven modals created using [HTML5](http://en.wikipedia.org/wiki/HTML5), 
@@ -55,7 +55,6 @@ Click <a href="https://nualagr.github.io/the-lord-of-the-rings-game/">here</a> t
     - [Content](#content)
     - [Media](#media)
     - [Acknowledgements](#acknowledgements)
-    - [References](#references)
 
 <br>
 
@@ -349,6 +348,11 @@ Icons were used as buttons on the main game page in order to help the user to un
 They were taken from [Font Awesome](https://fontawesome.com/) and chosen to be self explanatory, for example the image of 
 a house was chosen for the Home button.
 
+<br>
+
+##### back to [top](#table-of-contents)
+---
+
 #### Typography
 *Uncial Antiqua* was initially chosen as the main heading font.  
 <br>
@@ -558,6 +562,9 @@ The site performed well when tested for desktop viewing.
 ![alt text](documentation/readme-images/lighthouse-desktop-performance-3.png "Lighthouse Performance Desktop Results")
 <br>
 
+##### back to [top](#table-of-contents)
+---
+
 ### Responsiveness
 Web developer tools in each of the following browsers were used to ensure responsiveness and functionality of the site:
 
@@ -604,6 +611,9 @@ In addition to checking the game's functionality using browser developer tools,
 the site has been manually checked by friends and family.  In-game errors were highlighted 
 during this process, such as the Game Over Modal displaying if the user exited the Prize Modal
 using the Close button as opposed to the Restart button.  Issues highlighted have been recitified as far as was feasible.
+
+##### back to [top](#table-of-contents)
+---
 
 ### Tested User Stories
 
@@ -742,6 +752,9 @@ about *The Lord of the Rings* trilogy and connect with other fans of the books a
 ![alt text](documentation/readme-images/social-media-links.png "Screenshot showing the social media links to Facebook, Instagram and Twitter.")
 
 <br>
+
+##### back to [top](#table-of-contents)
+---
 
 ### Bugs
 Upon first loading the site when the user chose the Mordor pack the character images could often be seen before the card back images are written to screen.
