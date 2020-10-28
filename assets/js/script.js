@@ -3,6 +3,10 @@
 /*globals $:false */
 
 // Global variables
+var audio;
+var timer;
+var moves;
+var pairs;
 var checkArray = [];
 var pairsMatched = 0;
 var mute = false;
@@ -216,10 +220,10 @@ function freezeBoard(){
     $(".game-card").off("click");   
 }
 
-function setUpAdvanceLevel(chosenCardList, audio, timer, moves, pairs) {
+function setUpAdvanceLevel(chosenCardList) {
     $(".advance").on("click", function (){
-        $(".card-row-2").clone().removeClass( "card-row-2" ).addClass( "extra-row" ).appendTo("#gameBoard");
-        assignCards(chosenCardList, audio, timer, moves, pairs);
+        $(".card-row-2").clone().removeClass("card-row-2").addClass("extra-row").appendTo("#gameBoard");
+        assignCards(chosenCardList);
         timer.resetTimer();
         moves.resetMovesCounter();
         pairs.resetPairsCounter();
@@ -252,7 +256,7 @@ function shuffle(newDeck) {
 }
 
 // Assign cards to the divs
-function assignCards(chosenCardList, audio, timer, moves, pairs){
+function assignCards(chosenCardList){
     let cardSlots = document.getElementsByClassName('game-card-column');
     let levelDeck = makeDeck(cardSlots.length / 2, chosenCardList);
     for (let i = 0; i < cardSlots.length; i ++){
@@ -357,13 +361,21 @@ function assignCards(chosenCardList, audio, timer, moves, pairs){
 /* On receiving the Home Button or the Begin Again Button message.
    Delete the level 2 and/or level 3 card rows with the class "extra-row".
    Assign cards to the first eight divs. */
-function setUpRestart(chosenCardList, audio, timer, moves, pairs){
-    $(".restart").on("click", function(){
+function setUpRestart(){
+    $(".restart").on("click", function(){       
+        // Remove all the clicks added by startGame
         $(".extra-row").remove();
-        assignCards(chosenCardList, audio, timer, moves, pairs);
+        $(".advance").off("click");
+        $("#soundToggler").off("click");
+        $(".rules").off("click");
+        $(".resume").off("click");
+
+        // Reset game objects
         timer.stopTimer();
         moves.resetMovesCounter();
         pairs.resetPairsCounter();
+
+        // New game
         turnOn("#homeModal");
     });
 }
@@ -375,21 +387,21 @@ function freezeBoardOnModalClose() {
     });
 }
 
-function pauseCountdownOnModalOpen(timer) {
+function pauseCountdownOnModalOpen() {
     // Pause countdown clock when Help modal is opened.
     $(".rules").click(function(){
         timer.pauseTimer();
     });
 }
 
-function resumeCountDownOnModalClose(timer) {
+function resumeCountDownOnModalClose() {
     // Resume countdown clock when Help modal is closed.
     $(".resume").click(function(){
         timer.resumeTimer();
     });
 }
 
-function toggleSoundOnSpeakerClick(audio) {
+function toggleSoundOnSpeakerClick() {
     // Mute and unmute sounds when speaker icon is clicked and replace icon.
     $("#soundToggler").click(function(){
         if (mute === true) {
@@ -464,26 +476,27 @@ function startGame(pack){
     }
   
     // Set up game
-    let audio = new AudioController();
-    let timer = new Timer(30, audio);
-    let moves = new MovesCounter();
-    let pairs = new PairsCounter();
-    
+    audio = new AudioController();
+    timer = new Timer(30, audio);
+    moves = new MovesCounter();
+    pairs = new PairsCounter();
     
     isProcessing = false;
     
     // Set up advance level event listener
-    setUpAdvanceLevel(chosenCardList, audio, timer, moves, pairs);
+    setUpAdvanceLevel(chosenCardList);
     
     // Set up the restart button
-    setUpRestart(chosenCardList, audio, timer, moves, pairs);
+    setUpRestart();
     
     // Set up modal behaviour   
-    pauseCountdownOnModalOpen(timer);
-    resumeCountDownOnModalClose(timer);
-    toggleSoundOnSpeakerClick(audio);
+    pauseCountdownOnModalOpen();
+    resumeCountDownOnModalClose();
+
+    // Set up sound toggler
+    toggleSoundOnSpeakerClick();
   
-    assignCards(chosenCardList, audio, timer, moves, pairs);    
+    assignCards(chosenCardList);   
 }
 
 // When the document opens:
