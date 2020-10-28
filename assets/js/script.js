@@ -220,6 +220,7 @@ function freezeBoard(){
     $(".game-card").off("click");   
 }
 
+// Set up New Level
 function setUpAdvanceLevel(chosenCardList) {
     $(".advance").on("click", function (){
         $(".card-row-2").clone().removeClass("card-row-2").addClass("extra-row").appendTo("#gameBoard");
@@ -343,8 +344,8 @@ function assignCards(chosenCardList){
                 moves.incrementMovesCounter();
                 let $this = $(this);
                 let otherCardNumber = "#" + otherCardId;
-                // Fix to stop the user clicking other cards while the setTimeout function is waiting was found on Stack Overflow
-                // https://stackoverflow.com/questions/56283681/js-memory-card-game-how-to-prevent-user-flipping-more-then-2-cards-at-the-same
+                /* Fix to stop the user clicking other cards while the setTimeout function is waiting was found on Stack Overflow
+                   https://stackoverflow.com/questions/56283681/js-memory-card-game-how-to-prevent-user-flipping-more-then-2-cards-at-the-same */
                 isProcessing = true;
                 setTimeout(function(){
                 checkArray.splice(0, 1);
@@ -370,6 +371,9 @@ function setUpRestart(){
         $(".rules").off("click");
         $(".resume").off("click");
 
+        // Empty the checkArray so that comparisons start afresh.
+        checkArray.splice(0, 1); 
+
         // Reset game objects
         timer.stopTimer();
         moves.resetMovesCounter();
@@ -380,29 +384,29 @@ function setUpRestart(){
     });
 }
 
-function freezeBoardOnModalClose() {
-    // Freeze board when the user dismisses the modal rather than choosing an option button.
+// Freeze board when the user dismisses the modal rather than choosing an option button.
+function freezeBoardOnModalClose() {   
     $(".close").click(function(){
         freezeBoard();
     });
 }
 
+// Pause countdown clock when Help modal is opened.
 function pauseCountdownOnModalOpen() {
-    // Pause countdown clock when Help modal is opened.
     $(".rules").click(function(){
         timer.pauseTimer();
     });
 }
 
+// Resume countdown clock when Help modal is closed.
 function resumeCountDownOnModalClose() {
-    // Resume countdown clock when Help modal is closed.
     $(".resume").click(function(){
         timer.resumeTimer();
     });
 }
 
+// Mute and unmute sounds when speaker icon is clicked and replace icon.
 function toggleSoundOnSpeakerClick() {
-    // Mute and unmute sounds when speaker icon is clicked and replace icon.
     $("#soundToggler").click(function(){
         if (mute === true) {
             audio.unmuted();
@@ -434,6 +438,7 @@ function getData(type, cb){
     };
 }
 
+// Write the API information to the Prize Modal
 function writeToDocument(type) {
     let el = document.getElementById("prizeModalContent");
     el.innerHTML = "";
@@ -465,8 +470,9 @@ function writeToDocument(type) {
     });
 }
       
-// User Card Pack Choice from Opening Modal
+// Set up Game
 function startGame(pack){
+    // User Card Pack Choice from Opening Modal
     var chosenCardList;
     if (pack === "fellowship") {
         chosenCardList = fellowshipCardList;
@@ -475,7 +481,7 @@ function startGame(pack){
         chosenCardList = mordorCardList;
     }
   
-    // Set up game
+    // Set up counters, sounds and timer
     audio = new AudioController();
     timer = new Timer(30, audio);
     moves = new MovesCounter();
@@ -496,6 +502,7 @@ function startGame(pack){
     // Set up sound toggler
     toggleSoundOnSpeakerClick();
   
+    // Write the cards to the divs
     assignCards(chosenCardList);   
 }
 
