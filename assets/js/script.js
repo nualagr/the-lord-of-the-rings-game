@@ -511,7 +511,7 @@ $(document).ready(function(){
     // If the user chooses not to start the game, ensure that the cards do not respond to clicks.
     freezeBoardOnModalClose();
 
-    // Show modal
+    // Show the modal to allow the user to choose the card pack.
     $("#homeModal").modal("show");
 });
 
