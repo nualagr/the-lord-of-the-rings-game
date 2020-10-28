@@ -109,7 +109,7 @@ As a Lord of the Rings fan I would like to be able to:
 - view and match themed images of *The Lord of the Rings* characters.
 - enjoy the experience of playing the game.
 - receive a visual reward for completing the game.
-- be exposed to interesting facts about different Lord of the Rings characters.
+- be exposed to interesting facts about different characters from *The Lord of the Rings*.
 - read some interesting quotes by *The Lord of the Rings* characters.
 
 #### Site Owner
@@ -128,7 +128,7 @@ and to choose to play with either the Fellowship Card Pack or the Mordor Card Pa
 books with a view to sharing my love of the trilogy and instilling a curiosity in those who 
 have not yet read the books. 
 - to provide users with links to other websites, social media sites and *The One Wiki to Rule them All* where they can access further information
-about *The Lord of the Rings* trilogy and connect with other fans of the books and films.
+about *The Lord of the Rings Trilogy* and connect with other fans of the books and films.
 
 <br>
 
@@ -188,6 +188,8 @@ For ease of navigation it was decided to opt for a single page with pop-up modal
 
 The game is designed to be as intuitive as possible.
 
+<br>
+
 ### Existing Features
 
 A ring **favicon**, displayed on the web brower's tab, allows the user to identify the website by sight.
@@ -243,7 +245,7 @@ A **footer** contains **social media** links to:
 ### Features Left to Implement
 **Further levels** of increasing difficulty.
 
-A **highest score board** would allow players to compete with other users in an asynchronous fashion.
+A **game score** and **highest score board** would allow players to compete with other users in an asynchronous fashion.
 
 A **themed playing environment**. It is envisaged that the range of characters will be expanded and that
 the different pack choices would result in differing fonts, colour-shcemes and in-game background music accordingly. 
@@ -769,6 +771,12 @@ A solution was found on [StackOverflow](https://stackoverflow.com/questions/5628
 An *if* statement was used to check the Boolean value of *isProcessing* and if true, to *return*, stopping any further processes from happening. 
 An *or* operator and a further statement checking whether the class of 'face-up' had been applied to the same div was later added to the *if* statement in order to 
 solve the problem of the 'card-flip' sound playing even though the card was in a face-up position.
+
+Recurring issues surrounded the countdown timer during development, in particular, with the regard to the ability to pause and resume the timer when the 
+user opens the Instructions Modal.  In order to give the impression of a seamless countdown the resumeTimer method decremented the paused time by one
+when resuming, however this led to issues when the paused time was zero as it inadvertently called the countdown timer which, upon entering minus figures,
+would open the Game Over Modal and play the game-over.mp3. This issue was resolved by adding *if* and *else* statements to the resumeTimer method 
+in order to check whether the resume time was equal to zero.  In that case the stopTimer method was called.
 
 #### Remaining Issues
 The remaining issues regard the playing of in-game sound effects.  
