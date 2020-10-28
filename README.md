@@ -412,9 +412,10 @@ A class of 'extra-row' is added to this new row in order to allow for easy delet
 **Game Logic**
 
 When the player makes their initial choice of card pack the button calls the *startGame* function.  This in turn sets 
-up the game by creating a new Audio Controller, Moves Counter, Pairs Counter and passing these variables, as well as 
-the chosenCardList to other functions such as the *setUpAdvanceLevel* function, the *setUpRestart* function and the
-*assignCards* function.
+up the game by creating a new Audio Controller, Moves Counter and Pairs Counter.  This function passes the chosenCardList to the *setUpAdvanceLevel*
+function so that the desired theme is maintained in each level.  The function sets up other functions including the *setUpRestart* and *toggleSoundOnSpeakerClick* 
+functions before calling the *assignCards* function.
+
 
 The *assignCards* function calls the *makeDeck* function which creates a smaller array of cards from the full deck.  
 It's length is calculated by halving the number of divs to be filled. 
@@ -469,7 +470,12 @@ amalgamated into 'script.js'.
 
 The final refactoring consisted of removing the need for some of the global variables by creating the Timer, Audio Controller, Moves Counter and Pairs Counter
 within a new *startGame* function.  This function then called other functions, such as the *assignCards* function and passed the timer, the other counters and the chosenCardPack
-to these functions as variables. 
+to these functions as variables.  This however created more bugs that were not able to be resolved, for example, the new instance of the game with new timers and counters and 
+click event listeners did not delete or over-write the previous versions.  It was possible, in the *setUpRestart* function to remove the event handlers so that a previous events, 
+for example, a toggled volume button, would not inadvertently remain muted after the game had been restarted.  
+It was attempted to stop the the Timer, Audio Controller, Moves Counter and Pairs Counter within the *setUpRestart* function and to reset their values to null, 
+however if the home button was clicked more than once this resulted in TypeErrors when one of the reset functions such as the *stopTimer* function tried to read the value of null.
+Therefore the global variables were reinstated.
  
 <br>
 
@@ -542,7 +548,7 @@ To test the validity of the JavaScript [Espirima](https://esprima.org/demo/valid
 The JavaScipt file was also passed into [JSHint](jshint.com).  This highlighted many errors and warnings, predominantly relating to variables that had been declared
 incorrectly with regard to the keywords 'let' and 'var'.  These errors have since been rectified.  
 A StackOverflow suggestion of declaring /*globals $:false */ at the start of the file 
-removed the warnings regarding the jQuery dollar sign without replacing every dollar sign with 'jquery'.  
+removed the warnings regarding the jQuery dollar sign without the need to replace every dollar sign with the word 'jquery'.  
 The remaining so-called 'unused variable' is the startGame function which is called in the 'index.html' file in the opening modal. 
 No other errors or warnings remain in the code.
 ![alt text](documentation/readme-images/jshint-results.png "JSHint results, no remaining errors")
