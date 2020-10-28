@@ -151,10 +151,11 @@ class Timer {
             else if (timeLeft === 0) {
                 document.getElementById("timeRemaining").textContent = timeLeft;
                 freezeBoard();
+                clearInterval(this.levelTimer);
+                timeLeft--;
                 turnOn("#gameOverModal");
                 myAudio.gameOver();
-                timeLeft--;
-            }             
+            }         
         }, 1000);
     }
 
@@ -174,9 +175,14 @@ class Timer {
 
     resumeTimer(){
         var pausedTime = document.getElementById("timeRemaining").textContent;
-        var resumeTime = parseInt(pausedTime) - 1;
-        this.time = resumeTime;
-        this.startTimer();
+        if (pausedTime === 0) {
+            this.stopTimer();
+        }
+        else {
+            var resumeTime = parseInt(pausedTime) - 1;
+            this.time = resumeTime;
+            this.startTimer();
+        }
     }
 }
 
