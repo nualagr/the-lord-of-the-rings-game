@@ -364,7 +364,7 @@ function assignCards(chosenCardList){
    Assign cards to the first eight divs. */
 function setUpRestart(){
     $(".restart").on("click", function(){       
-        // Remove all the clicks added by startGame
+        // Remove all the click event listeners added by startGame
         $(".extra-row").remove();
         $(".advance").off("click");
         $("#soundToggler").off("click");

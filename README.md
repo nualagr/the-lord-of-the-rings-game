@@ -78,8 +78,8 @@ As a new user I would like to be able to:
 - receive regular, up-to-date feedback about how I am progressing in the game.
 - enjoy the experience of playing the game.
 - receive a visual reward for completing the game.
-- learn some interesting facts about The Lord of the Rings characters.
-- read some interesting quotes by the different Lord of the Rings characters.
+- learn some interesting facts about *The Lord of the Rings* characters.
+- read some interesting quotes from *The Lord of the Rings* books.
 - improve my cognitive function.
 - improve my reaction times.
 
@@ -98,7 +98,7 @@ As a returning user I would like to be able to:
 - receive regular, up-to-date feedback about how I am progressing in the game.
 - enjoy the experience of playing the game.
 - be exposed to interesting facts about *The Lord of the Rings* characters.
-- read some interesting quotes by *The Lord of the Rings* characters.
+- read some interesting quotes from *The Lord of the Rings* books.
 - improve my cognitive function.
 - improve my reaction times.
 
@@ -110,7 +110,7 @@ As a Lord of the Rings fan I would like to be able to:
 - enjoy the experience of playing the game.
 - receive a visual reward for completing the game.
 - be exposed to interesting facts about different characters from *The Lord of the Rings*.
-- read some interesting quotes by *The Lord of the Rings* characters.
+- read some interesting quotes from *The Lord of the Rings* books.
 
 #### Site Owner
 As the owner of The Lord of the Rings Memory Game site I would like:
@@ -137,7 +137,7 @@ about *The Lord of the Rings Trilogy* and connect with other fans of the books a
 
 ## User Centered Design
 ### 1 Strategy Plane
-The User Centered Design process started with the creation of the User Stories.  These influenced subsequent feature, layout and design decisions.
+The User Centered Design process started with the creation of the User Stories.  These influenced subsequent decisions with regard to features, layout and design.
 
 The main  goal of the website is to provide users with an engaging game. 
 The perceived audience of this site are fans of *The Lord of the Rings Trilogy*, teenagers and younger children who want to play a fun game or compete against 
@@ -213,7 +213,7 @@ They provide the user with visually pleasing and easily differentiated images to
 - when the player has successfully completed the game,
 - if the player runs out of time and the game is over.  
 
-**Instructive subheading**  - located above the game board, this line succinctly explains the aim of the game to the user, "Find pairs of characters under the cards".
+**Instructional subheading**  - located above the game board, this line succinctly explains how to play the game, "Find pairs of characters under the cards".
 
 **Pairs Counter** - provides the user with a visual score of the number of pairs they have matched within a given round.
 
@@ -418,13 +418,13 @@ functions before calling the *assignCards* function.
 
 
 The *assignCards* function calls the *makeDeck* function which creates a smaller array of cards from the full deck.  
-It's length is calculated by halving the number of divs to be filled. 
+Its length is calculated by halving the number of divs to be filled. 
 The *makeDeck* function uses the *Card* class to create a pair of each cards with differing ids, so that they can be differentiated later and cannot be matched with themselves.  
 The *shuffle* function is called to randomize the order of the cards. The *assignCards* function then continues and assigns the cards to the empty divs.
 
 The countdown clock starts immediately when the the cards have been assigned.  
 
-When the user clicks on a div an *if* statement checks whether *isProcessing* is false.  
+When the user clicks on a 'card-column' div an *if* statement checks whether *isProcessing* is false.  
 This is to ensure that two cards have not already been turned up and are in the process of being compared.  
 If *isProcessing* is false the function continues.
 The class of 'unmatched' is removed from the div in order to remove the event listener and prevent the card from responding to a further click.
@@ -442,14 +442,15 @@ If the round or game is not over the *checkArray* is emptied and the game contin
 
 If the cards do not match the *incrementMoves* method adds one to the Moves Counter. 
 The *checkArray* is cleared, the 'face-up' class is removed from the divs and an 'unflip' sound is played.            
-A one second delay was applied to the comparison through the use of a *setTimeout* function so that the second card face would be revealed to the user before being placed back in a face-down position.
+A one second delay was applied to the comparison through the use of a *setTimeout* function so that the second card face would be revealed to the user before 
+being placed back in a face-down position.
 
 
 **API Call**
 
 If the user successfully completes the game in the allotted timeframe the *Congratulations* modal appears and the 'winner.mp3' sound is played.
-At this point the API call is made and the relevant information relating to the character on the final card that was matched is written to the *Prize Modal*.
-If the XMLHttpRequest is not successful the error message is written to the *Prize Modal*.
+At this point the API call is made and the relevant information, relating to the character on the final card that was matched, is written to the *Prize Modal*.
+If the XMLHttpRequest is not successful the user is alerted to this fact with an error message written to the *Prize Modal*.
 The *Congratulations Modal* contains the button which calls the *Prize Modal*.
 Once opened the user is presented with the final character's in-game image along with information ranging from the character's height, race, gender, birth, spouse, death, 
 realm, hair-colour and a link to their dedicated page on *The One Wiki to Rule them All*, if one exists.
@@ -468,14 +469,14 @@ During Mentor Session 2 it was recommended that the JavaScript code be split int
 The code was separated into: 'constants.js', 'classes.js', 'helpers.js' and 'script.js'.  However, when it came to the final linter test the code was again
 amalgamated into 'script.js'.  
 
-The final refactoring consisted of removing the need for some of the global variables by creating the Timer, Audio Controller, Moves Counter and Pairs Counter
+The final refactoring consisted of attempting to remove the need for some of the global variables by creating the Timer, Audio Controller, Moves Counter and Pairs Counter
 within a new *startGame* function.  This function then called other functions, such as the *assignCards* function and passed the timer, the other counters and the chosenCardPack
 to these functions as variables.  This however created more bugs that were not able to be resolved, for example, the new instance of the game with new timers and counters and 
 click event listeners did not delete or over-write the previous versions.  It was possible, in the *setUpRestart* function to remove the event handlers so that a previous events, 
 for example, a toggled volume button, would not inadvertently remain muted after the game had been restarted.  
 It was attempted to stop the the Timer, Audio Controller, Moves Counter and Pairs Counter within the *setUpRestart* function and to reset their values to null, 
 however if the home button was clicked more than once this resulted in TypeErrors when one of the reset functions such as the *stopTimer* function tried to read the value of null.
-Therefore the global variables were reinstated.
+Therefore the global variables were reinstated.  The *startGame* function remains, but now refers to the global variables.
  
 <br>
 
@@ -486,54 +487,54 @@ Therefore the global variables were reinstated.
 
 - Languages: 
 
-  * [HTML5](http://en.wikipedia.org/wiki/HTML5). Used to create the structure of the website.
-  * [CSS3](http://en.wikipedia.org/wiki/CSS). Used to style the site. 
+  * [HTML5](http://en.wikipedia.org/wiki/HTML5). Used to create the structure of the game page, the 404 page and the in-game modals.
+  * [CSS3](http://en.wikipedia.org/wiki/CSS). Used to add style to the website. 
   * [JavaScript](https://en.wikipedia.org/wiki/JavaScript). Used to create the dynamic, interactive elements of the website.
 
 - Websites
-  * [Am I Responsive](http://ami.responsivedesign.is/). Used to create the mock-up image at the top of this document which shows the site as it would behave when viewed on desktop, mobile and tablet devices. 
+  * [Am I Responsive](http://ami.responsivedesign.is/). Used to create the mock-up image showing the site as it would behave when viewed on desktop, mobile and tablet devices. 
   * [Code Institute](https://codeinstitute.net/). Used to review concepts covered in preceding modules and walk-through projects. 
-  * [Coolors](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff). Used to choose a colour scheme.
-  * [Font Awesome](https://fontawesome.com/). Used to source the free icons that were used for the social media links in the footer and for the mute icon.
-  * [Font Space](https://fontspace.com/).  Used to source the One Ring Font used to create the design on the back of the Mordor pack playing cards.
-  * [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator). Used to create the Web Font Kit for the Ringbearer font.
-  * [Google Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools). Used extensively throughout the project to test the responsiveness of elements, to target and apply CSS styles during the design phase and to test the site's performance once built. 
-  * [Google Fonts](https://fonts.google.com/). Used to choose and source the fonts used throughout the site.
+  * [Coolors](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff). Used to analyse the film poster and choose a suitable colour scheme for the site.
+  * [Font Awesome](https://fontawesome.com/). Used to source the free icons that were used for the social media links in the footer and for the mute, home and help buttons.
+  * [Font Space](https://fontspace.com/).  Used to source the One Ring Font that was used to create the design on the back of the Mordor pack playing cards.
+  * [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator). Used to create the Web Font Kit for the *Ringbearer Medium* font.
+  * [Google Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools). Used throughout the project to test the responsiveness of elements, to target and apply CSS styles during the design phase and to test the site's performance once built. 
+  * [Google Fonts](https://fonts.google.com/). Used to choose and source the font used in the body of the site.
   * [Github](https://github.com/). Used to host the deployed site and used as a respository for all previous versions of the build.
-  * [Gitpod](https://www.gitpod.io/). Online IDE used to build and develop the website.
-  * [jQuery](https://jquery.com/). The JavaScript library was used to traverse the DOM tree, event handling and CSS animation.
+  * [Gitpod](https://www.gitpod.io/). This online IDE was used to build and develop the website.
+  * [jQuery](https://jquery.com/). This JavaScript library was used to traverse the DOM and used for dynamic event handling.
   * [Optimizilla](https://imagecompressor.com/). Used to compress the images to improve site loading times.
-  * [Slack](code-institute-room.slack.com). Used during all phases of development and testing to find the answers to questions and the solutions to problems enountered.
-  * [SP-Studio](https://www.sp-studio.de/).  Used to create the Lord of the Rings themed character images.
+  * [Slack](code-institute-room.slack.com). Used during development and testing to find the solutions to problems enountered.
+  * [SP-Studio](https://www.sp-studio.de/).  Used to create *The Lord of the Rings* themed character images on the game cards.
   * [Stack Overflow](https://stackoverflow.com/). Used to search for the answers to problems encountered during the development and testing of the website.
-  * [TinyPNG](https://tinypng.com/). Used to compress the images to improve site loading times.
-  * [Vectorstock](https://www.vectorstock.com/). Used to source the White Tree of Gondor image used for the back of the game cards.
+  * [Vecteezy](https://www.vecteezy.com/vector-art/229817-vector-beautiful-landscape-illustration). Used to source the background image for the 404 page.
+  * [Vectorstock](https://www.vectorstock.com/). Used to source the 'White Tree of Gondor' image used for the back of the game cards.
   * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/validator). Used to validate the CSS file.
   * [W3C HTML Validation Service](https://validator.w3.org/). Used to validate the HTML files.
 
 - Frameworks
   * [Bootstrap Framework](https://getbootstrap.com/). Used to structure the website layout and ensure that it was responsive on all devices.
-  * [Jasmine](https://en.wikipedia.org/wiki/Jasmine_(JavaScript_testing_framework)). JavaScript testing framework used to create the testing suite.
 
 - APIs
   * [The Lord of the Rings API](https://the-one-api.dev/). Used to source the character information displayed as a prize upon completion of level three.
 
 - Apps:
   * [Balsamiq](https://balsamiq.com/). Used to create the project wireframes.
-  * [Inkscape](https://inkscape.org/). Used to edit the FontAwesome ring icon that was used as the Favicon.
+  * [Inkscape](https://inkscape.org/). Used to edit the FontAwesome ring icon that was used as the Favicon and used to create the game cards by combining the 
+  SP Studio images with the characters' names typed in the *Ringbearer Medium* font.
 
 ##### back to [top](#table-of-contents)
 ---
 
 ## Testing
-To ensure that the site contains valid HTML, the HTML code was checked by direct input using the [W3C Markup Validation Service](https://validator.w3.org/).
+To ensure that the site contains valid HTML, the HTML code was checked by directly input the code into the [W3C Markup Validation Service](https://validator.w3.org/).
 The site has no errors.
 
 ![alt text](documentation/readme-images/html-validator-no-errors.png "HTML Validator No Errors Returned")
 <br>
 
 
-To check that the CSS file contained valid code it was inputted directly into the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).  
+To check that the CSS file contains valid code it was also directly input into the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).  
 The style.css file returned no errors.
 
 ![alt text](documentation/readme-images/css-validator-no-errors.png "CSS Validator No Errors Returned")
@@ -555,11 +556,12 @@ No other errors or warnings remain in the code.
 <br>
 
 ### Performance
-Once completed the website was tested using the Google Chrome Developer Tools Lighthouse test. Initially the site received a 75% rating on performance, 
-largely due to the size of the images.
+Once completed the website was tested using the [Google Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools) Lighthouse test. 
+Initially the site received a 75% rating on performance, largely due to the size of the images.
 
 ![alt text](documentation/readme-images/lighthouse-mobile-performance-1.png "Lighthouse Performance Results")
 <br>
+
 The images were then compressed using an online image compressor site, [Optimizilla](https://imagecompressor.com) and the new smaller images were then uploaded to the site. 
 The subsequent test results showed marked improvement.
 
@@ -581,7 +583,7 @@ Web developer tools in each of the following browsers were used to ensure respon
 - Microsoft Opera
 - Mozilla Firefox
 
-Each website feature including, but not exclusive to, modals, buttons, game responses, mute, external links, hover effects etc. were manually checked within the 
+Each website and game feature including, but not exclusive to, modals, buttons, game responses, mute, external links, hover effects etc. were manually checked within the 
 aforementioned browsers.
 
 Within each browser the site was checked for responsiveness and functionality when viewed on the following: 
@@ -772,17 +774,17 @@ to hide the back of the card during this loading stage. This was applied. Althou
 see the front of card images before the game begins.
 
 A significant issue during development regarded the cards that had been selected, clicked and revealed, but had no yet been successfully matched. 
-At first jQuery's off() method was applied to the cards, however this removed the event handler and replacing it each time a card was clicked was unwieldy. 
+At first jQuery's .off() method was applied to the cards, however this removed the event handler and replacing it each time a card was clicked was unwieldy. 
 A solution was found on [StackOverflow](https://stackoverflow.com/questions/56283681/js-memory-card-game-how-to-prevent-user-flipping-more-then-2-cards-at-the-same). 
 An *if* statement was used to check the Boolean value of *isProcessing* and if true, to *return*, stopping any further processes from happening. 
 An *or* operator and a further statement checking whether the class of 'face-up' had been applied to the same div was later added to the *if* statement in order to 
 solve the problem of the 'card-flip' sound playing even though the card was in a face-up position.
 
 Recurring issues surrounded the countdown timer during development, in particular, with the regard to the ability to pause and resume the timer when the 
-user opens the Instructions Modal.  In order to give the impression of a seamless countdown the resumeTimer method decremented the paused time by one
+user opens the Instructions Modal.  In order to give the impression of a seamless countdown the *resumeTimer* method decremented the paused time by one
 when resuming, however this led to issues when the paused time was zero as it inadvertently called the countdown timer which, upon entering minus figures,
-would open the Game Over Modal and play the game-over.mp3. This issue was resolved by adding *if* and *else* statements to the resumeTimer method 
-in order to check whether the resume time was equal to zero.  In that case the stopTimer method was called.
+would open the Game Over Modal and play the 'game-over.mp3' sound. This issue was resolved by adding *if* and *else* statements to the *resumeTimer* method 
+in order to check whether the resume time was equal to zero.  In that case the *stopTimer* method was called.
 
 #### Remaining Issues
 The remaining issues regard the playing of in-game sound effects.  
@@ -803,14 +805,16 @@ This project is hosted on [GitHub Pages](https://pages.github.com/)
 
 ### Deployment Procedure Followed:
 
-1) When logged in to the [Github](https://github.com/) website the *The Lord of the Rings Memory Game* repository was selected from the repositories list in the top left-hand corner of the screen.
+1) Upon logging into the [Github](https://github.com/) website the *The Lord of the Rings Memory Game* repository was selected from the repositories list located 
+in the top left-hand corner of the screen.
 
-2) When in the selected respository, **Settings** was chosen from the navigation bar below the repository title.
+2) In the selected respository, **Settings** was chosen from the navigation bar.
 ![alt text](documentation/readme-images/github-settings-screen.png "Screenshot showing the Settings page in GitHub.")
 
 <br>
 
-3) Scrolling down the **Settings** page revealed the **GitHub Pages** heading.  Under the **Source** subheading, the dropdown menu, whose default value is 'None', was clicked.  'Master' was selected from the dropdown list.
+3) Scrolling down the **Settings** page revealed the **GitHub Pages** heading.  
+The dropdown menu under the **Source** subheading was clicked. 'Master' was selected from the dropdown list.
 ![alt text](documentation/readme-images/github-pages-screenshot.png "Screenshot showing the GitHub Pages section of the Settings page in GitHub.")
 
 <br>
@@ -847,15 +851,15 @@ Clicking on the 'View deployment' button to the right of the screen will open th
 
 <br>
 
-4) Under the heading **Clone** select 'HTTPS'
+4) Under the heading **Clone** select 'HTTPS'.
 
 5) Copy the address by clicking on the image of a clipboard to the right of the URL. 
 
-6) Open your local IDE (Integrated Development Environment).
+6) Open your local IDE.
 
 7) Navigate to the directory where you want to create the cloned directory.
 
-8) Type git clone, space, and then paste in the copied URL.  
+8) Type git clone, a space, and then paste in the copied URL.  
 
 9) Press 'Enter' to create the clone.
 
@@ -887,7 +891,7 @@ The [Boostrap Modal component](https://getbootstrap.com/docs/4.0/components/moda
 
 ### Acknowledgements
 - [Code Institue](https://codeinstitute.net/) and the very helpful tutors.
-- Thank you to my project mentor [Reuben Ferrante](https://uk.linkedin.com/in/reuben-ferrante) for his wisdom and guidance during the project. 
+- Thank you to my project mentor [Reuben Ferrante](https://uk.linkedin.com/in/reuben-ferrante) for his guidance during the project. 
 - The [Code Institue](https://codeinstitute.net/) community on [Slack](code-institute-room.slack.com) for their support.
 - A special thank you to my partner Kevin for his patience and support throughout this project. 
 - I received inspiration for this project from:
