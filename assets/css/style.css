@@ -200,7 +200,7 @@ footer {
     font-size: 18px;
     line-height: 7px;
     text-align: center;
-    color: #fafafa;
+    color: #FFFFFF;
     background: #A4770D;
     transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
@@ -209,7 +209,7 @@ footer {
 }
 
 .social-links li a i:hover {
-    background-color: #FAFAFA;
+    background-color: #FFFFFF;
     color: #A4770D;
 }
 
@@ -257,6 +257,21 @@ footer {
     text-decoration: none; 
     font-weight: bold; 
     color: #311C17;
+}
+
+.btn-prize {
+    color: #FFFFFF;
+    background: #A4770D;
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+.btn-prize:hover {
+    background-color: #FFFFFF;
+    color: #A4770D;
+    border-color: #A4770D;
 }
 
 .modal-footer {

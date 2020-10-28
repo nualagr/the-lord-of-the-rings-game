@@ -17,8 +17,8 @@ The Lord of the Rings Memory Game website consists of one webpage and seven moda
 the JavaScript library [jQuery](https://jquery.com/) and [The One API](https://the-one-api.dev/).  It was
 created in order to fulfil the requirements of the Interactive Frontend Development Milestone Project 2, 
 part of the Full Stack Web Development Program at the [Code Institue](https://codeinstitute.net/). 
-The main requirements were to create a dynamic, interactive and responsive website that should provide relevant
-responses to the users' actions. Users should be able to actively engage with the data, alter the way the site 
+The main requirements were to create a dynamic, interactive and responsive website that provides relevant
+responses to the users' actions. Users should be able to actively engage with the data and alter the way the site 
 displays the information in order achieve their goals. 
 
 Click <a href="https://nualagr.github.io/the-lord-of-the-rings-game/">here</a> to play the game online.
@@ -200,7 +200,7 @@ The **Title**, displayed on the web browser's tab at all times, clearly identifi
 **Playing Cards** - The playing cards, 8 (round one), 12 (round two) or 16 (round three) are displayed face down in a grid formation.  A uniform
 back-of-card image makes it obvious to the user that the cards are face down.
 
-The Lord of the Rings **themed character images** created in [SP-Studio](https://www.sp-studio.de/) are displayed once the card is clicked.
+*The Lord of the Rings* **themed character images** created in [SP-Studio](https://www.sp-studio.de/) are displayed once the card is clicked.
 They provide the user with visually pleasing and easily differentiated images to match.
 
 **Sound effects** - provide aural feedback to the user 
@@ -231,7 +231,7 @@ They provide the user with visually pleasing and easily differentiated images to
 **Completion Modal** - pop up window congratulates the user at the end of Round Three and provides them with a **Prize Button** which opens a visual prize modal.
 
 **Character Information Modal** - This modal, the visual prize, is populated with information regarding the last card matched in the game.  
-It contains the ingame character image and information (gender, place of birth, etc.) drawn from *The One API*.
+It contains the in-game character image and information (gender, place of birth, etc.) drawn from *The One API*.
 
 A **footer** contains **social media** links to:
 
@@ -246,7 +246,8 @@ A **footer** contains **social media** links to:
 
 A **highest score board** would allow players to compete with other users in an asynchronous fashion.
 
-A **themed playing environment**. Expand the range of characters. Change the font, colour-scheme and add different in-game background music accordingly. 
+A **themed playing environment**. It is envisaged that the range of characters will be expanded and that
+the different pack choices would result in differing fonts, colour-shcemes and in-game background music accordingly. 
 
 <br>
 
@@ -344,7 +345,7 @@ During development it became necessary to expand the colour palette in order to 
 ![alt text](documentation/readme-images/denethor.jpg "Denethor II")
 
 #### Icons
-Icons were used alongside the text within the site in order to help the user to understand the content at a glance. 
+Icons were used as buttons on the main game page in order to help the user to understand the buttons' functions at a glance. 
 They were taken from [Font Awesome](https://fontawesome.com/) and chosen to be self explanatory, for example the image of 
 a house was chosen for the Home button.
 
@@ -389,17 +390,17 @@ playing cards and allow the user to choose between the Fellowship characters or 
 
 The 'index.html' file and accompanying 'style.css' files were created first to provide the game structure and general appearance.
 The [Bootstrap](https://getbootstrap.com/docs/4.0/layout/grid/) grid was used to create the game board so that it would respond automatically to the 
-differing dimensions of possible viewing devices.  [Google Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools) 
+differing viewing device dimensions.  [Google Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools) 
 were used throughout the development process to test how elements responded when viewed on mobile and/or tablet devices. 
 When design issues were encountered the Device Selector was used to target the element in question. 
-Using the Elements Panel within the Developer Tools the code was altered in place and working code snippets were then replicated in the 'style.css' file in Gitpod. 
+Using the Elements Panel within the Developer Tools the code was altered and working code snippets were then replicated in the 'style.css' file in Gitpod. 
 Solutions for other issues were found in the [Code Institute Slack channels](https://app.slack.com/client/T0L30B202/C7HD37Q1F/thread/C7J2ZAVHB-1602265383.366600), 
 on [Stack Overflow](https://stackoverflow.com/) and on [W3Schools](https://www.w3schools.com/).
 
 When it came to the interactive aspect of the project my mentor, Mr. [Reuben Ferrante](https://uk.linkedin.com/in/reuben-ferrante), suggested starting with the logic regarding the addition of extra rows 
 of cards with the progression of each round.  As this is a single-page site and the opening modal does not obscure the page behind, the initial two rows of 
 four cards are created in the HTML page.  The addition of the next row of cards is created in the 'script.js' file by cloning row 2 of the initial board. 
-A class of 'extra-row' is added to this new row in order to allow for easy deletion if the player runs out of time or presses the restart button.
+A class of 'extra-row' is added to this new row in order to allow for easy deletion if the player runs out of time or presses the Restart button.
 
 
 **Game Logic**
@@ -443,7 +444,7 @@ If the user successfully completes the game in the allotted timeframe the *Congr
 At this point the API call is made and the relevant information relating to the character on the final card that was matched is written to the *Prize Modal*.
 If the XMLHttpRequest is not successful the error message is written to the *Prize Modal*.
 The *Congratulations Modal* contains the button which calls the *Prize Modal*.
-Once opened the user is presented with the final character's ingame image along with information ranging from the character's height, race, gender, birth, spouse, death, 
+Once opened the user is presented with the final character's in-game image along with information ranging from the character's height, race, gender, birth, spouse, death, 
 realm, hair-colour and a link to their dedicated page on *The One Wiki to Rule them All*, if one exists.
 As this information varies from character to character the *removeIfBlank* function within the *getData* function removes any key value pairs that contain an empty string or 'NaN'.
 The user is presented only with the entries that contain data.
@@ -533,10 +534,11 @@ To test the validity of the JavaScript [Espirima](https://esprima.org/demo/valid
 <br>
 
 The JavaScipt file was also passed into [JSHint](jshint.com).  This highlighted many errors and warnings, predominantly relating to variables that had been declared
-without the use of 'let' or 'var'.  These errors have since been rectified.  
+incorrectly with regard to the keywords 'let' and 'var'.  These errors have since been rectified.  
 A StackOverflow suggestion of declaring /*globals $:false */ at the start of the file 
 removed the warnings regarding the jQuery dollar sign without replacing every dollar sign with 'jquery'.  
 The remaining so-called 'unused variable' is the startGame function which is called in the 'index.html' file in the opening modal. 
+No other errors or warnings remain in the code.
 ![alt text](documentation/readme-images/jshint-results.png "JSHint results, no remaining errors")
 <br>
 
@@ -599,10 +601,9 @@ Within each browser the site was checked for responsiveness and functionality wh
 - 20" Desktop (1600 x 900)
 
 In addition to checking the game's functionality using browser developer tools, 
-the site has been manually checked and found to function as desired on the following devices:
-
-- Dell XPS 13
-- Samsung S7
+the site has been manually checked by friends and family.  In-game errors were highlighted 
+during this process, such as the Game Over Modal displaying if the user exited the Prize Modal
+using the Close button as opposed to the Restart button.  Issues highlighted have been recitified as far as was feasible.
 
 ### Tested User Stories
 
@@ -757,14 +758,14 @@ An *or* operator and a further statement checking whether the class of 'face-up'
 solve the problem of the 'card-flip' sound playing even though the card was in a face-up position.
 
 #### Remaining Issues
-The remaining issues regard the playing of ingame sound effects.  
+The remaining issues regard the playing of in-game sound effects.  
 When two cards are matched, the 'cards-match.mp3' sound plays before the second 'card-flip.mp3' sound.  
 Similarly, the second card 'card-flip.mp3' sound will not play if the user clicks on card 2 too quickly after card 1 
 and the first sound has not yet finished playing.  A delay using the *setTimeout* function was implemented however this 
-did not solve the issue of the overlapping sound and degraded the performance of the game.  As the inclusion of ingame sound
+did not solve the issue of the overlapping sound and degraded the performance of the game.  As the inclusion of in-game sound
 effects greatly enhances the playing experience as well as providing auditory feedback to the user the sound effects were not
 removed from the game despite this issue.  It is envisaged that this issue may be resolved given more time to investigate the use
-of channels or a JavaScript audio library.
+of channels and/or a JavaScript audio library.
 
 ##### back to [top](#table-of-contents)
 ---
