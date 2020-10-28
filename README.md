@@ -898,6 +898,7 @@ The [Boostrap Modal component](https://getbootstrap.com/docs/4.0/components/moda
   - https://zahur76.github.io/MilestoneProject2/
   - https://nickbell123.github.io/Marvel-Memory-Game/
   - [8-bitEarth](https://www.deviantart.com/8-bitearth/art/The-Lord-of-the-Rings-South-Park-version-363629107)'s Lord of the Rings character images created using [SP-Studio](https://www.sp-studio.de/).
+  - The [Code Institue](https://codeinstitute.net/) 'Putting it all Together' project.
 
 <br>
 
